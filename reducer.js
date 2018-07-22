@@ -127,7 +127,7 @@ const setPlayerTwoName = (state, secondPlayer) => ({
 const setPlayerThreeName = (state, firstPlayer) => ({
     ...state,
     team2: {
-        ...state.team1,
+        ...state.team2,
         firstPlayer
     }
 });
@@ -135,7 +135,7 @@ const setPlayerThreeName = (state, firstPlayer) => ({
 const setPlayerFourName = (state, secondPlayer) => ({
     ...state,
     team2: {
-        ...state.team1,
+        ...state.team2,
         secondPlayer
     }
 });

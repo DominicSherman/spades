@@ -33,12 +33,14 @@ class Home extends React.Component {
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
                                     onChangeText={(name) => this.props.actions.setName(name, ONE)}
+                                    placeholder={`Player 1`}
                                     value={team1.firstPlayer}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
                                     onChangeText={(name) => this.props.actions.setName(name, TWO)}
+                                    placeholder={`Player 2`}
                                     value={team1.secondPlayer}
                                 />
                             </View>
@@ -50,12 +52,14 @@ class Home extends React.Component {
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
                                     onChangeText={(name) => this.props.actions.setName(name, THREE)}
+                                    placeholder={`Player 3`}
                                     value={team2.firstPlayer}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
                                     onChangeText={(name) => this.props.actions.setName(name, FOUR)}
+                                    placeholder={`Player 4`}
                                     value={team2.secondPlayer}
                                 />
                             </View>
@@ -68,12 +72,14 @@ class Home extends React.Component {
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setValue(name, ONE)}
+                                    placeholder={`${0}`}
                                     value={`${currRound.player1Bid}`}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setValue(name, TWO)}
+                                    placeholder={`${0}`}
                                     value={`${currRound.player2Bid}`}
                                 />
                             </View>
@@ -84,12 +90,14 @@ class Home extends React.Component {
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setValue(name, THREE)}
+                                    placeholder={`${0}`}
                                     value={`${currRound.player3Bid}`}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setValue(name, FOUR)}
+                                    placeholder={`${0}`}
                                     value={`${currRound.player4Bid}`}
                                 />
                             </View>

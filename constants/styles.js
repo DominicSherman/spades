@@ -5,11 +5,17 @@ export const styles = StyleSheet.create({
     buttonView: {
         borderWidth: 1,
         borderColor: green,
-        height: (Dimensions.get('screen').height / 15) * 2.5,
+        height: (Dimensions.get('screen').height / 15) * 2.6,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: green
+    },
+    actualView: {
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: Dimensions.get('screen').width / 2
     },
     headerText: {
         fontSize: 22
