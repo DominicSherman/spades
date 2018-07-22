@@ -1,22 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Dimensions, FlatList, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {darkFontStyles, lightFontStyles, redFontStyles} from '../constants/font-styles';
-import {darkerGray, lightGray} from '../constants/style-variables';
+import {SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {darkFontStyles, lightFontStyles, whiteFontStyles} from '../constants/font-styles';
 import {bindActionCreators} from 'redux';
-import * as ActionCreators from '../action-creators/index';
+import * as ActionCreators from '../actions';
+import RoundInfo from './RoundInfo';
+import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+import {styles} from '../constants/styles';
 
 class Home extends React.Component {
+    componentDidUpdate(prevProps) {
+        if (!prevProps.isBids && this.props.isBids) {
+            this.props.actions.calculateTeamScore(this.props.rounds[0], this.props.team1, this.props.team2);
+        }
+    }
+
     render() {
-        console.log('this', this);
-        const {actions, teams} = this.props;
-        const {team1, team2} = teams;
-        const {rounds} = this.props.rounds;
+        console.log('this.props', this.props);
+        const {isBids, rounds, currRound, team1, team2} = this.props;
 
         return (
             <SafeAreaView>
                 <View style={styles.headerView}>
-                    <Text style={[darkFontStyles.light, styles.headerText]}>{'Spades Score'}</Text>
+                    <Text style={[darkFontStyles.light, styles.headerText]}>{'Spades'}</Text>
                 </View>
                 <View style={styles.scoreView}>
                     <View style={{flexDirection: 'row'}}>
@@ -26,11 +32,13 @@ class Home extends React.Component {
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
+                                    onChangeText={(name) => this.props.actions.setName(name, ONE)}
                                     value={team1.firstPlayer}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
+                                    onChangeText={(name) => this.props.actions.setName(name, TWO)}
                                     value={team1.secondPlayer}
                                 />
                             </View>
@@ -41,11 +49,13 @@ class Home extends React.Component {
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
+                                    onChangeText={(name) => this.props.actions.setName(name, THREE)}
                                     value={team2.firstPlayer}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.regular}
+                                    onChangeText={(name) => this.props.actions.setName(name, FOUR)}
                                     value={team2.secondPlayer}
                                 />
                             </View>
@@ -57,12 +67,14 @@ class Home extends React.Component {
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
-                                    value={`${rounds[0].player1Bid}`}
+                                    onChangeText={(name) => this.props.actions.setValue(name, ONE)}
+                                    value={`${currRound.player1Bid}`}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
-                                    value={`${rounds[0].player2Bid}`}
+                                    onChangeText={(name) => this.props.actions.setValue(name, TWO)}
+                                    value={`${currRound.player2Bid}`}
                                 />
                             </View>
                         </View>
@@ -71,29 +83,36 @@ class Home extends React.Component {
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
-                                    value={`${rounds[0].player3Bid}`}
+                                    onChangeText={(name) => this.props.actions.setValue(name, THREE)}
+                                    value={`${currRound.player3Bid}`}
                                 />
                                 <TextInput
                                     clearTextOnFocus
                                     style={lightFontStyles.light}
-                                    value={`${rounds[0].player4Bid}`}
+                                    onChangeText={(name) => this.props.actions.setValue(name, FOUR)}
+                                    value={`${currRound.player4Bid}`}
                                 />
                             </View>
                         </View>
                     </View>
-                    {/*<FlatList*/}
-                    {/*data={this.state.rounds.slice(1)}*/}
-                    {/*keyExtractor={(item, index) => `${index}`}*/}
-                    {/*renderItem={({item}) => (*/}
-                    {/*<RoundInfo item={item}/>*/}
-                    {/*)}*/}
-                    {/*/>*/}
+                    <RoundInfo
+                        actions={this.props.actions}
+                        isBids={isBids}
+                        rounds={rounds}
+                    />
                 </View>
                 <TouchableOpacity
-                    onPress={() => actions.addNewRound()}
+                    onPress={() => {
+                        if (isBids) {
+                            this.props.actions.submitBids(currRound);
+                        } else {
+                            this.props.actions.submitActuals(team1.score, team2.score, rounds[0], currRound);
+                        }
+                    }}
+                    style={styles.buttonView}
                 >
-                    <View style={styles.buttonView}>
-                        <Text style={redFontStyles.medium}>{'SUBMIT BIDS'}</Text>
+                    <View >
+                        <Text style={[whiteFontStyles.light, {fontSize: 25}]}>{'SUBMIT'}</Text>
                     </View>
                 </TouchableOpacity>
             </SafeAreaView>
@@ -106,52 +125,3 @@ const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(ActionCre
 const mapStateToProps = (state) => state;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-const styles = StyleSheet.create({
-    buttonView: {
-        borderWidth: 1,
-        height: (Dimensions.get('screen').height / 15) * 1.5,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: lightGray
-    },
-    headerText: {
-        fontSize: 22
-    },
-    headerView: {
-        alignItems: 'center',
-        height: (Dimensions.get('screen').height / 15),
-        justifyContent: 'center',
-        paddingBottom: 10
-    },
-    rowView: {
-        borderBottomColor: lightGray,
-        borderBottomWidth: 1,
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        width: Dimensions.get('screen').width / 2
-    },
-    topRowView: {
-        borderBottomColor: darkerGray,
-        borderBottomWidth: 1,
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        width: Dimensions.get('screen').width / 2
-    },
-    teamView: {
-        borderRightColor: darkerGray,
-        borderRightWidth: 1,
-        padding: 10,
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        width: Dimensions.get('screen').width / 2,
-    },
-    scoreView: {
-        flexDirection: 'column',
-        height: (Dimensions.get('screen').height / 15) * 11
-    }
-});
