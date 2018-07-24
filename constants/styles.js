@@ -1,15 +1,25 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {darkerGray, green, lightGray} from './style-variables';
+import {black, darkerGray, green, hyveeRed, lightGray} from './style-variables';
 
 export const styles = StyleSheet.create({
-    buttonView: {
+    bigButtonView: {
         borderWidth: 1,
         borderColor: green,
-        height: (Dimensions.get('screen').height / 15) * 2.6,
+        height: (Dimensions.get('screen').height / 15) * 3,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: green
+    },
+    smallButtonView: {
+        borderWidth: .5,
+        borderColor: hyveeRed,
+        borderRadius: 4,
+        height: Dimensions.get('screen').height / 25,
+        width: 100,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     actualView: {
         padding: 10,
@@ -18,13 +28,14 @@ export const styles = StyleSheet.create({
         width: Dimensions.get('screen').width / 2
     },
     headerText: {
-        fontSize: 22
+        fontSize: 22,
     },
     headerView: {
         alignItems: 'center',
         height: (Dimensions.get('screen').height / 15),
-        justifyContent: 'center',
-        paddingBottom: 10
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 10
     },
     rowView: {
         borderBottomColor: lightGray,
@@ -53,6 +64,6 @@ export const styles = StyleSheet.create({
     },
     scoreView: {
         flexDirection: 'column',
-        height: (Dimensions.get('screen').height / 15) * 11
+        height: (Dimensions.get('screen').height / 15) * 10.5
     }
 });

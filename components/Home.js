@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {darkFontStyles, lightFontStyles, whiteFontStyles} from '../constants/font-styles';
+import {darkFontStyles, lightFontStyles, redFontStyles, whiteFontStyles} from '../constants/font-styles';
 import {bindActionCreators} from 'redux';
 import * as ActionCreators from '../actions';
 import RoundInfo from './RoundInfo';
@@ -18,11 +18,19 @@ class Home extends React.Component {
     render() {
         console.log('this.props', this.props);
         const {isBids, rounds, currRound, team1, team2} = this.props;
+        const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT ACTUAL';
 
         return (
             <SafeAreaView>
                 <View style={styles.headerView}>
                     <Text style={[darkFontStyles.light, styles.headerText]}>{'Spades'}</Text>
+                    <TouchableOpacity
+                        style={styles.smallButtonView}
+                    >
+                        <View>
+                            <Text style={[redFontStyles.light, {fontSize: 22}]}>{'Undo'}</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.scoreView}>
                     <View style={{flexDirection: 'row'}}>
@@ -117,10 +125,10 @@ class Home extends React.Component {
                             this.props.actions.submitActuals(team1.score, team2.score, rounds[0], currRound);
                         }
                     }}
-                    style={styles.buttonView}
+                    style={styles.bigButtonView}
                 >
-                    <View >
-                        <Text style={[whiteFontStyles.light, {fontSize: 25}]}>{'SUBMIT'}</Text>
+                    <View>
+                        <Text style={[whiteFontStyles.light, {fontSize: 25}]}>{submitText}</Text>
                     </View>
                 </TouchableOpacity>
             </SafeAreaView>
