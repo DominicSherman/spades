@@ -73,7 +73,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         width: Dimensions.get('screen').width / 2,
     },
-    scoreView: {
+    mainView: {
         flexDirection: 'column',
         height: (Dimensions.get('screen').height / 15) * 10.5
     }

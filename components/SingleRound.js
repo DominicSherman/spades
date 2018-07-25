@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import {lightFontStyles} from '../constants/font-styles';
 import {styles} from '../constants/styles';
 
-export default class Round extends Component {
+export default class SingleRound extends Component {
     render() {
         const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual, team1Bids, team2Bids} = this.props.item;
 

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {FlatList} from 'react-native';
-import Round from './Round';
+import SingleRound from './SingleRound';
 
-export default class Score extends Component {
+export default class Rounds extends Component {
     render() {
         const {rounds} = this.props;
 
@@ -11,7 +11,7 @@ export default class Score extends Component {
                 data={rounds}
                 keyExtractor={(item, index) => `${index}`}
                 renderItem={({item}) => (
-                    <Round
+                    <SingleRound
                         item={item}
                     />
                 )}

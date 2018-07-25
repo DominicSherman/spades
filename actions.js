@@ -172,7 +172,7 @@ export const setName = (name, player) => (dispatch) => {
     }
 };
 
-export const setValue = (bid, player) => (dispatch) => {
+export const submitValue = (bid, player) => (dispatch) => {
     if (player === ONE) {
         dispatch({
             data: bid,
