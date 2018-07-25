@@ -37,10 +37,16 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 10
     },
+    iconView: {
+        height: 30,
+        width: 75,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center'
+    },
     icon: {
         color: hyveeRed,
-        fontSize: 40,
-        paddingRight: 5
+        fontSize: 40
     },
     rowView: {
         borderBottomColor: lightGray,

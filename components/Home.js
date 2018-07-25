@@ -32,6 +32,7 @@ class Home extends React.Component {
                     <Text style={[darkFontStyles.light, styles.headerText]}>{'Spades'}</Text>
                     <TouchableOpacity
                         onPress={() => this.props.actions.undo(isBids)}
+                        style={styles.iconView}
                     >
                         <EvilIcons
                             name={'undo'}
