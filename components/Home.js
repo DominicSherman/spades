@@ -47,14 +47,14 @@ class Home extends React.Component {
                             <View style={styles.rowView}>
                                 <TextInput
                                     clearTextOnFocus
-                                    style={lightFontStyles.regular}
+                                    style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setName(name, ONE)}
                                     placeholder={`Player 1`}
                                     value={team1.firstPlayer}
                                 />
                                 <TextInput
                                     clearTextOnFocus
-                                    style={lightFontStyles.regular}
+                                    style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setName(name, TWO)}
                                     placeholder={`Player 2`}
                                     value={team1.secondPlayer}
@@ -66,14 +66,14 @@ class Home extends React.Component {
                             <View style={styles.rowView}>
                                 <TextInput
                                     clearTextOnFocus
-                                    style={lightFontStyles.regular}
+                                    style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setName(name, THREE)}
                                     placeholder={`Player 3`}
                                     value={team2.firstPlayer}
                                 />
                                 <TextInput
                                     clearTextOnFocus
-                                    style={lightFontStyles.regular}
+                                    style={lightFontStyles.light}
                                     onChangeText={(name) => this.props.actions.setName(name, FOUR)}
                                     placeholder={`Player 4`}
                                     value={team2.secondPlayer}
