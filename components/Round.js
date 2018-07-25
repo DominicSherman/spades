@@ -9,7 +9,7 @@ export default class Round extends Component {
 
         return (
             <View>
-                {playerOne.actual ?
+                {playerOne.actual !== null && playerOne.actual !== undefined ?
                     <View style={{flexDirection: 'row'}}>
                         <View style={styles.teamView}>
                             <Text style={lightFontStyles.light}>{team1Actual}</Text>

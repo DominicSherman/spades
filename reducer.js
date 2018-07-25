@@ -1,7 +1,7 @@
 import {
     ADD_ACTUAL,
     ADD_BIDS,
-    RESET,
+    RESET, RESTART,
     SET_IS_BIDS,
     SET_PLAYER_FOUR_ACTUAL,
     SET_PLAYER_FOUR_BID,
@@ -16,7 +16,7 @@ import {
     SET_PLAYER_TWO_BID,
     SET_PLAYER_TWO_NAME, SET_TEAM_ONE_BAGS,
     SET_TEAM_ONE_SCORE, SET_TEAM_TWO_BAGS,
-    SET_TEAM_TWO_SCORE, UNDO, UNDO_ACTUAL, UNDO_BIDS
+    SET_TEAM_TWO_SCORE, UNDO_ACTUAL, UNDO_BIDS
 } from './action-types';
 
 const defaultState = {
@@ -237,12 +237,40 @@ const setTeamTwoBags = (state, bags) => ({
 });
 
 const undoBids = (state) => ({
-
+    ...state,
+    rounds: [...state.rounds.slice(1)]
 });
 
-const undoActual = (state) => ({
+const undoActual = (state) => {
+    if (state.rounds.length) {
+        return {
+            ...state,
+            rounds: [{
+                ...state.rounds[0],
+                playerOne: {
+                    ...state.rounds[0].playerOne,
+                    actual: null
+                },
+                playerTwo: {
+                    ...state.rounds[0].playerTwo,
+                    actual: null
+                },
+                playerThree: {
+                    ...state.rounds[0].playerThree,
+                    actual: null
+                },
+                playerFour: {
+                    ...state.rounds[0].playerFour,
+                    actual: null
+                },
+                team1Actual: null,
+                team2Actual: null
+            }, ...state.rounds.slice(1)]
+        }
+    }
+};
 
-});
+const restart = () => defaultState;
 
 const reducerMap = {
     [SET_TEAM_ONE_SCORE]: setTeamOneScore,
@@ -251,6 +279,7 @@ const reducerMap = {
     [SET_TEAM_TWO_BAGS]: setTeamTwoBags,
     [SET_IS_BIDS]: setIsBids,
     [RESET]: reset,
+    [RESTART]: restart,
     [ADD_BIDS]: addBids,
     [ADD_ACTUAL]: addActual,
     [SET_PLAYER_ONE_NAME]: setPlayerOneName,

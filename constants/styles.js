@@ -15,10 +15,10 @@ export const styles = StyleSheet.create({
         borderWidth: .5,
         borderColor: hyveeRed,
         borderRadius: 4,
-        height: Dimensions.get('screen').height / 25,
-        width: 100,
+        height: 30,
+        width: 75,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center'
     },
     actualView: {
@@ -36,6 +36,11 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         padding: 10
+    },
+    icon: {
+        color: hyveeRed,
+        fontSize: 40,
+        paddingRight: 5
     },
     rowView: {
         borderBottomColor: lightGray,

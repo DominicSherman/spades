@@ -7,29 +7,36 @@ import * as ActionCreators from '../actions';
 import Score from './Score';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 import {styles} from '../constants/styles';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 class Home extends React.Component {
     componentDidUpdate(prevProps) {
-        if (!prevProps.isBids && this.props.isBids) {
-            this.props.actions.calculateTeamScore(this.props.rounds[0], this.props.team1, this.props.team2);
+        if ((!prevProps.isBids && this.props.isBids) || (prevProps.isBids && !this.props.isBids)) {
+            this.props.actions.calculateTeamScore(this.props.rounds, this.props.team1, this.props.team2);
         }
     }
 
     render() {
-        console.log('this.props', this.props);
         const {isBids, rounds, currRound, team1, team2} = this.props;
         const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT ACTUAL';
 
         return (
             <SafeAreaView>
                 <View style={styles.headerView}>
-                    <Text style={[darkFontStyles.light, styles.headerText]}>{'Spades'}</Text>
                     <TouchableOpacity
+                        onPress={() => this.props.actions.restart()}
                         style={styles.smallButtonView}
                     >
-                        <View>
-                            <Text style={[redFontStyles.light, {fontSize: 22}]}>{'Undo'}</Text>
-                        </View>
+                        <Text style={[redFontStyles.light, {fontSize: 16}]}>{'Restart'}</Text>
+                    </TouchableOpacity>
+                    <Text style={[darkFontStyles.light, styles.headerText]}>{'Spades'}</Text>
+                    <TouchableOpacity
+                        onPress={() => this.props.actions.undo(isBids)}
+                    >
+                        <EvilIcons
+                            name={'undo'}
+                            style={styles.icon}
+                        />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.scoreView}>
@@ -111,11 +118,7 @@ class Home extends React.Component {
                             </View>
                         </View>
                     </View>
-                    <Score
-                        actions={this.props.actions}
-                        isBids={isBids}
-                        rounds={rounds}
-                    />
+                    <Score {...this.props}/>
                 </View>
                 <TouchableOpacity
                     onPress={() => {
@@ -127,9 +130,7 @@ class Home extends React.Component {
                     }}
                     style={styles.bigButtonView}
                 >
-                    <View>
-                        <Text style={[whiteFontStyles.light, {fontSize: 25}]}>{submitText}</Text>
-                    </View>
+                    <Text style={[whiteFontStyles.light, {fontSize: 25}]}>{submitText}</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         );
