@@ -4,7 +4,7 @@ import {SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-nativ
 import {darkFontStyles, lightFontStyles, redFontStyles, whiteFontStyles} from '../constants/font-styles';
 import {bindActionCreators} from 'redux';
 import * as ActionCreators from '../actions';
-import RoundInfo from './RoundInfo';
+import Score from './Score';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 import {styles} from '../constants/styles';
 
@@ -111,7 +111,7 @@ class Home extends React.Component {
                             </View>
                         </View>
                     </View>
-                    <RoundInfo
+                    <Score
                         actions={this.props.actions}
                         isBids={isBids}
                         rounds={rounds}

@@ -16,7 +16,7 @@ import {
     SET_PLAYER_TWO_BID,
     SET_PLAYER_TWO_NAME, SET_TEAM_ONE_BAGS,
     SET_TEAM_ONE_SCORE, SET_TEAM_TWO_BAGS,
-    SET_TEAM_TWO_SCORE
+    SET_TEAM_TWO_SCORE, UNDO, UNDO_ACTUAL, UNDO_BIDS
 } from './action-types';
 
 const defaultState = {
@@ -236,6 +236,13 @@ const setTeamTwoBags = (state, bags) => ({
     }
 });
 
+const undoBids = (state) => ({
+
+});
+
+const undoActual = (state) => ({
+
+});
 
 const reducerMap = {
     [SET_TEAM_ONE_SCORE]: setTeamOneScore,
@@ -257,7 +264,9 @@ const reducerMap = {
     [SET_PLAYER_ONE_ACTUAL]: setPlayerOneActual,
     [SET_PLAYER_TWO_ACTUAL]: setPlayerTwoActual,
     [SET_PLAYER_THREE_ACTUAL]: setPlayerThreeActual,
-    [SET_PLAYER_FOUR_ACTUAL]: setPlayerFourActual
+    [SET_PLAYER_FOUR_ACTUAL]: setPlayerFourActual,
+    [UNDO_BIDS]: undoBids,
+    [UNDO_ACTUAL]: undoActual
 };
 
 export default (state = defaultState, {type, data}) => {

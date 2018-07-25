@@ -18,3 +18,5 @@ export const SET_TEAM_ONE_SCORE = 'SET_TEAM_ONE_SCORE';
 export const SET_TEAM_TWO_SCORE = 'SET_TEAM_TWO_SCORE';
 export const SET_TEAM_ONE_BAGS = 'SET_TEAM_ONE_BAGS';
 export const SET_TEAM_TWO_BAGS = 'SET_TEAM_TWO_BAGS';
+export const UNDO_BIDS = 'UNDO_BIDS';
+export const UNDO_ACTUAL = 'UNDO_ACTUAL';

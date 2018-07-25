@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {black, darkerGray, green, hyveeRed, lightGray} from './style-variables';
+import {darkerGray, green, hyveeRed, lightGray} from './style-variables';
 
 export const styles = StyleSheet.create({
     bigButtonView: {
