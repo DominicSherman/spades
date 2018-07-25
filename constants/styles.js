@@ -65,8 +65,6 @@ export const styles = StyleSheet.create({
         width: Dimensions.get('screen').width / 2
     },
     teamView: {
-        borderRightColor: darkerGray,
-        borderRightWidth: 1,
         padding: 10,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
