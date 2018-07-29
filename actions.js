@@ -35,10 +35,16 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
                 score1 -= 100;
             }
 
-            if ((!playerThree.bid && !playerThree.actual) || (!playerFour.bid && !playerFour.actual)) {
-                score2 += 100;
-            } else if ((!playerThree.bid && playerThree.actual) || (!playerFour.bid && playerFour.actual)) {
-                score2 -= 100;
+            if ((playerOne.bid === -1 && !playerOne.actual) || (playerTwo.bid === -1 && !playerTwo.actual)) {
+                score1 += 200;
+            } else if ((playerOne.bid === -1 && playerOne.actual) || (playerTwo.bid === -1 && playerTwo.actual)) {
+                score1 -= 200;
+            }
+
+            if ((playerThree.bid === -1 && !playerThree.actual) || (playerFour.bid === -1 && !playerFour.actual)) {
+                score2 += 200;
+            } else if ((playerThree.bid === -1 && playerThree.actual) || (playerFour.bid === -1 && playerFour.actual)) {
+                score2 -= 200;
             }
 
             if (team1Actual >= team1Bids) {

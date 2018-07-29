@@ -6,7 +6,7 @@ import {Text, TouchableOpacity} from 'react-native';
 export default class SubmitButton extends Component {
     render() {
         const {isBids, actions, team1, team2, rounds, currRound} = this.props;
-        const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT ACTUAL';
+        const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT RESULTS';
 
         return (
             <TouchableOpacity
