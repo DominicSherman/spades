@@ -25,7 +25,8 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
     let bags2 = team2.bags;
 
     rounds.forEach((round) => {
-        const {playerOne, playerTwo, playerThree, playerFour, team1Bids, team1Actual, team2Bids, team2Actual} = round;
+        const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual} = round;
+        let {team1Bids, team2Bids} = round;
 
         if (playerOne.actual !== null && playerOne.actual !== undefined) {
 
@@ -37,14 +38,24 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
 
             if ((playerOne.bid === -1 && !playerOne.actual) || (playerTwo.bid === -1 && !playerTwo.actual)) {
                 score1 += 200;
+                team1Bids += 1;
             } else if ((playerOne.bid === -1 && playerOne.actual) || (playerTwo.bid === -1 && playerTwo.actual)) {
                 score1 -= 200;
+                team1Bids += 1;
+            }
+
+            if ((!playerThree.bid && !playerThree.actual) || (!playerFour.bid && !playerFour.actual)) {
+                score2 += 100;
+            } else if ((!playerThree.bid && playerThree.actual) || (!playerFour.bid && playerFour.actual)) {
+                score2 -= 100;
             }
 
             if ((playerThree.bid === -1 && !playerThree.actual) || (playerFour.bid === -1 && !playerFour.actual)) {
                 score2 += 200;
+                team2Bids += 1;
             } else if ((playerThree.bid === -1 && playerThree.actual) || (playerFour.bid === -1 && playerFour.actual)) {
                 score2 -= 200;
+                team2Bids += 1;
             }
 
             if (team1Actual >= team1Bids) {
@@ -82,7 +93,7 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
                 score1 -= 100;
             }
 
-            if(bags2 >= 10) {
+            if (bags2 >= 10) {
                 bags2 = 10 - bags2;
                 score2 -= 100;
             }
