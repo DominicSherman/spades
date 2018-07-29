@@ -121,11 +121,22 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
     });
 };
 
-export const submitBids = (round) => (dispatch) => {
+export const submitBids = (roundBids) => (dispatch) => {
+    let team1Total = Number(roundBids.player1Bid) + Number(roundBids.player2Bid);
+    let team2Total = Number(roundBids.player3Bid) + Number(roundBids.player4Bid);
+
+    if (Number(roundBids.player1Bid) === -1 || Number(roundBids.player2Bid) === -1) {
+        team1Total += 1;
+    }
+
+    if (Number(roundBids.player3Bid) === -1 || Number(roundBids.player4Bid) === -1) {
+        team2Total += 1;
+    }
+
     const roundWithTotals = {
-        ...round,
-        team1Total: Number(round.player1Bid) + Number(round.player2Bid),
-        team2Total: Number(round.player3Bid) + Number(round.player4Bid)
+        ...roundBids,
+        team1Total,
+        team2Total
     };
 
     dispatch({
@@ -143,22 +154,11 @@ export const submitBids = (round) => (dispatch) => {
     })
 };
 
-export const submitActuals = (score1, score2, roundBids, roundActual) => (dispatch) => {
-    let team1Total = Number(roundActual.player1Bid) + Number(roundActual.player2Bid);
-    let team2Total = Number(roundActual.player3Bid) + Number(roundActual.player4Bid);
-
-    if (roundActual.player1Bid === -1 || roundActual.player2Bid === -1) {
-        team1Total += 1;
-    }
-
-    if (roundActual.player3Bid === -1 || roundActual.player4Bid === -1) {
-        team2Total += 1;
-    }
-
+export const submitActuals = (roundActual) => (dispatch) => {
     const roundWithTotals = {
         ...roundActual,
-        team1Total,
-        team2Total
+        team1Total: Number(roundActual.player1Bid) + Number(roundActual.player2Bid),
+        team2Total: Number(roundActual.player3Bid) + Number(roundActual.player4Bid)
     };
 
     dispatch({

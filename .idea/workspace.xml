@@ -4,6 +4,7 @@
     <list default="true" id="bff6634e-fb03-4f35-bcca-5b80fc2000aa" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SubmitButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SubmitButton.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,7 +23,7 @@
           <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/components/Home.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
+                <state relative-caret-position="90">
                   <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
@@ -31,11 +32,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="actions.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/actions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="446">
-                  <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
+                <state relative-caret-position="616">
+                  <caret line="161" column="6" lean-forward="true" selection-start-line="161" selection-start-column="6" selection-end-line="161" selection-end-column="6" />
                   <folding>
                     <element signature="e#0#415#0" expanded="true" />
                   </folding>
@@ -43,11 +44,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SubmitButton.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SubmitButton.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/components/SubmitButton.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="69" lean-forward="true" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
+                <state relative-caret-position="315">
+                  <caret line="21" column="85" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -58,7 +59,7 @@
           <file leaf-file-name="CurrentRound.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/components/CurrentRound.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="426">
+                <state relative-caret-position="1050">
                   <caret line="75" column="61" selection-start-line="75" selection-start-column="61" selection-end-line="75" selection-end-column="61" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
@@ -70,12 +71,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="styles.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/constants/styles.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="104">
-                  <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+                <state relative-caret-position="165">
+                  <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#52#0" expanded="true" />
                   </folding>
@@ -132,9 +133,9 @@
         <option value="$PROJECT_DIR$/components/Header.js" />
         <option value="$PROJECT_DIR$/components/Home.js" />
         <option value="$PROJECT_DIR$/components/CurrentRound.js" />
-        <option value="$PROJECT_DIR$/components/SubmitButton.js" />
-        <option value="$PROJECT_DIR$/constants/styles.js" />
         <option value="$PROJECT_DIR$/actions.js" />
+        <option value="$PROJECT_DIR$/constants/styles.js" />
+        <option value="$PROJECT_DIR$/components/SubmitButton.js" />
       </list>
     </option>
   </component>
@@ -156,9 +157,8 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="1027" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -234,12 +234,13 @@
       <workItem from="1532524161807" duration="215000" />
       <workItem from="1532539502176" duration="2404000" />
       <workItem from="1532547419545" duration="1961000" />
-      <workItem from="1532896552318" duration="2319000" />
+      <workItem from="1532896552318" duration="2353000" />
+      <workItem from="1532900185238" duration="427000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24042000" />
+    <option name="totallyTimeSpent" value="24503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -517,9 +518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -527,9 +525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -565,9 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="78" lean-forward="true" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -593,28 +585,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/CurrentRound.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
+        <state relative-caret-position="1050">
           <caret line="75" column="61" selection-start-line="75" selection-start-column="61" selection-end-line="75" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constants/styles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/SubmitButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="69" lean-forward="true" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -623,7 +595,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="90">
           <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -633,10 +605,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
+        <state relative-caret-position="616">
+          <caret line="161" column="6" lean-forward="true" selection-start-line="161" selection-start-column="6" selection-end-line="161" selection-end-column="6" />
           <folding>
             <element signature="e#0#415#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/SubmitButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="85" selection-start-line="21" selection-start-column="85" selection-end-line="21" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
