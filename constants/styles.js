@@ -11,6 +11,12 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: green
     },
+    buttonWrapper: {
+        height: 60,
+        width: 90,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     smallButtonView: {
         borderWidth: .5,
         borderColor: hyveeRed,
@@ -59,9 +65,9 @@ export const styles = StyleSheet.create({
     topRowView: {
         borderBottomColor: darkerGray,
         borderBottomWidth: 1,
-        padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
+        alignItems: 'center',
         width: Dimensions.get('screen').width / 2
     },
     teamView: {
