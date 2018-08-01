@@ -24,8 +24,6 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
     let bags1 = team1.bags;
     let bags2 = team2.bags;
 
-
-
     rounds.forEach((round) => {
         const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual} = round;
         let {team1Bids, team2Bids} = round;

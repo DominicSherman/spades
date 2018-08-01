@@ -11,7 +11,7 @@ import {styles} from '../constants/styles';
 
 class Home extends React.Component {
     componentDidUpdate(prevProps) {
-        if ((!prevProps.isBids && this.props.isBids) || (prevProps.isBids && !this.props.isBids)) {
+        if (prevProps.rounds !== this.props.rounds) {
             this.props.actions.calculateTeamScore(this.props.rounds, this.props.team1, this.props.team2);
         }
     }

@@ -36,6 +36,7 @@ export default class CurrentRound extends Component {
                                     this.state.player1Input = input;
                                 }}
                                 value={`${currRound.player1Bid}`}
+                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -51,6 +52,7 @@ export default class CurrentRound extends Component {
                                     this.state.player2Input = input;
                                 }}
                                 value={`${currRound.player2Bid}`}
+                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                     </View>
@@ -70,6 +72,7 @@ export default class CurrentRound extends Component {
                                     this.state.player3Input = input;
                                 }}
                                 value={`${currRound.player3Bid}`}
+                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -85,6 +88,7 @@ export default class CurrentRound extends Component {
                                     this.state.player4Input = input;
                                 }}
                                 value={`${currRound.player4Bid}`}
+                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                     </View>
