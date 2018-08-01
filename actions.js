@@ -24,6 +24,8 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
     let bags1 = team1.bags;
     let bags2 = team2.bags;
 
+
+
     rounds.forEach((round) => {
         const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual} = round;
         let {team1Bids, team2Bids} = round;
@@ -83,7 +85,7 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
             } else {
                 score2 -= (10 * team2Bids);
 
-                if (team1Bids >= 10) {
+                if (team2Bids >= 10) {
                     score2 -= 100;
                 }
             }
