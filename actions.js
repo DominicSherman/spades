@@ -18,21 +18,17 @@ import {
 import {FOUR, ONE, THREE, TWO} from './constants/enum';
 
 
-export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
-    let score1 = 0;
-    let score2 = 0;
-    let bags1 = team1.bags;
-    let bags2 = team2.bags;
-
-    console.log('team1.score', team1.score);
-    console.log('team2.score', team2.score);
+export const calculateTeamScore = (rounds) => (dispatch) => {
+    let score1 = 0,
+        score2 = 0,
+        bags1 = 0,
+        bags2 = 0;
 
     rounds.forEach((round) => {
         const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual, team1Bids, team2Bids} = round;
 
         if (playerOne.actual !== null && playerOne.actual !== undefined) {
             console.log('round', round);
-
             if ((!playerOne.bid && !playerOne.actual) || (!playerTwo.bid && !playerTwo.actual)) {
                 score1 += 100;
             } else if ((!playerOne.bid && playerOne.actual) || (!playerTwo.bid && playerTwo.actual)) {
@@ -56,6 +52,9 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
             } else if ((playerThree.bid === 100 && playerThree.actual) || (playerFour.bid === 100 && playerFour.actual)) {
                 score2 -= 200;
             }
+
+            console.log('score1 nils', score1);
+            console.log('score2 nils', score2);
 
             if (team1Actual >= team1Bids) {
                 score1 += (10 * team1Bids) + (team1Actual - team1Bids);
@@ -87,6 +86,9 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
                 }
             }
 
+            console.log('score1 score', score1);
+            console.log('score2 score', score2);
+
             if (bags1 >= 10) {
                 bags1 = bags1 - 10;
                 score1 -= 100;
@@ -96,10 +98,11 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
                 bags2 = bags2 - 10;
                 score2 -= 100;
             }
+
+            console.log('score1 bags', score1);
+            console.log('score2 bags', score2);
         }
     });
-    console.log('score1', score1);
-    console.log('score2', score2);
 
     dispatch({
         data: score1,
