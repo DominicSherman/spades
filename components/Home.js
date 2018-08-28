@@ -12,7 +12,7 @@ import {styles} from '../constants/styles';
 class Home extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.rounds !== this.props.rounds) {
-            this.props.actions.calculateTeamScore(this.props.rounds, this.props.team1, this.props.team2);
+            this.props.actions.calculateTeamScore(this.props.rounds);
         }
     }
 

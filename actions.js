@@ -18,30 +18,27 @@ import {
 import {FOUR, ONE, THREE, TWO} from './constants/enum';
 
 
-export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
-    let score1 = 0;
-    let score2 = 0;
-    let bags1 = team1.bags;
-    let bags2 = team2.bags;
+export const calculateTeamScore = (rounds) => (dispatch) => {
+    let score1 = 0,
+        score2 = 0,
+        bags1 = 0,
+        bags2 = 0;
 
     rounds.forEach((round) => {
-        const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual} = round;
-        let {team1Bids, team2Bids} = round;
+        const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual, team1Bids, team2Bids} = round;
 
         if (playerOne.actual !== null && playerOne.actual !== undefined) {
-
+            console.log('round', round);
             if ((!playerOne.bid && !playerOne.actual) || (!playerTwo.bid && !playerTwo.actual)) {
                 score1 += 100;
             } else if ((!playerOne.bid && playerOne.actual) || (!playerTwo.bid && playerTwo.actual)) {
                 score1 -= 100;
             }
 
-            if ((playerOne.bid === -1 && !playerOne.actual) || (playerTwo.bid === -1 && !playerTwo.actual)) {
+            if ((playerOne.bid === 100 && !playerOne.actual) || (playerTwo.bid === 100 && !playerTwo.actual)) {
                 score1 += 200;
-                team1Bids += 1;
-            } else if ((playerOne.bid === -1 && playerOne.actual) || (playerTwo.bid === -1 && playerTwo.actual)) {
+            } else if ((playerOne.bid === 100 && playerOne.actual) || (playerTwo.bid === 100 && playerTwo.actual)) {
                 score1 -= 200;
-                team1Bids += 1;
             }
 
             if ((!playerThree.bid && !playerThree.actual) || (!playerFour.bid && !playerFour.actual)) {
@@ -50,13 +47,14 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
                 score2 -= 100;
             }
 
-            if ((playerThree.bid === -1 && !playerThree.actual) || (playerFour.bid === -1 && !playerFour.actual)) {
+            if ((playerThree.bid === 100 && !playerThree.actual) || (playerFour.bid === 100 && !playerFour.actual)) {
                 score2 += 200;
-                team2Bids += 1;
-            } else if ((playerThree.bid === -1 && playerThree.actual) || (playerFour.bid === -1 && playerFour.actual)) {
+            } else if ((playerThree.bid === 100 && playerThree.actual) || (playerFour.bid === 100 && playerFour.actual)) {
                 score2 -= 200;
-                team2Bids += 1;
             }
+
+            console.log('score1 nils', score1);
+            console.log('score2 nils', score2);
 
             if (team1Actual >= team1Bids) {
                 score1 += (10 * team1Bids) + (team1Actual - team1Bids);
@@ -88,15 +86,21 @@ export const calculateTeamScore = (rounds, team1, team2) => (dispatch) => {
                 }
             }
 
+            console.log('score1 score', score1);
+            console.log('score2 score', score2);
+
             if (bags1 >= 10) {
-                bags1 = 10 - bags1;
+                bags1 = bags1 - 10;
                 score1 -= 100;
             }
 
             if (bags2 >= 10) {
-                bags2 = 10 - bags2;
+                bags2 = bags2 - 10;
                 score2 -= 100;
             }
+
+            console.log('score1 bags', score1);
+            console.log('score2 bags', score2);
         }
     });
 
@@ -125,12 +129,12 @@ export const submitBids = (roundBids) => (dispatch) => {
     let team1Total = Number(roundBids.player1Bid) + Number(roundBids.player2Bid);
     let team2Total = Number(roundBids.player3Bid) + Number(roundBids.player4Bid);
 
-    if (Number(roundBids.player1Bid) === -1 || Number(roundBids.player2Bid) === -1) {
-        team1Total += 1;
+    if (Number(roundBids.player1Bid) === 100 || Number(roundBids.player2Bid) === 100) {
+        team1Total -= 100;
     }
 
-    if (Number(roundBids.player3Bid) === -1 || Number(roundBids.player4Bid) === -1) {
-        team2Total += 1;
+    if (Number(roundBids.player3Bid) === 100 || Number(roundBids.player4Bid) === 100) {
+        team2Total -= 100;
     }
 
     const roundWithTotals = {
