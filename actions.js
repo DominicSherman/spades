@@ -86,9 +86,6 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
                 }
             }
 
-            console.log('score1 score', score1);
-            console.log('score2 score', score2);
-
             if (bags1 >= 10) {
                 bags1 = bags1 - 10;
                 score1 -= 100;
@@ -98,9 +95,6 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
                 bags2 = bags2 - 10;
                 score2 -= 100;
             }
-
-            console.log('score1 bags', score1);
-            console.log('score2 bags', score2);
         }
     });
 
