@@ -28,7 +28,6 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
         const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual, team1Bids, team2Bids} = round;
 
         if (playerOne.actual !== null && playerOne.actual !== undefined) {
-            console.log('round', round);
             if ((!playerOne.bid && !playerOne.actual) || (!playerTwo.bid && !playerTwo.actual)) {
                 score1 += 100;
             } else if ((!playerOne.bid && playerOne.actual) || (!playerTwo.bid && playerTwo.actual)) {
@@ -52,9 +51,6 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
             } else if ((playerThree.bid === 100 && playerThree.actual) || (playerFour.bid === 100 && playerFour.actual)) {
                 score2 -= 200;
             }
-
-            console.log('score1 nils', score1);
-            console.log('score2 nils', score2);
 
             if (team1Actual >= team1Bids) {
                 score1 += (10 * team1Bids) + (team1Actual - team1Bids);
