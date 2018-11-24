@@ -22,7 +22,13 @@ export default class Header extends React.Component {
         return (
             <View style={styles.headerView}>
                 <TouchableOpacity
-                    onPress={() => actions.restart()}
+                    onPress={() =>
+                        Alert.alert(
+                            'Are you sure you want to restart?',
+                            [
+                                {text: 'Cancel'},
+                                {text: 'Yes', onPress: () => actions.restart}
+                    ])}
                     style={styles.smallButtonView}
                 >
                     <Text style={[redFontStyles.light, {fontSize: 16}]}>{'Restart'}</Text>
