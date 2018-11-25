@@ -246,34 +246,30 @@ const undoBids = (state) => ({
     rounds: [...state.rounds.slice(1)]
 });
 
-const undoActual = (state) => {
-    if (state.rounds.length) {
-        return {
-            ...state,
-            rounds: [{
-                ...state.rounds[0],
-                playerOne: {
-                    ...state.rounds[0].playerOne,
-                    actual: null
-                },
-                playerTwo: {
-                    ...state.rounds[0].playerTwo,
-                    actual: null
-                },
-                playerThree: {
-                    ...state.rounds[0].playerThree,
-                    actual: null
-                },
-                playerFour: {
-                    ...state.rounds[0].playerFour,
-                    actual: null
-                },
-                team1Actual: null,
-                team2Actual: null
-            }, ...state.rounds.slice(1)]
-        }
-    }
-};
+const undoActual = (state) => ({
+    ...state,
+    rounds: [{
+        ...state.rounds[0],
+        playerOne: {
+            ...state.rounds[0].playerOne,
+            actual: null
+        },
+        playerTwo: {
+            ...state.rounds[0].playerTwo,
+            actual: null
+        },
+        playerThree: {
+            ...state.rounds[0].playerThree,
+            actual: null
+        },
+        playerFour: {
+            ...state.rounds[0].playerFour,
+            actual: null
+        },
+        team1Actual: null,
+        team2Actual: null
+    }, ...state.rounds.slice(1)]
+});
 
 const restart = () => defaultState;
 

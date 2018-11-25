@@ -226,18 +226,22 @@ export const restart = () => (dispatch) => {
     dispatch({type: RESTART})
 };
 
-export const undo = (isBids) => (dispatch) => {
-    if (isBids) {
-        dispatch({type: UNDO_ACTUAL});
-        dispatch({
-            data: false,
-            type: SET_IS_BIDS
-        });
-    } else {
-        dispatch({type: UNDO_BIDS});
-        dispatch({
-            data: true,
-            type: SET_IS_BIDS
-        });
+export const undo = (isBids) => (dispatch, getState) => {
+    const {rounds} = getState();
+
+    if (rounds.length) {
+        if (isBids) {
+            dispatch({type: UNDO_ACTUAL});
+            dispatch({
+                data: false,
+                type: SET_IS_BIDS
+            });
+        } else {
+            dispatch({type: UNDO_BIDS});
+            dispatch({
+                data: true,
+                type: SET_IS_BIDS
+            });
+        }
     }
 };

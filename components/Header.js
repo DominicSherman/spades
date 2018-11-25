@@ -1,7 +1,7 @@
 import React from 'react';
 import {styles} from '../constants/styles';
-import {darkFontStyles, lightFontStyles, redFontStyles} from '../constants/font-styles';
-import {Modal, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {darkFontStyles, redFontStyles} from '../constants/font-styles';
+import {Alert, Text, TouchableOpacity, View} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import InstructionsModal from '../InstructionsModal';
 
@@ -22,7 +22,19 @@ export default class Header extends React.Component {
         return (
             <View style={styles.headerView}>
                 <TouchableOpacity
-                    onPress={() => actions.restart()}
+                    onPress={() =>
+                        Alert.alert(
+                            'Are you sure you want to restart?',
+                            'You cannot undo this',
+                            [
+                                {text: 'Cancel'},
+                                {
+                                    onPress: () => actions.restart(),
+                                    text: 'Yes'
+                                }
+                            ]
+                        )
+                    }
                     style={styles.smallButtonView}
                 >
                     <Text style={[redFontStyles.light, {fontSize: 16}]}>{'Restart'}</Text>
