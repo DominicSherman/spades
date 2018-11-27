@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {darkFontStyles} from './constants/font-styles';
+import {darkFontStyles} from '../constants/font-styles';
 import {Modal, Text, View} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 

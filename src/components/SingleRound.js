@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
-import {lightFontStyles} from '../constants/font-styles';
-import {styles} from '../constants/styles';
+import {lightFontStyles} from '../../constants/font-styles';
+import {styles} from '../../constants/styles';
 
 export default class SingleRound extends Component {
     render() {

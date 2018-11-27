@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {styles} from '../constants/styles';
-import {FOUR, ONE, THREE, TWO} from '../constants/enum';
-import {lightFontStyles} from '../constants/font-styles';
-import {TextInput, View, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
-import {hyveeRed} from "../constants/style-variables";
+import {styles} from '../../constants/styles';
+import {FOUR, ONE, THREE, TWO} from '../../constants/enum';
+import {lightFontStyles} from '../../constants/font-styles';
+import {TextInput, TouchableOpacity, View} from 'react-native';
 
 export default class CurrentRound extends Component {
     constructor(props) {
@@ -30,12 +29,12 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 style={lightFontStyles.light}
-                                onChangeText={(name) => actions.submitValue(name, ONE)}
-                                placeholder={`${0}`}
+                                onChangeText={(bid) => actions.submitValue(bid, ONE)}
+                                placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player1Input = input;
                                 }}
-                                value={`${currRound.player1Bid}`}
+                                value={currRound.player1Bid}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
@@ -46,12 +45,12 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 style={lightFontStyles.light}
-                                onChangeText={(name) => actions.submitValue(name, TWO)}
-                                placeholder={`${0}`}
+                                onChangeText={(bid) => actions.submitValue(bid, TWO)}
+                                placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player2Input = input;
                                 }}
-                                value={`${currRound.player2Bid}`}
+                                value={currRound.player2Bid}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
@@ -66,12 +65,12 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 style={lightFontStyles.light}
-                                onChangeText={(name) => actions.submitValue(name, THREE)}
-                                placeholder={`${0}`}
+                                onChangeText={(bid) => actions.submitValue(bid, THREE)}
+                                placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player3Input = input;
                                 }}
-                                value={`${currRound.player3Bid}`}
+                                value={currRound.player3Bid}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
@@ -82,12 +81,12 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 style={lightFontStyles.light}
-                                onChangeText={(name) => actions.submitValue(name, FOUR)}
-                                placeholder={`${0}`}
+                                onChangeText={(bid) => actions.submitValue(bid, FOUR)}
+                                placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player4Input = input;
                                 }}
-                                value={`${currRound.player4Bid}`}
+                                value={currRound.player4Bid}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>

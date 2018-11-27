@@ -26,11 +26,11 @@ import {
 
 const defaultState = {
     currRound: {
-        player1Bid: 0,
-        player2Bid: 0,
+        player1Bid: null,
+        player2Bid: null,
         team1Total: 0,
-        player3Bid: 0,
-        player4Bid: 0,
+        player3Bid: null,
+        player4Bid: null,
         team2Total: 0
     },
     isBids: true,

@@ -19,7 +19,7 @@ import {
     UNDO_ACTUAL,
     UNDO_BIDS
 } from './action-types';
-import {FOUR, ONE, THREE, TWO} from './constants/enum';
+import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 
 
 export const calculateTeamScore = (rounds) => (dispatch) => {

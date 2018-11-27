@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Text, TextInput, View} from 'react-native';
 
-import {styles} from '../constants/styles';
-import {FOUR, ONE, THREE, TWO} from '../constants/enum';
-import {darkFontStyles, lightFontStyles} from '../constants/font-styles';
+import {styles} from '../../constants/styles';
+import {FOUR, ONE, THREE, TWO} from '../../constants/enum';
+import {darkFontStyles, lightFontStyles} from '../../constants/font-styles';
 
 export default class Players extends Component {
     render() {

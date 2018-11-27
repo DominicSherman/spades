@@ -1,6 +1,6 @@
 import React from 'react';
-import {styles} from '../constants/styles';
-import {darkFontStyles, redFontStyles} from '../constants/font-styles';
+import {styles} from '../../constants/styles';
+import {darkFontStyles, redFontStyles} from '../../constants/font-styles';
 import {Alert, Text, TouchableOpacity, View} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import InstructionsModal from '../InstructionsModal';
