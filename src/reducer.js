@@ -1,5 +1,5 @@
 import {
-    ADD_ACTUAL,
+    SET_ROUNDS,
     ADD_BIDS,
     RESET,
     RESTART,
@@ -21,7 +21,7 @@ import {
     SET_TEAM_TWO_BAGS,
     SET_TEAM_TWO_SCORE,
     UNDO_ACTUAL,
-    UNDO_BIDS
+    UNDO_BIDS, TOGGLE_SHOW_HISTORY
 } from './action-types';
 
 const defaultState = {
@@ -46,7 +46,8 @@ const defaultState = {
         secondPlayer: 'Player 4',
         score: 0,
         bags: 0
-    }
+    },
+    shouldShowHistory: false
 };
 
 const setIsBids = (state, isBids) => ({
@@ -74,34 +75,10 @@ const addBids = (state, bids) => ({
     }, ...state.rounds]
 });
 
-const addActual = (state, actual) => ({
-        ...state,
-        rounds: [{
-            ...state.rounds[0],
-            playerOne: {
-                ...state.rounds[0].playerOne,
-                actual: Number(actual.player1Bid)
-            },
-            playerTwo:
-                {
-                    ...state.rounds[0].playerTwo,
-                    actual: Number(actual.player2Bid)
-                }
-            ,
-            playerThree: {
-                ...state.rounds[0].playerThree,
-                actual: Number(actual.player3Bid)
-            }
-            ,
-            playerFour: {
-                ...state.rounds[0].playerFour,
-                actual: Number(actual.player4Bid)
-            },
-            team1Actual: Number(actual.team1Total),
-            team2Actual: Number(actual.team2Total)
-        }, ...state.rounds.slice(1)]
-    })
-;
+const setRounds = (state, rounds) => ({
+    ...state,
+    rounds
+});
 
 const reset = (state) => ({
     ...state,
@@ -243,11 +220,23 @@ const setTeamTwoBags = (state, bags) => ({
 
 const undoBids = (state) => ({
     ...state,
+    currRound: {
+        player1Bid: state.rounds[0].playerOne.bid,
+        player2Bid: state.rounds[0].playerTwo.bid,
+        player3Bid: state.rounds[0].playerThree.bid,
+        player4Bid: state.rounds[0].playerFour.bid,
+    },
     rounds: [...state.rounds.slice(1)]
 });
 
 const undoActual = (state) => ({
     ...state,
+    currRound: {
+        player1Bid: state.rounds[0].playerOne.actual,
+        player2Bid: state.rounds[0].playerTwo.actual,
+        player3Bid: state.rounds[0].playerThree.actual,
+        player4Bid: state.rounds[0].playerFour.actual,
+    },
     rounds: [{
         ...state.rounds[0],
         playerOne: {
@@ -271,6 +260,11 @@ const undoActual = (state) => ({
     }, ...state.rounds.slice(1)]
 });
 
+const toggleShouldShowHistory = (state) => ({
+    ...state,
+    shouldShowHistory: !state.shouldShowHistory
+});
+
 const restart = () => defaultState;
 
 const reducerMap = {
@@ -282,7 +276,7 @@ const reducerMap = {
     [RESET]: reset,
     [RESTART]: restart,
     [ADD_BIDS]: addBids,
-    [ADD_ACTUAL]: addActual,
+    [SET_ROUNDS]: setRounds,
     [SET_PLAYER_ONE_NAME]: setPlayerOneName,
     [SET_PLAYER_TWO_NAME]: setPlayerTwoName,
     [SET_PLAYER_THREE_NAME]: setPlayerThreeName,
@@ -296,7 +290,8 @@ const reducerMap = {
     [SET_PLAYER_THREE_ACTUAL]: setPlayerThreeActual,
     [SET_PLAYER_FOUR_ACTUAL]: setPlayerFourActual,
     [UNDO_BIDS]: undoBids,
-    [UNDO_ACTUAL]: undoActual
+    [UNDO_ACTUAL]: undoActual,
+    [TOGGLE_SHOW_HISTORY]: toggleShouldShowHistory
 };
 
 export default (state = defaultState, {type, data}) => {

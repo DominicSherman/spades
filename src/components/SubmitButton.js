@@ -9,7 +9,7 @@ export default class SubmitButton extends Component {
         const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT RESULTS';
 
         return (
-            <View style={{bottom: 0}}>
+            <View style={{bottom: -35}}>
                 <TouchableOpacity
                     onPress={() => {
                         if (isBids) {
@@ -20,7 +20,10 @@ export default class SubmitButton extends Component {
                     }}
                     style={styles.bigButtonView}
                 >
-                    <Text style={[whiteFontStyles.light, {fontSize: 25}]}>{submitText}</Text>
+                    <Text style={[whiteFontStyles.light, {
+                        fontSize: 25,
+                        paddingBottom: 20
+                    }]}>{submitText}</Text>
                 </TouchableOpacity>
             </View>
         );

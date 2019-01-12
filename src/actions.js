@@ -1,5 +1,5 @@
 import {
-    ADD_ACTUAL,
+    SET_ROUNDS,
     ADD_BIDS,
     RESET,
     RESTART,
@@ -17,12 +17,11 @@ import {
     SET_TEAM_TWO_BAGS,
     SET_TEAM_TWO_SCORE,
     UNDO_ACTUAL,
-    UNDO_BIDS
+    UNDO_BIDS, TOGGLE_SHOW_HISTORY
 } from './action-types';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 
-
-export const calculateTeamScore = (rounds) => (dispatch) => {
+const calculateScore = (rounds) => {
     let score1 = 0,
         score2 = 0,
         bags1 = 0,
@@ -98,6 +97,21 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
         }
     });
 
+    return {
+        score1,
+        score2,
+        bags1,
+        bags2
+    };
+};
+export const calculateTeamScore = (rounds) => (dispatch) => {
+    const {
+        score1,
+        score2,
+        bags1,
+        bags2
+    } = calculateScore(rounds);
+
     dispatch({
         data: score1,
         type: SET_TEAM_ONE_SCORE
@@ -152,26 +166,54 @@ export const submitBids = (roundBids) => (dispatch) => {
     })
 };
 
-export const submitActuals = (roundActual) => (dispatch) => {
-    const roundWithTotals = {
-        ...roundActual,
-        team1Total: Number(roundActual.player1Bid) + Number(roundActual.player2Bid),
-        team2Total: Number(roundActual.player3Bid) + Number(roundActual.player4Bid)
-    };
+export const submitActuals = (roundActual) => (dispatch, getState) => {
+    const team1Actual = Number(roundActual.player1Bid) + Number(roundActual.player2Bid);
+    const team2Actual = Number(roundActual.player3Bid) + Number(roundActual.player4Bid);
 
-    dispatch({
-        data: roundWithTotals,
-        type: ADD_ACTUAL
-    });
+    if ((team1Actual + team2Actual) === 13) {
+        const {rounds} = getState();
 
-    dispatch({
-        type: RESET
-    });
+        let updatedRounds = [{
+            ...rounds[0],
+            playerOne: {
+                ...rounds[0].playerOne,
+                actual: Number(roundActual.player1Bid)
+            },
+            playerTwo:
+                {
+                    ...rounds[0].playerTwo,
+                    actual: Number(roundActual.player2Bid)
+                }
+            ,
+            playerThree: {
+                ...rounds[0].playerThree,
+                actual: Number(roundActual.player3Bid)
+            }
+            ,
+            playerFour: {
+                ...rounds[0].playerFour,
+                actual: Number(roundActual.player4Bid)
+            },
+            team1Actual,
+            team2Actual
+        }, ...rounds.slice(1)];
 
-    dispatch({
-        data: true,
-        type: SET_IS_BIDS
-    });
+        updatedRounds[0].score = calculateScore(updatedRounds);
+
+        dispatch({
+            data: updatedRounds,
+            type: SET_ROUNDS
+        });
+
+        dispatch({
+            type: RESET
+        });
+
+        dispatch({
+            data: true,
+            type: SET_IS_BIDS
+        });
+    }
 };
 
 export const setName = (name, player) => (dispatch) => {
@@ -245,3 +287,7 @@ export const undo = (isBids) => (dispatch, getState) => {
         }
     }
 };
+
+export const toggleShowHistory = () => ({
+    type: TOGGLE_SHOW_HISTORY
+});

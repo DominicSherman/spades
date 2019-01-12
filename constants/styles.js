@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     bigButtonView: {
         borderWidth: 1,
         borderColor: green,
-        height: (Dimensions.get('screen').height / 15) * 1.5,
+        height: (Dimensions.get('screen').height / 15) * 2,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',

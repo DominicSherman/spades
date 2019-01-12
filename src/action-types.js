@@ -1,4 +1,4 @@
-export const ADD_ACTUAL = 'ADD_ACTUAL';
+export const SET_ROUNDS = 'SET_ROUNDS';
 export const ADD_BIDS = 'ADD_BIDS';
 export const RESET = 'RESET';
 export const SET_IS_BIDS = 'SET_IS_BIDS';
@@ -21,3 +21,4 @@ export const SET_TEAM_TWO_BAGS = 'SET_TEAM_TWO_BAGS';
 export const UNDO_BIDS = 'UNDO_BIDS';
 export const UNDO_ACTUAL = 'UNDO_ACTUAL';
 export const RESTART = 'RESTART';
+export const TOGGLE_SHOW_HISTORY = 'TOGGLE_SHOW_HISTORY';

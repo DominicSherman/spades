@@ -7,6 +7,7 @@ import {TextInput, TouchableOpacity, View} from 'react-native';
 export default class CurrentRound extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             player1Input: null,
             player2Input: null,
@@ -34,7 +35,7 @@ export default class CurrentRound extends Component {
                                 ref={(input) => {
                                     this.state.player1Input = input;
                                 }}
-                                value={currRound.player1Bid}
+                                value={`${currRound.player1Bid}`}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
@@ -50,7 +51,7 @@ export default class CurrentRound extends Component {
                                 ref={(input) => {
                                     this.state.player2Input = input;
                                 }}
-                                value={currRound.player2Bid}
+                                value={`${currRound.player2Bid}`}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
@@ -70,7 +71,7 @@ export default class CurrentRound extends Component {
                                 ref={(input) => {
                                     this.state.player3Input = input;
                                 }}
-                                value={currRound.player3Bid}
+                                value={`${currRound.player3Bid}`}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
@@ -86,7 +87,7 @@ export default class CurrentRound extends Component {
                                 ref={(input) => {
                                     this.state.player4Input = input;
                                 }}
-                                value={currRound.player4Bid}
+                                value={`${currRound.player4Bid}`}
                                 keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
