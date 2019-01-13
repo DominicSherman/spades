@@ -14,23 +14,19 @@ export default class SingleRound extends Component {
             team2Actual,
             team1Bids,
             team2Bids,
-            score,
-            shouldShowHistory
+            score
         } = this.props.item;
 
         return (
-            <View>
+            <View style={{flex: 1}}>
                 {playerOne.actual !== null && playerOne.actual !== undefined ?
                     <View>
-                        {
-                            shouldShowHistory &&
-                            <View style={{
-                                flexDirection: 'row',
-                                justifyContent: 'center'
-                            }}>
-                                <Text style={lightFontStyles.medium}>{`${score.score1} - ${score.score2}`}</Text>
-                            </View>
-                        }
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'center'
+                        }}>
+                            <Text style={lightFontStyles.medium}>{`${score.score1} - ${score.score2}`}</Text>
+                        </View>
                         <View style={{flexDirection: 'row'}}>
                             <View style={styles.teamView}>
                                 <Text style={lightFontStyles.light}>{team1Actual}</Text>

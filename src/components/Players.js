@@ -6,35 +6,15 @@ import {FOUR, ONE, THREE, TWO} from '../../constants/enum';
 import {darkFontStyles, lightFontStyles} from '../../constants/font-styles';
 
 export default class Players extends Component {
-    _getBags = () => {
-        const {
-            team1Bids,
-            team2Bids,
-            team1Actual
-        } = this.props.rounds[0];
-
-        if (team1Actual) {
-            return ``;
-        }
-
-        const bags = 13 - (team1Bids + team2Bids);
-
-        if (bags === 1) {
-            return `${bags} bag`;
-        }
-
-        return `${bags} bags`;
-    };
-
     render() {
         const {actions, team1, team2} = this.props;
 
         return (
             <View>
                 <View style={{flexDirection: 'row'}}>
-                    <View style={styles.teamView}>
+                    <View style={[styles.teamView, {paddingBottom: 0}]}>
                         <Text style={[darkFontStyles.light, styles.headerText]}>{team1.score}</Text>
-                        <View style={styles.rowView}>
+                        <View style={[styles.rowView, {justifyContent: 'space-between'}]}>
                             <TextInput
                                 clearTextOnFocus
                                 style={lightFontStyles.light}
@@ -51,9 +31,9 @@ export default class Players extends Component {
                             />
                         </View>
                     </View>
-                    <View style={styles.teamView}>
+                    <View style={[styles.teamView, {paddingBottom: 0}]}>
                         <Text style={[darkFontStyles.light, styles.headerText]}>{team2.score}</Text>
-                        <View style={styles.rowView}>
+                        <View style={[styles.rowView, {justifyContent: 'space-between'}]}>
                             <TextInput
                                 clearTextOnFocus
                                 style={lightFontStyles.light}

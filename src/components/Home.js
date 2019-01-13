@@ -1,13 +1,14 @@
 import React from 'react';
-import {FlatList, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 import {withRedux} from '../redux-factory';
 import Header from './Header';
 import Players from './Players';
 import CurrentRound from './CurrentRound';
 import SubmitButton from './SubmitButton';
-import SingleRound from './SingleRound';
 import HideShowButton from './HideShowButton';
+import HistoryModal from '../HistoryModal';
+import CurrentBids from './CurrentBids';
 
 class Home extends React.Component {
     componentDidUpdate(prevProps) {
@@ -15,16 +16,6 @@ class Home extends React.Component {
             this.props.actions.calculateTeamScore(this.props.rounds);
         }
     }
-
-    _getRoundsToDisplay = () => {
-        const {rounds, shouldShowHistory} = this.props;
-
-        if (!shouldShowHistory) {
-            return rounds.slice(0, 1);
-        }
-
-        return rounds;
-    };
 
     render() {
         const {actions, rounds, isBids, currRound, team1, team2, shouldShowHistory} = this.props;
@@ -46,22 +37,13 @@ class Home extends React.Component {
                     actions={actions}
                     currRound={currRound}
                 />
-                <FlatList
-                    data={this._getRoundsToDisplay()}
-                    keyExtractor={(item, index) => `${index}`}
-                    renderItem={({item}) => (
-                        <SingleRound
-                            item={item}
-                            shouldShowHistory={shouldShowHistory}
-                        />
-                    )}
-                    style={{flex: 1, height: '100%'}}
-                />
+                <CurrentBids currRound={rounds[0]}/>
                 <HideShowButton
                     actions={actions}
                     shouldShowHistory={shouldShowHistory}
                 />
                 <SubmitButton {...this.props}/>
+                <HistoryModal {...this.props} />
             </SafeAreaView>
         );
     }

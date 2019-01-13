@@ -11,11 +11,24 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: green
     },
+    showHistoryButton: {
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: darkerGray,
+        borderRadius: 4,
+        flexDirection: 'row',
+        flex: 1,
+        width: '50%',
+        justifyContent: 'center'
+    },
     buttonWrapper: {
-        height: 60,
-        width: 90,
+        height: Dimensions.get('screen').width / 4,
+        width: Dimensions.get('screen').width / 4,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderColor: lightGray,
+        borderWidth: 1,
+        top: 0
     },
     smallButtonView: {
         borderWidth: .5,
@@ -63,8 +76,6 @@ export const styles = StyleSheet.create({
         width: Dimensions.get('screen').width / 2
     },
     topRowView: {
-        borderBottomColor: darkerGray,
-        borderBottomWidth: 1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center',
@@ -81,5 +92,17 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         flex: 1,
         height: '100%'
+    },
+    singleBid: {
+        alignItems: 'center',
+        height: 60,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: Dimensions.get('screen').width / 4
+    },
+    centeredRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%'
     }
 });
