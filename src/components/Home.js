@@ -37,7 +37,11 @@ class Home extends React.Component {
                     actions={actions}
                     currRound={currRound}
                 />
-                <CurrentBids currRound={rounds[0]}/>
+                <CurrentBids
+                    currRound={rounds[0]}
+                    team1={team1}
+                    team2={team2}
+                />
                 <HideShowButton
                     actions={actions}
                     shouldShowHistory={shouldShowHistory}

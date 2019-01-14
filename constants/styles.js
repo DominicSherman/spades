@@ -93,7 +93,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         height: '100%'
     },
-    singleBid: {
+    singleColumn: {
         alignItems: 'center',
         height: 60,
         flexDirection: 'row',
@@ -104,5 +104,16 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         width: '100%'
+    },
+    currentRoundWrapper: {
+        alignItems: 'flex-end',
+        flexDirection: 'column',
+        height: '60%',
+        justifyContent: 'space-evenly',
+        width: Dimensions.get('screen').width / 4,
+    },
+    currentRoundScoreWrapper: {
+        alignItems: 'flex-start',
+        width: Dimensions.get('screen').width / 6,
     }
 });

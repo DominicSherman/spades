@@ -14,40 +14,48 @@ export default class Players extends Component {
                 <View style={{flexDirection: 'row'}}>
                     <View style={[styles.teamView, {paddingBottom: 0}]}>
                         <Text style={[darkFontStyles.light, styles.headerText]}>{team1.score}</Text>
-                        <View style={[styles.rowView, {justifyContent: 'space-between'}]}>
-                            <TextInput
-                                clearTextOnFocus
-                                style={lightFontStyles.light}
-                                onChangeText={(name) => actions.setName(name, ONE)}
-                                placeholder={'Player 1'}
-                                value={team1.firstPlayer}
-                            />
-                            <TextInput
-                                clearTextOnFocus
-                                style={lightFontStyles.light}
-                                onChangeText={(name) => actions.setName(name, TWO)}
-                                placeholder={'Player 2'}
-                                value={team1.secondPlayer}
-                            />
+                        <View style={styles.centeredRow}>
+                            <View style={styles.singleColumn}>
+                                <TextInput
+                                    clearTextOnFocus
+                                    style={lightFontStyles.light}
+                                    onChangeText={(name) => actions.setName(name, ONE)}
+                                    placeholder={'Player 1'}
+                                    value={team1.firstPlayer}
+                                />
+                            </View>
+                            <View style={styles.singleColumn}>
+                                <TextInput
+                                    clearTextOnFocus
+                                    style={lightFontStyles.light}
+                                    onChangeText={(name) => actions.setName(name, TWO)}
+                                    placeholder={'Player 2'}
+                                    value={team1.secondPlayer}
+                                />
+                            </View>
                         </View>
                     </View>
                     <View style={[styles.teamView, {paddingBottom: 0}]}>
                         <Text style={[darkFontStyles.light, styles.headerText]}>{team2.score}</Text>
-                        <View style={[styles.rowView, {justifyContent: 'space-between'}]}>
-                            <TextInput
-                                clearTextOnFocus
-                                style={lightFontStyles.light}
-                                onChangeText={(name) => actions.setName(name, THREE)}
-                                placeholder={'Player 3'}
-                                value={team2.firstPlayer}
-                            />
-                            <TextInput
-                                clearTextOnFocus
-                                style={lightFontStyles.light}
-                                onChangeText={(name) => actions.setName(name, FOUR)}
-                                placeholder={'Player 4'}
-                                value={team2.secondPlayer}
-                            />
+                        <View style={styles.centeredRow}>
+                            <View style={styles.singleColumn}>
+                                <TextInput
+                                    clearTextOnFocus
+                                    style={lightFontStyles.light}
+                                    onChangeText={(name) => actions.setName(name, THREE)}
+                                    placeholder={'Player 3'}
+                                    value={team2.firstPlayer}
+                                />
+                            </View>
+                            <View style={styles.singleColumn}>
+                                <TextInput
+                                    clearTextOnFocus
+                                    style={lightFontStyles.light}
+                                    onChangeText={(name) => actions.setName(name, FOUR)}
+                                    placeholder={'Player 4'}
+                                    value={team2.secondPlayer}
+                                />
+                            </View>
                         </View>
                     </View>
                 </View>
