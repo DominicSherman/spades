@@ -108,7 +108,7 @@ export const styles = StyleSheet.create({
     currentRoundWrapper: {
         alignItems: 'flex-end',
         flexDirection: 'column',
-        height: '60%',
+        height: '70%',
         justifyContent: 'space-evenly',
         width: Dimensions.get('screen').width / 4,
     },

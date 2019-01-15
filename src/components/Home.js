@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, ScrollView} from 'react-native';
 
 import {withRedux} from '../redux-factory';
 import Header from './Header';
@@ -38,7 +38,8 @@ class Home extends React.Component {
                     currRound={currRound}
                 />
                 <CurrentBids
-                    currRound={rounds[0]}
+                    currRound={currRound}
+                    bids={rounds[0]}
                     team1={team1}
                     team2={team2}
                 />

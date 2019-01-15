@@ -21,7 +21,7 @@ export default class CurrentRound extends Component {
 
         return (
             <View style={{flexDirection: 'row'}}>
-                <View style={[styles.teamView, {paddingTop: 0}]}>
+                <View style={[styles.teamView]}>
                     <View style={styles.topRowView}>
                         <TouchableOpacity
                             onPress={() => this.state.player1Input.focus()}
@@ -57,7 +57,7 @@ export default class CurrentRound extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={[styles.teamView, {paddingTop: 0}]}>
+                <View style={[styles.teamView]}>
                     <View style={styles.topRowView}>
                         <TouchableOpacity
                             onPress={() => this.state.player3Input.focus()}
