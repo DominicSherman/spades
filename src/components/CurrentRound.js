@@ -1,8 +1,33 @@
 import React, {Component} from 'react';
-import {styles} from '../../constants/styles';
-import {FOUR, ONE, THREE, TWO} from '../../constants/enum';
-import {lightFontStyles} from '../../constants/font-styles';
-import {TextInput, TouchableOpacity, View} from 'react-native';
+import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+import {lightFontStyles} from '../constants/font-styles';
+import {TextInput, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
+import {lightGray} from '../constants/style-variables';
+
+const styles = StyleSheet.create({
+    teamView: {
+        padding: 10,
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        width: Dimensions.get('screen').width / 2,
+    },
+    topRowView: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        width: Dimensions.get('screen').width / 2
+    },
+    buttonWrapper: {
+        height: Dimensions.get('screen').width / 4,
+        width: Dimensions.get('screen').width / 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: lightGray,
+        borderWidth: 1,
+        top: 0
+    }
+});
 
 export default class CurrentRound extends Component {
     constructor(props) {

@@ -1,9 +1,43 @@
 import React from 'react';
-import {styles} from '../../constants/styles';
-import {darkFontStyles, redFontStyles} from '../../constants/font-styles';
-import {Alert, Text, TouchableOpacity, View} from 'react-native';
+import {darkFontStyles, redFontStyles} from '../constants/font-styles';
+import {Alert, Text, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import InstructionsModal from '../InstructionsModal';
+import InstructionsModal from '../modals/InstructionsModal';
+import {hyveeRed} from '../constants/style-variables';
+
+const styles = StyleSheet.create({
+    headerView: {
+        alignItems: 'center',
+        height: (Dimensions.get('screen').height / 15),
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 10
+    },
+    smallButtonView: {
+        borderWidth: .5,
+        borderColor: hyveeRed,
+        borderRadius: 4,
+        height: 30,
+        width: 75,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center'
+    },
+    headerText: {
+        fontSize: 22,
+    },
+    iconView: {
+        height: 30,
+        width: 75,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center'
+    },
+    icon: {
+        color: hyveeRed,
+        fontSize: 40
+    }
+});
 
 export default class Header extends React.Component {
     constructor(props) {

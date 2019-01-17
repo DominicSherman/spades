@@ -1,7 +1,31 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import {lightFontStyles} from '../../constants/font-styles';
-import {styles} from '../../constants/styles';
+import {Text, View, StyleSheet, Dimensions} from 'react-native';
+import {lightFontStyles} from '../constants/font-styles';
+import {lightGray} from '../constants/style-variables';
+
+const styles = StyleSheet.create({
+    teamView: {
+        padding: 10,
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        width: Dimensions.get('screen').width / 2,
+    },
+    actualView: {
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: Dimensions.get('screen').width / 2
+    },
+    rowView: {
+        borderBottomColor: lightGray,
+        borderBottomWidth: 1,
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: Dimensions.get('screen').width / 2
+    }
+});
 
 export default class SingleRound extends Component {
     render() {
@@ -10,10 +34,6 @@ export default class SingleRound extends Component {
             playerTwo,
             playerThree,
             playerFour,
-            team1Actual,
-            team2Actual,
-            team1Bids,
-            team2Bids,
             score
         } = this.props.item;
 

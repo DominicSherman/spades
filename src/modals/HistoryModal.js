@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {FlatList, Modal, SafeAreaView, View} from 'react-native';
-import SingleRound from './components/SingleRound';
+import SingleRound from '../components/SingleRound';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import Players from './components/Players';
+import Players from '../components/Players';
 
 export default class HistoryModal extends Component {
     render() {

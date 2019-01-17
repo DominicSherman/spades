@@ -1,14 +1,14 @@
 import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
-import {withRedux} from '../redux-factory';
-import Header from './Header';
-import Players from './Players';
-import CurrentRound from './CurrentRound';
-import SubmitButton from './SubmitButton';
-import HideShowButton from './HideShowButton';
-import HistoryModal from '../HistoryModal';
-import CurrentBids from './CurrentBids';
+import {withRedux} from './redux/redux-factory';
+import Header from './components/Header';
+import Players from './components/Players';
+import CurrentRound from './components/CurrentRound';
+import SubmitButton from './components/SubmitButton';
+import HideShowButton from './components/HideShowButton';
+import HistoryModal from './modals/HistoryModal';
+import CurrentBids from './components/CurrentBids';
 
 class Home extends React.Component {
     componentDidUpdate(prevProps) {

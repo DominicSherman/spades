@@ -18,7 +18,7 @@ import {
     SET_TEAM_TWO_SCORE,
     UNDO_ACTUAL,
     UNDO_BIDS, TOGGLE_SHOW_HISTORY
-} from './action-types';
+} from '../constants/action-types';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 
 const calculateScore = (rounds) => {

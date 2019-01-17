@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import {darkFontStyles} from '../constants/font-styles';
-import {Modal, ScrollView, Text, View} from 'react-native';
+import {Modal, ScrollView, Text, View, StyleSheet} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {instructions, scoring} from './instructions';
+import {instructions, scoring} from '../constants/instructions';
+
+const styles = StyleSheet.create({
+
+});
 
 export default class InstructionsModal extends Component {
     render() {

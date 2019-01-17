@@ -1,9 +1,33 @@
 import React, {Component} from 'react';
-import {Text, TextInput, View} from 'react-native';
+import {Text, TextInput, View, StyleSheet, Dimensions} from 'react-native';
 
-import {styles} from '../../constants/styles';
-import {FOUR, ONE, THREE, TWO} from '../../constants/enum';
-import {darkFontStyles, lightFontStyles} from '../../constants/font-styles';
+import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+import {darkFontStyles, lightFontStyles} from '../constants/font-styles';
+
+const styles = StyleSheet.create({
+    teamView: {
+        padding: 10,
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        width: Dimensions.get('screen').width / 2,
+    },
+    headerText: {
+        fontSize: 22,
+    },
+    centeredRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%'
+    },
+    singleColumn: {
+        alignItems: 'center',
+        height: 60,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: Dimensions.get('screen').width / 4
+    }
+});
 
 export default class Players extends Component {
     render() {

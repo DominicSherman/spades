@@ -1,7 +1,25 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, TouchableWithoutFeedback, View, Keyboard} from 'react-native';
-import {styles} from '../../constants/styles';
-import {lightFontStyles} from '../../constants/font-styles';
+import {Keyboard, Text, TouchableWithoutFeedback, View, StyleSheet, Dimensions} from 'react-native';
+import {lightFontStyles} from '../constants/font-styles';
+
+const styles = StyleSheet.create({
+    currentRoundScoreWrapper: {
+        alignItems: 'flex-start',
+        width: Dimensions.get('screen').width / 6,
+    },
+    currentRoundWrapper: {
+        alignItems: 'flex-end',
+        flexDirection: 'column',
+        height: '70%',
+        justifyContent: 'space-evenly',
+        width: Dimensions.get('screen').width / 4,
+    },
+    centeredRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%'
+    }
+});
 
 export default class CurrentBids extends Component {
     shouldShowCurrBids = () => this.props.bids && !this.props.bids.team1Actual;

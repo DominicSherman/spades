@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
-import {whiteFontStyles} from '../../constants/font-styles';
-import {styles} from '../../constants/styles';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {whiteFontStyles} from '../constants/font-styles';
+import {Text, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
+import {green} from '../constants/style-variables';
+
+const styles = StyleSheet.create({
+    bigButtonView: {
+        borderWidth: 1,
+        borderColor: green,
+        height: (Dimensions.get('screen').height / 15) * 2,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: green
+    }
+});
 
 export default class SubmitButton extends Component {
     render() {

@@ -2,8 +2,8 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 
-import reducer from './reducer';
-import Home from './components/Home';
+import reducer from './redux/reducer';
+import Home from './Home';
 import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {PersistGate} from 'redux-persist/integration/react'
