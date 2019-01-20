@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {mediumGray} from '../constants/style-variables';
+import {blue, mediumGray} from '../constants/style-variables';
 
 const styles = StyleSheet.create({
     touchable: {
@@ -35,7 +35,7 @@ export default class HeaderButton extends Component {
                     <EvilIcons
                         size={42}
                         name={iconName}
-                        color={'blue'}
+                        color={blue}
                     />
                     <Text style={styles.restartText}>{text}</Text>
                 </View>

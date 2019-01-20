@@ -134,7 +134,7 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
     });
 };
 
-export const submitBids = (roundBids) => (dispatch) => {
+const submitBids = (roundBids) => (dispatch) => {
     let team1Total = Number(roundBids.player1Bid) + Number(roundBids.player2Bid);
     let team2Total = Number(roundBids.player3Bid) + Number(roundBids.player4Bid);
 
@@ -167,7 +167,7 @@ export const submitBids = (roundBids) => (dispatch) => {
     })
 };
 
-export const submitActuals = (roundActual) => (dispatch, getState) => {
+const submitActuals = (roundActual) => (dispatch, getState) => {
     const team1Actual = Number(roundActual.player1Bid) + Number(roundActual.player2Bid);
     const team2Actual = Number(roundActual.player3Bid) + Number(roundActual.player4Bid);
 
@@ -214,6 +214,16 @@ export const submitActuals = (roundActual) => (dispatch, getState) => {
             data: true,
             type: SET_IS_BIDS
         });
+    }
+};
+
+export const submit = () => (dispatch, getState) => {
+    const {isBids, currRound} = getState();
+
+    if (isBids) {
+        submitBids(currRound)(dispatch, getState);
+    } else {
+        submitActuals(currRound)(dispatch, getState);
     }
 };
 

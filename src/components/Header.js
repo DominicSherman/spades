@@ -39,11 +39,13 @@ const styles = StyleSheet.create({
     },
     image: {
         height: '100%',
-        width: '100%'
+        width: '100%',
+        backgroundColor: lightGray,
     },
     imageWrapper: {
         height: '100%',
-        width: '20%'
+        width: '20%',
+        backgroundColor: lightGray,
     }
 });
 

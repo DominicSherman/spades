@@ -5,8 +5,8 @@ import {withRedux} from './redux/redux-factory';
 import Header from './components/Header';
 import Players from './components/Players';
 import CurrentRound from './components/CurrentRound';
-import SubmitButton from './components/SubmitButton';
-import HideShowButton from './components/HideShowButton';
+import Footer from './components/Footer';
+import ShowHistoryButton from './components/ShowHistoryButton';
 import HistoryModal from './modals/HistoryModal';
 import CurrentBids from './components/CurrentBids';
 
@@ -23,7 +23,7 @@ class Home extends React.Component {
         return (
             <SafeAreaView style={{flex: 1}}>
                 <Header
-                    actions={this.props.actions}
+                    actions={actions}
                     isBids={isBids}
                 />
                 <Players
@@ -43,11 +43,14 @@ class Home extends React.Component {
                     team1={team1}
                     team2={team2}
                 />
-                <HideShowButton
+                <ShowHistoryButton
                     actions={actions}
                     shouldShowHistory={shouldShowHistory}
                 />
-                <SubmitButton {...this.props}/>
+                <Footer
+                    actions={actions}
+                    isBids={isBids}
+                />
                 <HistoryModal {...this.props} />
             </SafeAreaView>
         );

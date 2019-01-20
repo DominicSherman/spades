@@ -11,3 +11,4 @@ export const white = '#FFF';
 export const maroon = '#8B0000';
 export const darkFont = '#3F3F3F';
 export const lightFont = '#757575';
+export const blue = '#3368FF';
