@@ -1,17 +1,17 @@
 import React from 'react';
-import {darkFontStyles, redFontStyles} from '../constants/font-styles';
-import {Alert, Text, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import InstructionsModal from '../modals/InstructionsModal';
-import {hyveeRed} from '../constants/style-variables';
+import {hyveeRed, lightGray} from '../constants/style-variables';
+import HeaderButton from './HeaderButton';
 
 const styles = StyleSheet.create({
     headerView: {
         alignItems: 'center',
-        height: (Dimensions.get('screen').height / 15),
+        backgroundColor: lightGray,
+        height: '12%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10
+        width: '100%'
     },
     smallButtonView: {
         borderWidth: .5,
@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
     icon: {
         color: hyveeRed,
         fontSize: 40
+    },
+    image: {
+        height: '100%',
+        width: '100%'
+    },
+    imageWrapper: {
+        height: '100%',
+        width: '20%'
     }
 });
 
@@ -48,55 +56,29 @@ export default class Header extends React.Component {
         };
     }
 
-    toggleModalVisible = () => this.setState((prevProps) => ({modalVisible: !prevProps.modalVisible}));
-
     render() {
         const {actions, isBids} = this.props;
 
         return (
-            <View style={styles.headerView}>
-                <TouchableOpacity
-                    onPress={() =>
-                        Alert.alert(
-                            'Are you sure you want to restart?',
-                            'You cannot undo this',
-                            [
-                                {text: 'Cancel'},
-                                {
-                                    onPress: () => actions.restart(),
-                                    text: 'Yes'
-                                }
-                            ]
-                        )
-                    }
-                    style={styles.smallButtonView}
-                >
-                    <Text style={[redFontStyles.light, {fontSize: 16}]}>{'Restart'}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.toggleModalVisible}>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Text style={[darkFontStyles.light, styles.headerText]}>{'Spades'}</Text>
-                        <EvilIcons
-                            name={'question'}
-                            size={30}
-                            color={'red'}
-                        />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => actions.undo(isBids)}
-                    style={styles.iconView}
-                >
-                    <EvilIcons
-                        name={'undo'}
-                        style={styles.icon}
-                    />
-                </TouchableOpacity>
-                <InstructionsModal
-                    modalVisible={this.state.modalVisible}
-                    toggleModal={this.toggleModalVisible}
+            <SafeAreaView style={styles.headerView}>
+                <HeaderButton
+                    iconName={'undo'}
+                    text={'RESTART'}
+                    onPress={actions.restart}
                 />
-            </View>
+                <View style={styles.imageWrapper}>
+                    <Image
+                        resizeMethod={'contain'}
+                        source={require('../assets/header-logo.png')}
+                        style={styles.image}
+                    />
+                </View>
+                <HeaderButton
+                    iconName={'arrow-left'}
+                    text={'UNDO'}
+                    onPress={() => actions.undo(isBids)}
+                />
+            </SafeAreaView>
         );
     }
 }

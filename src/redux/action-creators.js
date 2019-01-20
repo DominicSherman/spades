@@ -20,6 +20,7 @@ import {
     UNDO_BIDS, TOGGLE_SHOW_HISTORY
 } from '../constants/action-types';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+import {Alert} from 'react-native';
 
 const calculateScore = (rounds) => {
     let score1 = 0,
@@ -264,9 +265,17 @@ export const submitValue = (bid, player) => (dispatch) => {
     }
 };
 
-export const restart = () => (dispatch) => {
-    dispatch({type: RESTART})
-};
+export const restart = () => (dispatch) => Alert.alert(
+    'Are you sure you want to restart?',
+    'You cannot undo this',
+    [
+        {text: 'Cancel'},
+        {
+            onPress: () => dispatch({type: RESTART}),
+            text: 'Yes'
+        }
+    ]
+);
 
 export const undo = (isBids) => (dispatch, getState) => {
     const {rounds} = getState();
