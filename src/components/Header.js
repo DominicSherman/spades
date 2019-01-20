@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
-import InstructionsModal from '../modals/InstructionsModal';
 import {hyveeRed, lightGray} from '../constants/style-variables';
 import HeaderButton from './HeaderButton';
 
@@ -70,7 +69,6 @@ export default class Header extends React.Component {
                 />
                 <View style={styles.imageWrapper}>
                     <Image
-                        resizeMethod={'contain'}
                         source={require('../assets/header-logo.png')}
                         style={styles.image}
                     />

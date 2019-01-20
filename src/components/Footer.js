@@ -3,34 +3,35 @@ import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import {blue, lightGray, mediumGray, white} from '../constants/style-variables';
 import Feather from 'react-native-vector-icons/Feather';
+import {shadow} from '../constants/shared-styles';
 
 const styles = StyleSheet.create({
     touchable: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        height: (Dimensions.get('screen').height / 15) * 2,
-        backgroundColor: lightGray
+        justifyContent: 'center'
     },
     text: {
         color: mediumGray,
         fontSize: 20,
         fontWeight: '800',
         position: 'absolute',
-        bottom: 20,
+        top: 70,
         letterSpacing: 4
     },
     submitWrapper: {
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     wrapper: {
-        bottom: -35,
-        width: '100%'
+        bottom: 0,
+        width: '100%',
+        flex: 0.15,
+        backgroundColor: lightGray
     },
     iconBackground: {
         backgroundColor: blue,
-        bottom: 60,
+        top: -10,
         transform: [{rotate: '45deg'}],
         width: 60,
         height: 60,
@@ -38,8 +39,16 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
     icon: {
-        bottom: 60,
-        position: 'absolute'
+        top: -15,
+        position: 'absolute',
+        ...shadow
+    },
+    grayBox: {
+        top: 100,
+        position: 'absolute',
+        backgroundColor: lightGray,
+        height: 40,
+        width: Dimensions.get('window').width
     }
 });
 
@@ -65,6 +74,7 @@ export default class Footer extends Component {
                         <Text style={styles.text}>{submitText}</Text>
                     </View>
                 </Touchable>
+                <View style={styles.grayBox}/>
             </View>
         );
     }

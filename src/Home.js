@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 
 import {withRedux} from './redux/redux-factory';
 import Header from './components/Header';
@@ -22,31 +22,36 @@ class Home extends React.Component {
 
         return (
             <SafeAreaView style={{flex: 1}}>
-                <Header
-                    actions={actions}
-                    isBids={isBids}
-                />
-                <Players
-                    actions={actions}
-                    team1={team1}
-                    team2={team2}
-                    rounds={rounds}
-                    shouldShowHistory={shouldShowHistory}
-                />
-                <CurrentRound
-                    actions={actions}
-                    currRound={currRound}
-                />
-                <CurrentBids
-                    currRound={currRound}
-                    bids={rounds[0]}
-                    team1={team1}
-                    team2={team2}
-                />
-                <ShowHistoryButton
-                    actions={actions}
-                    shouldShowHistory={shouldShowHistory}
-                />
+                <View style={{
+                    flex: 0.85,
+                    paddingBottom: '5%'
+                }}>
+                    <Header
+                        actions={actions}
+                        isBids={isBids}
+                    />
+                    <Players
+                        actions={actions}
+                        team1={team1}
+                        team2={team2}
+                        rounds={rounds}
+                        shouldShowHistory={shouldShowHistory}
+                    />
+                    <CurrentRound
+                        actions={actions}
+                        currRound={currRound}
+                    />
+                    <CurrentBids
+                        currRound={currRound}
+                        bids={rounds[0]}
+                        team1={team1}
+                        team2={team2}
+                    />
+                    <ShowHistoryButton
+                        actions={actions}
+                        shouldShowHistory={shouldShowHistory}
+                    />
+                </View>
                 <Footer
                     actions={actions}
                     isBids={isBids}

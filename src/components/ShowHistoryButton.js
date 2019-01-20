@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {blue, white} from '../constants/style-variables';
+import {black, blue, white} from '../constants/style-variables';
+import {shadow} from '../constants/shared-styles';
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -18,7 +19,8 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '50%',
         justifyContent: 'center',
-        backgroundColor: blue
+        backgroundColor: blue,
+        ...shadow
     },
     text: {
         color: white,
