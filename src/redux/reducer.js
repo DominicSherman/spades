@@ -21,7 +21,7 @@ import {
     SET_TEAM_TWO_BAGS,
     SET_TEAM_TWO_SCORE,
     UNDO_ACTUAL,
-    UNDO_BIDS, TOGGLE_SHOW_HISTORY
+    UNDO_BIDS, TOGGLE_SHOW_HISTORY, TOGGLE_SHOW_INFO_MODAL
 } from '../constants/action-types';
 
 const defaultState = {
@@ -47,7 +47,8 @@ const defaultState = {
         score: 0,
         bags: 0
     },
-    shouldShowHistory: false
+    shouldShowHistory: false,
+    showInfoModal: false
 };
 
 const setIsBids = (state, isBids) => ({
@@ -265,6 +266,11 @@ const toggleShouldShowHistory = (state) => ({
     shouldShowHistory: !state.shouldShowHistory
 });
 
+const toggleShowInfoModal = (state) => ({
+    ...state,
+    showInfoModal: !state.showInfoModal
+});
+
 const restart = () => defaultState;
 
 const reducerMap = {
@@ -291,7 +297,8 @@ const reducerMap = {
     [SET_PLAYER_FOUR_ACTUAL]: setPlayerFourActual,
     [UNDO_BIDS]: undoBids,
     [UNDO_ACTUAL]: undoActual,
-    [TOGGLE_SHOW_HISTORY]: toggleShouldShowHistory
+    [TOGGLE_SHOW_HISTORY]: toggleShouldShowHistory,
+    [TOGGLE_SHOW_INFO_MODAL]: toggleShowInfoModal
 };
 
 export default (state = defaultState, {type, data}) => {

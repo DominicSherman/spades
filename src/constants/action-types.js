@@ -22,3 +22,4 @@ export const UNDO_BIDS = 'UNDO_BIDS';
 export const UNDO_ACTUAL = 'UNDO_ACTUAL';
 export const RESTART = 'RESTART';
 export const TOGGLE_SHOW_HISTORY = 'TOGGLE_SHOW_HISTORY';
+export const TOGGLE_SHOW_INFO_MODAL = 'TOGGLE_SHOW_INFO_MODAL';

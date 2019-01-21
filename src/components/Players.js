@@ -3,7 +3,7 @@ import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
 
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 import {darkFontStyles} from '../constants/font-styles';
-import {blue, brown, darkFont, lightBlue, orange, white} from '../constants/style-variables';
+import {blue, peach, darkFont, lightBlue, violet, white} from '../constants/style-variables';
 import LinearGradient from 'react-native-linear-gradient';
 import {shadow} from '../constants/shared-styles';
 
@@ -47,11 +47,11 @@ export default class Players extends Component {
             <View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={[styles.teamView, {paddingBottom: 0}]}>
-                        <Text style={[styles.headerText, {color: brown}]}>{team1.score}</Text>
+                        <Text style={[styles.headerText, {color: peach}]}>{team1.score}</Text>
                         <LinearGradient
                             start={{x: 0, y: 0}}
                             end={{x: 1, y: 0}}
-                            colors={[orange, brown]}
+                            colors={[violet, peach]}
                             style={styles.centeredRow}
                         >
                             <View style={styles.singleColumn}>

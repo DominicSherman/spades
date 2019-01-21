@@ -13,11 +13,11 @@ export default class InstructionsModal extends Component {
         return (
             <Modal
                 animationType={'slide'}
-                visible={this.props.modalVisible}
+                visible={this.props.showInfoModal}
             >
                 <View style={{paddingTop: '11%', paddingLeft: '1%'}}>
                     <EvilIcons
-                        onPress={this.props.toggleModal}
+                        onPress={this.props.onClose}
                         name={'close'}
                         size={30}
                     />

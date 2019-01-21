@@ -13,5 +13,5 @@ export const darkFont = '#3F3F3F';
 export const lightFont = '#757575';
 export const lightBlue = '#5f8eee';
 export const blue = '#5f6fee';
-export const orange = '#d35271';
-export const brown = '#cf8873';
+export const violet = '#d35271';
+export const peach = '#cf8873';

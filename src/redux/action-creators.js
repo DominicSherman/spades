@@ -17,7 +17,7 @@ import {
     SET_TEAM_TWO_BAGS,
     SET_TEAM_TWO_SCORE,
     UNDO_ACTUAL,
-    UNDO_BIDS, TOGGLE_SHOW_HISTORY
+    UNDO_BIDS, TOGGLE_SHOW_HISTORY, TOGGLE_SHOW_INFO_MODAL
 } from '../constants/action-types';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 import {Alert} from 'react-native';
@@ -309,4 +309,8 @@ export const undo = (isBids) => (dispatch, getState) => {
 
 export const toggleShowHistory = () => ({
     type: TOGGLE_SHOW_HISTORY
+});
+
+export const toggleShowInfoModal = () => ({
+    type: TOGGLE_SHOW_INFO_MODAL
 });

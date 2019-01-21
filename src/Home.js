@@ -19,7 +19,7 @@ class Home extends React.Component {
     }
 
     render() {
-        const {actions, rounds, isBids, currRound, team1, team2, shouldShowHistory} = this.props;
+        const {actions, rounds, isBids, currRound, team1, team2, shouldShowHistory, showInfoModal} = this.props;
 
         return (
             <SafeAreaView style={{
@@ -59,6 +59,7 @@ class Home extends React.Component {
                 </View>
                 <Footer
                     actions={actions}
+                    showInfoModal={showInfoModal}
                     isBids={isBids}
                 />
                 <HistoryModal {...this.props} />

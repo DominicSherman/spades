@@ -5,6 +5,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {blue, lightBlue, lightGray, mediumGray, white} from '../constants/style-variables';
 import Feather from 'react-native-vector-icons/Feather';
 import {shadow} from '../constants/shared-styles';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import InstructionsModal from '../modals/InstructionsModal';
 
 const styles = StyleSheet.create({
     touchable: {
@@ -25,9 +27,11 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         bottom: 0,
-        width: '100%',
+        width: '50%',
         flex: 0.15,
-        backgroundColor: lightGray
+        backgroundColor: lightGray,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     iconBackground: {
         top: -10,
@@ -50,22 +54,39 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         position: 'absolute',
         backgroundColor: lightGray
+    },
+    infoWrapper:{
+        height: '100%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 0.5
     }
 });
 
 export default class Footer extends Component {
     render() {
-        const {actions, isBids} = this.props;
+        const {actions, isBids, showInfoModal} = this.props;
         const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT RESULTS';
 
         return (
             <View style={styles.wrapper}>
                 <Touchable
+                    onPress={actions.toggleShowInfoModal}
+                    style={styles.infoWrapper}
+                >
+                    <EvilIcons
+                        size={50}
+                        name={'question'}
+                        color={lightBlue}
+                    />
+                </Touchable>
+                <Touchable
                     onPress={actions.submit}
                     style={styles.touchable}
                 >
                     <View style={styles.submitWrapper}>
-                        <View style={styles.greyDiamond} />
+                        <View style={styles.greyDiamond}/>
                         <LinearGradient
                             start={{x: 0, y: 0}}
                             end={{x: 1, y: 0}}
@@ -81,6 +102,10 @@ export default class Footer extends Component {
                         <Text style={styles.text}>{submitText}</Text>
                     </View>
                 </Touchable>
+                <InstructionsModal
+                    showInfoModal={showInfoModal}
+                    onClose={actions.toggleShowInfoModal}
+                />
             </View>
         );
     }
