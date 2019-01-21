@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {black, blue, white} from '../constants/style-variables';
+import {lightBlue, white} from '../constants/style-variables';
 import {shadow} from '../constants/shared-styles';
 
 const styles = StyleSheet.create({
@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
         flex: 0.2,
         flexDirection: 'column',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
+        paddingBottom: '2%'
     },
     showHistoryButton: {
         alignItems: 'center',
@@ -19,12 +20,12 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '50%',
         justifyContent: 'center',
-        backgroundColor: blue,
+        backgroundColor: lightBlue,
         ...shadow
     },
     text: {
         color: white,
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: '400'
     }
 });

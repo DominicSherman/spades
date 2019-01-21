@@ -22,22 +22,22 @@ const styles = StyleSheet.create({
     }
 });
 
-export default class HeaderButton extends Component {
+export default class RestartButton extends Component {
     render() {
-        const {iconName, text, onPress} = this.props;
+        const {actions} = this.props;
 
         return (
             <Touchable
-                onPress={onPress}
+                onPress={actions.restart}
                 style={styles.touchable}
             >
                 <View style={styles.wrapper}>
                     <EvilIcons
-                        size={42}
-                        name={iconName}
+                        size={55}
+                        name={'undo'}
                         color={blue}
                     />
-                    <Text style={styles.restartText}>{text}</Text>
+                    <Text style={styles.restartText}>{'RESTART'}</Text>
                 </View>
             </Touchable>
         );

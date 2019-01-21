@@ -12,7 +12,8 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "fix": "cd node_modules/react-native/scripts && ./ios-install-third-party.sh && cd ../../../ && cd node_modules/react-native/third-party/glog-0.3.4/ && ../../scripts/ios-configure-glog.sh && cd ../../../../"
   },
   "jest": {
     "preset": "react-native"
@@ -21,6 +22,7 @@
     "exp": "^55.0.5",
     "react": "16.3.1",
     "react-native": "~0.55.2",
+    "react-native-linear-gradient": "^2.5.3",
     "react-native-platform-touchable": "^1.1.1",
     "react-native-scripts": "^2.0.1",
     "react-native-vector-icons": "^4.6.0",

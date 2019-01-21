@@ -1,13 +1,14 @@
 import React from 'react';
 import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
 import {hyveeRed, lightGray} from '../constants/style-variables';
-import HeaderButton from './HeaderButton';
+import RestartButton from './RestartButton';
+import UndoButton from './UndoButton';
 
 const styles = StyleSheet.create({
     headerView: {
         alignItems: 'center',
         backgroundColor: lightGray,
-        height: '12%',
+        height: '14%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%'
@@ -38,13 +39,11 @@ const styles = StyleSheet.create({
     },
     image: {
         height: '100%',
-        width: '100%',
-        backgroundColor: lightGray,
+        width: '100%'
     },
     imageWrapper: {
-        height: '100%',
-        width: '20%',
-        backgroundColor: lightGray,
+        height: '80%',
+        width: '20%'
     }
 });
 
@@ -61,24 +60,22 @@ export default class Header extends React.Component {
         const {actions, isBids} = this.props;
 
         return (
-            <SafeAreaView style={styles.headerView}>
-                <HeaderButton
-                    iconName={'undo'}
-                    text={'RESTART'}
-                    onPress={actions.restart}
+            <View style={styles.headerView}>
+                <RestartButton
+                    actions={actions}
                 />
                 <View style={styles.imageWrapper}>
                     <Image
+                        resizeMode={'contain'}
                         source={require('../assets/header-logo.png')}
                         style={styles.image}
                     />
                 </View>
-                <HeaderButton
-                    iconName={'arrow-left'}
-                    text={'UNDO'}
-                    onPress={() => actions.undo(isBids)}
+                <UndoButton
+                    actions={actions}
+                    isBids={isBids}
                 />
-            </SafeAreaView>
+            </View>
         );
     }
 }

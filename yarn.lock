@@ -6012,6 +6012,11 @@ react-is@^16.3.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.1.tgz#d624c4650d2c65dbd52c72622bbf389435d9776e"
   integrity sha512-xpb0PpALlFWNw/q13A+1aHeyJyLYCg0/cCHPUA43zYluZuIPHaHL3k8OBsTgQtxqW0FhyDEMvi8fZ/+7+r4OSQ==
 
+react-native-linear-gradient@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.3.tgz#d90cf19a13fcccfa8bb32025ac40a15ae1b49e99"
+  integrity sha512-XdusrOXXlkI+yQpUW7YLeiq9cZiBwkvQX4XEkHPVrJ9H47gsKmdgBwObkZBzBQUP0dKK/Sg6aVpETEis4w43bQ==
+
 react-native-platform-touchable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
@@ -6026,6 +6031,11 @@ react-native-scripts@^2.0.1:
     chalk "^2.0.1"
     cross-spawn "^5.0.1"
     minimist "^1.2.0"
+
+react-native-text-gradient@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/react-native-text-gradient/-/react-native-text-gradient-0.0.16.tgz#61a7ab83f6a2953f58739d2d609e0534e2d39f00"
+  integrity sha512-udW7qVcrJ6e52Yjw6M0iReOlNTEAawDiLmSlWR5Lfw41a5trYvqyE+NAPPewKfo0WP4CDe5J+RczCcjXnD0poA==
 
 react-native-vector-icons@^4.6.0:
   version "4.6.0"

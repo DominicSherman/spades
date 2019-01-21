@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {blue, lightGray, mediumGray, white} from '../constants/style-variables';
+import LinearGradient from 'react-native-linear-gradient';
+import {blue, lightBlue, lightGray, mediumGray, white} from '../constants/style-variables';
 import Feather from 'react-native-vector-icons/Feather';
 import {shadow} from '../constants/shared-styles';
 
@@ -15,8 +16,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '800',
         position: 'absolute',
-        top: 70,
-        letterSpacing: 4
+        top: 70
     },
     submitWrapper: {
         alignItems: 'center',
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
         backgroundColor: lightGray
     },
     iconBackground: {
-        backgroundColor: blue,
         top: -10,
         transform: [{rotate: '45deg'}],
         width: 60,
@@ -43,12 +42,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         ...shadow
     },
-    grayBox: {
-        top: 100,
+    greyDiamond: {
+        top: -10,
+        transform: [{rotate: '45deg'}],
+        width: 120,
+        height: 120,
+        borderRadius: 4,
         position: 'absolute',
-        backgroundColor: lightGray,
-        height: 40,
-        width: Dimensions.get('window').width
+        backgroundColor: lightGray
     }
 });
 
@@ -64,7 +65,13 @@ export default class Footer extends Component {
                     style={styles.touchable}
                 >
                     <View style={styles.submitWrapper}>
-                        <View style={styles.iconBackground}/>
+                        <View style={styles.greyDiamond} />
+                        <LinearGradient
+                            start={{x: 0, y: 0}}
+                            end={{x: 1, y: 0}}
+                            colors={[lightBlue, blue]}
+                            style={styles.iconBackground}
+                        />
                         <Feather
                             color={white}
                             name={'arrow-up'}
@@ -74,7 +81,6 @@ export default class Footer extends Component {
                         <Text style={styles.text}>{submitText}</Text>
                     </View>
                 </Touchable>
-                <View style={styles.grayBox}/>
             </View>
         );
     }

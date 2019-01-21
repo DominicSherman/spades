@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import ShowHistoryButton from './components/ShowHistoryButton';
 import HistoryModal from './modals/HistoryModal';
 import CurrentBids from './components/CurrentBids';
+import {lightGray, white} from './constants/style-variables';
 
 class Home extends React.Component {
     componentDidUpdate(prevProps) {
@@ -21,8 +22,12 @@ class Home extends React.Component {
         const {actions, rounds, isBids, currRound, team1, team2, shouldShowHistory} = this.props;
 
         return (
-            <SafeAreaView style={{flex: 1}}>
+            <SafeAreaView style={{
+                backgroundColor: lightGray,
+                flex: 1
+            }}>
                 <View style={{
+                    backgroundColor: white,
                     flex: 0.85,
                     paddingBottom: '5%'
                 }}>

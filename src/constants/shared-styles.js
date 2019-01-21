@@ -8,8 +8,8 @@ export const sharedStyles = StyleSheet.create({
 export const shadow = {
     shadowColor: black,
     shadowOffset: {
-        width: 4,
-        height: 4
+        width: 2,
+        height: 2
     },
-    shadowOpacity: 0.4
+    shadowOpacity: .15
 };
