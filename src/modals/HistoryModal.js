@@ -39,7 +39,7 @@ export default class HistoryModal extends Component {
                                 item={item}
                             />
                         )}
-                        style={{flex: 1, height: '100%'}}
+                        style={{flex: 1, height: '100%', paddingTop: '3%'}}
                     />
                 </SafeAreaView>
             </Modal>

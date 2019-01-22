@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Keyboard, Text, TouchableWithoutFeedback, View, StyleSheet, Dimensions} from 'react-native';
+import {Dimensions, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 import {lightFontStyles} from '../constants/font-styles';
-import {lightBlue, peach, violet} from '../constants/style-variables';
+import {lightBlue, peach} from '../constants/style-variables';
 
 const styles = StyleSheet.create({
     currentRoundScoreWrapper: {
@@ -36,11 +36,13 @@ export default class CurrentBids extends Component {
             bids
         } = this.props;
 
+        const getBid = (playerBid) => Number(playerBid) === 100 ? 0 : Number(playerBid);
+
         if (this.shouldShowCurrBids()) {
             return 13 - (bids.team1Bids + bids.team2Bids);
         }
 
-        return 13 - (Number(player1Bid) + Number(player2Bid) + Number(player3Bid) + Number(player4Bid));
+        return 13 - (getBid(player1Bid) + getBid(player2Bid) + getBid(player3Bid) + getBid(player4Bid));
     };
 
     render() {
