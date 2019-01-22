@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     text: {
         color: white,
         fontSize: 22,
-        fontWeight: '400'
+        fontWeight: '400',
+        fontFamily: 'ArialRoundedMTBold'
     }
 });
 

@@ -6,19 +6,20 @@ import {blue, mediumGray} from '../constants/style-variables';
 
 const styles = StyleSheet.create({
     touchable: {
-        padding: '3%'
+        paddingLeft: '3%'
     },
     restartText: {
         color: mediumGray,
         fontSize: 12,
-        fontWeight: '800'
+        fontWeight: '800',
+        fontFamily: 'ArialRoundedMTBold'
     },
     wrapper: {
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         height: '70%',
-        width: '100%'
+        width: 60
     }
 });
 
@@ -33,7 +34,7 @@ export default class RestartButton extends Component {
             >
                 <View style={styles.wrapper}>
                     <EvilIcons
-                        size={55}
+                        size={70}
                         name={'undo'}
                         color={blue}
                     />

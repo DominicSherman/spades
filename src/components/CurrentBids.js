@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Keyboard, Text, TouchableWithoutFeedback, View, StyleSheet, Dimensions} from 'react-native';
 import {lightFontStyles} from '../constants/font-styles';
+import {lightBlue, peach, violet} from '../constants/style-variables';
 
 const styles = StyleSheet.create({
     currentRoundScoreWrapper: {
@@ -71,46 +72,46 @@ export default class CurrentBids extends Component {
                                 justifyContent: 'space-between'
                             }}>
                                 <View style={styles.currentRoundWrapper}>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={[lightFontStyles.regular, {color: peach}]}>
                                         {`${team1.firstPlayer}: `}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={[lightFontStyles.regular, {color: peach}]}>
                                         {`${team1.secondPlayer}: `}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={[lightFontStyles.regular, {color: peach}]}>
                                         {'Total: '}
                                     </Text>
                                 </View>
                                 <View style={[styles.currentRoundWrapper, styles.currentRoundScoreWrapper]}>
-                                    <Text style={lightFontStyles.light}>
+                                    <Text style={lightFontStyles.regular}>
                                         {bids.playerOne.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.light}>
+                                    <Text style={lightFontStyles.regular}>
                                         {bids.playerTwo.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.light}>
+                                    <Text style={lightFontStyles.regular}>
                                         {bids.team1Bids}
                                     </Text>
                                 </View>
                                 <View style={styles.currentRoundWrapper}>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={[lightFontStyles.regular, {color: lightBlue}]}>
                                         {`${team2.firstPlayer}: `}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={[lightFontStyles.regular, {color: lightBlue}]}>
                                         {`${team2.secondPlayer}: `}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={[lightFontStyles.regular, {color: lightBlue}]}>
                                         {'Total: '}
                                     </Text>
                                 </View>
                                 <View style={[styles.currentRoundWrapper, styles.currentRoundScoreWrapper]}>
-                                    <Text style={lightFontStyles.light}>
+                                    <Text style={lightFontStyles.regular}>
                                         {bids.playerThree.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.light}>
+                                    <Text style={lightFontStyles.regular}>
                                         {bids.playerFour.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.light}>
+                                    <Text style={lightFontStyles.regular}>
                                         {bids.team2Bids}
                                     </Text>
                                 </View>

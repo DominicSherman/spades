@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '800',
         position: 'absolute',
-        top: 70
+        top: 70,
+        fontFamily: 'ArialRoundedMTBold'
     },
     submitWrapper: {
         alignItems: 'center',

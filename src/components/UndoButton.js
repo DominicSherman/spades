@@ -5,19 +5,20 @@ import {mediumGray} from '../constants/style-variables';
 
 const styles = StyleSheet.create({
     touchable: {
-        padding: '3%'
+        paddingRight: '3%'
     },
     text: {
         color: mediumGray,
         fontSize: 12,
-        fontWeight: '800'
+        fontWeight: '800',
+        fontFamily: 'ArialRoundedMTBold'
     },
     wrapper: {
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         height: '70%',
-        width: '100%'
+        width: 60
     },
     image: {
         height: '100%',
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     },
     imageWrapper: {
         height: '100%',
-        width: '60%'
+        width: '50%'
     }
 });
 
@@ -42,7 +43,7 @@ export default class UndoButton extends Component {
                     <View style={styles.imageWrapper}>
                         <Image
                             resizeMode={'contain'}
-                            source={require('../assets/undo.png')}
+                            source={require('../../assets/undo.png')}
                             style={styles.image}
                         />
                     </View>

@@ -6032,11 +6032,6 @@ react-native-scripts@^2.0.1:
     cross-spawn "^5.0.1"
     minimist "^1.2.0"
 
-react-native-text-gradient@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/react-native-text-gradient/-/react-native-text-gradient-0.0.16.tgz#61a7ab83f6a2953f58739d2d609e0534e2d39f00"
-  integrity sha512-udW7qVcrJ6e52Yjw6M0iReOlNTEAawDiLmSlWR5Lfw41a5trYvqyE+NAPPewKfo0WP4CDe5J+RczCcjXnD0poA==
-
 react-native-vector-icons@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.6.0.tgz#e4014311ffa6de397d914ffc31b7097a874cc8d5"

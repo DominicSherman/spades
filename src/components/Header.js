@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
-import {hyveeRed, lightGray} from '../constants/style-variables';
+import {Image, StyleSheet, View} from 'react-native';
+import {lightGray} from '../constants/style-variables';
 import RestartButton from './RestartButton';
 import UndoButton from './UndoButton';
 
@@ -13,29 +13,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%'
     },
-    smallButtonView: {
-        borderWidth: .5,
-        borderColor: hyveeRed,
-        borderRadius: 4,
-        height: 30,
-        width: 75,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center'
-    },
     headerText: {
         fontSize: 22,
-    },
-    iconView: {
-        height: 30,
-        width: 75,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center'
-    },
-    icon: {
-        color: hyveeRed,
-        fontSize: 40
     },
     image: {
         height: '100%',
@@ -67,7 +46,7 @@ export default class Header extends React.Component {
                 <View style={styles.imageWrapper}>
                     <Image
                         resizeMode={'contain'}
-                        source={require('../assets/header-logo.png')}
+                        source={require('../../assets/header-logo.png')}
                         style={styles.image}
                     />
                 </View>

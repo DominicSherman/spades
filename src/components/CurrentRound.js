@@ -54,7 +54,7 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.light}
+                                style={lightFontStyles.medium}
                                 onChangeText={(bid) => actions.submitValue(bid, ONE)}
                                 placeholder={'0'}
                                 ref={(input) => {
@@ -70,7 +70,7 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.light}
+                                style={lightFontStyles.medium}
                                 onChangeText={(bid) => actions.submitValue(bid, TWO)}
                                 placeholder={'0'}
                                 ref={(input) => {
@@ -90,7 +90,7 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.light}
+                                style={lightFontStyles.medium}
                                 onChangeText={(bid) => actions.submitValue(bid, THREE)}
                                 placeholder={'0'}
                                 ref={(input) => {
@@ -106,7 +106,7 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.light}
+                                style={lightFontStyles.medium}
                                 onChangeText={(bid) => actions.submitValue(bid, FOUR)}
                                 placeholder={'0'}
                                 ref={(input) => {
