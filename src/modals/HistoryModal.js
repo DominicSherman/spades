@@ -1,8 +1,23 @@
 import React, {Component} from 'react';
-import {FlatList, Modal, SafeAreaView, View} from 'react-native';
+import {FlatList, Modal, SafeAreaView, View, StyleSheet} from 'react-native';
 import SingleRound from '../components/SingleRound';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Players from '../components/Players';
+
+const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+        paddingTop: '11%'
+    },
+    icon: {
+        left: '3%'
+    },
+    flatList: {
+        flex: 1,
+        height: '100%',
+        paddingTop: '3%'
+    }
+});
 
 export default class HistoryModal extends Component {
     render() {
@@ -13,17 +28,13 @@ export default class HistoryModal extends Component {
                 animationType={'slide'}
                 visible={shouldShowHistory}
             >
-                <SafeAreaView style={{
-                    flex: 1,
-                    paddingTop: '11%'
-                }}>
-                    <View style={{paddingLeft: '1%'}}>
-                        <EvilIcons
-                            onPress={actions.toggleShowHistory}
-                            name={'close'}
-                            size={30}
-                        />
-                    </View>
+                <SafeAreaView style={styles.wrapper}>
+                    <EvilIcons
+                        onPress={actions.toggleShowHistory}
+                        name={'close'}
+                        size={30}
+                        style={styles.icon}
+                    />
                     <Players
                         actions={actions}
                         team1={team1}
@@ -39,7 +50,7 @@ export default class HistoryModal extends Component {
                                 item={item}
                             />
                         )}
-                        style={{flex: 1, height: '100%', paddingTop: '3%'}}
+                        style={styles.flatList}
                     />
                 </SafeAreaView>
             </Modal>

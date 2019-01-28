@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import {darkFontStyles} from '../constants/font-styles';
-import {Modal, ScrollView, Text, View, StyleSheet} from 'react-native';
+import {Modal, ScrollView, Text, View, StyleSheet, SafeAreaView} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {instructions, scoring} from '../constants/instructions';
 
 const styles = StyleSheet.create({
-
+    wrapper: {
+        paddingLeft: '1%'
+    },
+    icon: {
+        left: '3%'
+    }
 });
 
 export default class InstructionsModal extends Component {
@@ -15,11 +20,12 @@ export default class InstructionsModal extends Component {
                 animationType={'slide'}
                 visible={this.props.showInfoModal}
             >
-                <View style={{paddingTop: '11%', paddingLeft: '1%'}}>
+                <SafeAreaView style={styles.wrapper}>
                     <EvilIcons
                         onPress={this.props.onClose}
                         name={'close'}
                         size={30}
+                        style={styles.icon}
                     />
                     <ScrollView
                         style={{
@@ -40,7 +46,7 @@ export default class InstructionsModal extends Component {
                             {scoring}
                         </Text>
                     </ScrollView>
-                </View>
+                </SafeAreaView>
             </Modal>
         );
     }
