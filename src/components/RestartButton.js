@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {blue, mediumGray} from '../constants/style-variables';
+import {blue} from '../constants/style-variables';
+import {getHeaderFooterTextColor} from '../theme-service';
 
 const styles = StyleSheet.create({
     touchable: {
         paddingLeft: '3%'
     },
     restartText: {
-        color: mediumGray,
+        color: getHeaderFooterTextColor(),
         fontSize: 12,
         fontWeight: '800',
         fontFamily: 'ArialRoundedMTBold'

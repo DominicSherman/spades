@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import ShowHistoryButton from './components/ShowHistoryButton';
 import HistoryModal from './modals/HistoryModal';
 import CurrentBids from './components/CurrentBids';
-import {lightGray, white} from './constants/style-variables';
+import {getBackgroundColor, getHeaderFooterColor} from './theme-service';
 
 class Home extends React.Component {
     componentDidUpdate(prevProps) {
@@ -23,11 +23,11 @@ class Home extends React.Component {
 
         return (
             <SafeAreaView style={{
-                backgroundColor: lightGray,
+                backgroundColor: getHeaderFooterColor(),
                 flex: 1
             }}>
                 <View style={{
-                    backgroundColor: white,
+                    backgroundColor: getBackgroundColor(),
                     flex: 0.85,
                     paddingBottom: '5%'
                 }}>

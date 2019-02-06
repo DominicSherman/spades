@@ -18,6 +18,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 const store = createStore(persistedReducer, applyMiddleware(thunk));
+export const theme = store.getState().theme;
 const persistor = persistStore(store);
 
 export default class App extends React.Component {

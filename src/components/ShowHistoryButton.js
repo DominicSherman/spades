@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {lightBlue, white} from '../constants/style-variables';
 import {shadow} from '../constants/shared-styles';
+import {getBackgroundColor, getIconColor} from '../theme-service';
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '50%',
         justifyContent: 'center',
-        backgroundColor: lightBlue,
+        backgroundColor: getIconColor(),
         ...shadow
     },
     text: {
-        color: white,
+        color: getBackgroundColor(),
         fontSize: 22,
         fontWeight: '400',
         fontFamily: 'ArialRoundedMTBold'

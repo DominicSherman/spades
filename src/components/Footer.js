@@ -7,6 +7,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {shadow} from '../constants/shared-styles';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import InstructionsModal from '../modals/InstructionsModal';
+import {getBackgroundColor, getButtonGradient, getHeaderFooterColor, getIconColor} from '../theme-service';
 
 const styles = StyleSheet.create({
     touchable: {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: mediumGray,
+        color: getBackgroundColor(),
         fontSize: 20,
         fontWeight: '800',
         position: 'absolute',
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: '50%',
         flex: 0.15,
-        backgroundColor: lightGray,
+        backgroundColor: getHeaderFooterColor(),
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
@@ -47,14 +48,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         ...shadow
     },
-    greyDiamond: {
+    diamond: {
         top: -10,
         transform: [{rotate: '45deg'}],
         width: 120,
         height: 120,
         borderRadius: 4,
         position: 'absolute',
-        backgroundColor: lightGray
+        backgroundColor: getHeaderFooterColor()
     },
     infoWrapper:{
         height: '100%',
@@ -79,7 +80,7 @@ export default class Footer extends Component {
                     <EvilIcons
                         size={50}
                         name={'question'}
-                        color={lightBlue}
+                        color={getIconColor()}
                     />
                 </Touchable>
                 <Touchable
@@ -87,15 +88,15 @@ export default class Footer extends Component {
                     style={styles.touchable}
                 >
                     <View style={styles.submitWrapper}>
-                        <View style={styles.greyDiamond}/>
+                        <View style={styles.diamond}/>
                         <LinearGradient
                             start={{x: 0, y: 0}}
                             end={{x: 1, y: 0}}
-                            colors={[lightBlue, blue]}
+                            colors={getButtonGradient()}
                             style={styles.iconBackground}
                         />
                         <Feather
-                            color={white}
+                            color={getBackgroundColor()}
                             name={'arrow-up'}
                             size={70}
                             style={styles.icon}

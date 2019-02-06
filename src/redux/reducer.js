@@ -1,5 +1,4 @@
 import {
-    SET_ROUNDS,
     ADD_BIDS,
     RESET,
     RESTART,
@@ -16,13 +15,18 @@ import {
     SET_PLAYER_TWO_ACTUAL,
     SET_PLAYER_TWO_BID,
     SET_PLAYER_TWO_NAME,
+    SET_ROUNDS,
     SET_TEAM_ONE_BAGS,
     SET_TEAM_ONE_SCORE,
     SET_TEAM_TWO_BAGS,
     SET_TEAM_TWO_SCORE,
+    SET_THEME,
+    TOGGLE_SHOW_HISTORY,
+    TOGGLE_SHOW_INFO_MODAL,
     UNDO_ACTUAL,
-    UNDO_BIDS, TOGGLE_SHOW_HISTORY, TOGGLE_SHOW_INFO_MODAL
+    UNDO_BIDS
 } from '../constants/action-types';
+import {DARK} from '../constants/enum';
 
 const defaultState = {
     currRound: {
@@ -47,6 +51,7 @@ const defaultState = {
         score: 0,
         bags: 0
     },
+    theme: DARK,
     shouldShowHistory: false,
     showInfoModal: false
 };
@@ -273,6 +278,11 @@ const toggleShowInfoModal = (state) => ({
 
 const restart = () => defaultState;
 
+const setTheme = (state, theme) => ({
+    ...state,
+    theme
+});
+
 const reducerMap = {
     [SET_TEAM_ONE_SCORE]: setTeamOneScore,
     [SET_TEAM_TWO_SCORE]: setTeamTwoScore,
@@ -298,7 +308,8 @@ const reducerMap = {
     [UNDO_BIDS]: undoBids,
     [UNDO_ACTUAL]: undoActual,
     [TOGGLE_SHOW_HISTORY]: toggleShouldShowHistory,
-    [TOGGLE_SHOW_INFO_MODAL]: toggleShowInfoModal
+    [TOGGLE_SHOW_INFO_MODAL]: toggleShowInfoModal,
+    [SET_THEME]: setTheme
 };
 
 export default (state = defaultState, {type, data}) => {

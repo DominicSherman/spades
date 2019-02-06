@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {black} from './style-variables';
+import {getShadowColor} from '../theme-service';
 
 export const sharedStyles = StyleSheet.create({
 
 });
 
 export const shadow = {
-    shadowColor: black,
+    shadowColor: getShadowColor(),
     shadowOffset: {
         width: 2,
         height: 2

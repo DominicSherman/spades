@@ -1,13 +1,13 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
-import {lightGray} from '../constants/style-variables';
 import RestartButton from './RestartButton';
 import UndoButton from './UndoButton';
+import {getHeaderFooterColor} from '../theme-service';
 
 const styles = StyleSheet.create({
     headerView: {
         alignItems: 'center',
-        backgroundColor: lightGray,
+        backgroundColor: getHeaderFooterColor(),
         height: '14%',
         flexDirection: 'row',
         justifyContent: 'space-between',

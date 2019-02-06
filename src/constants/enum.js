@@ -4,3 +4,5 @@ export const THREE = 3;
 export const FOUR = 4;
 export const NAME = 'NAME';
 export const BID = 'BID';
+export const DARK = 'DARK';
+export const LIGHT = 'LIGHT';

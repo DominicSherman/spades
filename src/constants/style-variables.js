@@ -15,3 +15,4 @@ export const lightBlue = '#5f8eee';
 export const blue = '#5f6fee';
 export const violet = '#d35271';
 export const peach = '#cf8873';
+export const darkBlue = '#003153';
