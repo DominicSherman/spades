@@ -1,41 +1,29 @@
 import React, {Component} from 'react';
-import {StyleSheet, Switch, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import LinearGradient from 'react-native-linear-gradient';
-import {blue, lightBlue, lightGray, mediumGray, white} from '../constants/style-variables';
 import Feather from 'react-native-vector-icons/Feather';
 import {shadow} from '../constants/shared-styles';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import InstructionsModal from '../modals/InstructionsModal';
-import {getBackgroundColor, getButtonGradient, getHeaderFooterColor, getIconColor} from '../theme-service';
-import {DARK, LIGHT} from '../constants/enum';
+import SettingsModal from '../modals/SettingsModal';
+import {
+    getBackgroundColor,
+    getBlueOrWhiteGradient,
+    getHeaderFooterColor,
+    getHeaderFooterTextColor,
+    getIconColor
+} from '../theme-service';
 
 export default class Footer extends Component {
     _getStyles = () => StyleSheet.create({
-        touchable: {
-            flexDirection: 'row',
-            justifyContent: 'center'
-        },
         text: {
-            color: getBackgroundColor(this.props.theme),
+            color: getHeaderFooterTextColor(this.props.theme),
             fontSize: 20,
             fontWeight: '800',
             position: 'absolute',
             top: 70,
             fontFamily: 'ArialRoundedMTBold'
-        },
-        submitWrapper: {
-            alignItems: 'center',
-            flexDirection: 'column',
-            justifyContent: 'center'
-        },
-        wrapper: {
-            bottom: 0,
-            width: '50%',
-            flex: 0.15,
-            backgroundColor: getHeaderFooterColor(this.props.theme),
-            flexDirection: 'row',
-            justifyContent: 'space-between'
         },
         iconBackground: {
             top: -10,
@@ -59,17 +47,40 @@ export default class Footer extends Component {
             position: 'absolute',
             backgroundColor: getHeaderFooterColor(this.props.theme)
         },
-        infoWrapper:{
-            height: '100%',
-            flexDirection: 'column',
+        infoWrapper: {
+            flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            flex: 0.5
+            flex: 1
+        },
+        infoIcon: {
+            paddingRight: '40%'
+        },
+        settingsIcon: {
+            paddingLeft: '40%'
+        },
+        settingsWrapper: {
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            flex: 1
+        },
+        submitWrapper: {
+            alignItems: 'center',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            flex: 1
+        },
+        wrapper: {
+            bottom: 0,
+            flex: 0.15,
+            backgroundColor: getHeaderFooterColor(this.props.theme),
+            flexDirection: 'row'
         }
     });
 
     render() {
-        const {actions, isBids, showInfoModal, theme} = this.props;
+        const {actions, isBids, showInfoModal, theme, showSettingsModal} = this.props;
         const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT RESULTS';
         const styles = this._getStyles();
 
@@ -83,18 +94,18 @@ export default class Footer extends Component {
                         size={50}
                         name={'question'}
                         color={getIconColor(theme)}
+                        style={styles.infoIcon}
                     />
                 </Touchable>
                 <Touchable
                     onPress={actions.submit}
-                    style={styles.touchable}
                 >
                     <View style={styles.submitWrapper}>
                         <View style={styles.diamond}/>
                         <LinearGradient
                             start={{x: 0, y: 0}}
                             end={{x: 1, y: 0}}
-                            colors={getButtonGradient(theme)}
+                            colors={getBlueOrWhiteGradient(theme)}
                             style={styles.iconBackground}
                         />
                         <Feather
@@ -106,13 +117,27 @@ export default class Footer extends Component {
                         <Text style={styles.text}>{submitText}</Text>
                     </View>
                 </Touchable>
-                <Switch
-                    onValueChange={(value) => value ? actions.setTheme(LIGHT) : actions.setTheme(DARK)}
-                    value={theme === LIGHT}
-                />
+                <Touchable
+                    onPress={actions.toggleShowSettingsModal}
+                    style={styles.infoWrapper}
+                >
+                    <EvilIcons
+                        size={50}
+                        name={'gear'}
+                        color={getIconColor(theme)}
+                        style={styles.settingsIcon}
+                    />
+                </Touchable>
                 <InstructionsModal
                     showInfoModal={showInfoModal}
                     onClose={actions.toggleShowInfoModal}
+                    theme={theme}
+                />
+                <SettingsModal
+                    actions={actions}
+                    theme={theme}
+                    showSettingsModal={showSettingsModal}
+                    onClose={actions.toggleShowSettingsModal}
                 />
             </View>
         );

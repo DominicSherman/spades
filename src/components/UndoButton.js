@@ -3,36 +3,37 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import {getHeaderFooterTextColor, getUndoLogo} from '../theme-service';
 
-const styles = StyleSheet.create({
-    touchable: {
-        paddingRight: '3%'
-    },
-    text: {
-        color: getHeaderFooterTextColor(),
-        fontSize: 12,
-        fontWeight: '800',
-        fontFamily: 'ArialRoundedMTBold'
-    },
-    wrapper: {
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        height: '70%',
-        width: 60
-    },
-    image: {
-        height: '100%',
-        width: '100%'
-    },
-    imageWrapper: {
-        height: '100%',
-        width: '50%'
-    }
-});
-
 export default class UndoButton extends Component {
+    _getStyles = () => StyleSheet.create({
+        touchable: {
+            paddingRight: '3%'
+        },
+        text: {
+            color: getHeaderFooterTextColor(this.props.theme),
+            fontSize: 12,
+            fontWeight: '800',
+            fontFamily: 'ArialRoundedMTBold'
+        },
+        wrapper: {
+            alignItems: 'center',
+            flexDirection: 'column',
+            justifyContent: 'space-evenly',
+            height: '70%',
+            width: 60
+        },
+        image: {
+            height: '100%',
+            width: '100%'
+        },
+        imageWrapper: {
+            height: '100%',
+            width: '50%'
+        }
+    });
+
     render() {
         const {actions, isBids, theme} = this.props;
+        const styles = this._getStyles();
 
         return (
             <Touchable

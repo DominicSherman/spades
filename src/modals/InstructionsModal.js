@@ -3,18 +3,26 @@ import {darkFontStyles} from '../constants/font-styles';
 import {Modal, ScrollView, Text, View, StyleSheet, SafeAreaView} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {instructions, scoring} from '../constants/instructions';
-
-const styles = StyleSheet.create({
-    wrapper: {
-        paddingLeft: '1%'
-    },
-    icon: {
-        left: '3%'
-    }
-});
+import {getBackgroundColor} from '../theme-service';
 
 export default class InstructionsModal extends Component {
+    _getStyles = () => StyleSheet.create({
+        wrapper: {
+            paddingLeft: '1%',
+            backgroundColor: getBackgroundColor(this.props.theme)
+        },
+        icon: {
+            left: '3%'
+        },
+        scrollView: {
+            height: '100%',
+            padding: '3%'
+        }
+    });
+
     render() {
+        const styles = this._getStyles();
+
         return (
             <Modal
                 animationType={'slide'}
@@ -28,10 +36,7 @@ export default class InstructionsModal extends Component {
                         style={styles.icon}
                     />
                     <ScrollView
-                        style={{
-                            height: '100%',
-                            padding: '3%'
-                        }}
+                        style={styles.scrollView}
                     >
                         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                             <Text style={[darkFontStyles.regular, {fontSize: 25}]}>{'Instructions'}</Text>

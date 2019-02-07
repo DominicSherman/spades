@@ -1,27 +1,30 @@
 import React, {Component} from 'react';
-import {FlatList, Modal, SafeAreaView, View, StyleSheet} from 'react-native';
+import {FlatList, Modal, SafeAreaView, StyleSheet} from 'react-native';
 import SingleRound from '../components/SingleRound';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Players from '../components/Players';
-
-const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
-        paddingTop: '11%'
-    },
-    icon: {
-        left: '3%'
-    },
-    flatList: {
-        flex: 1,
-        height: '100%',
-        paddingTop: '3%'
-    }
-});
+import {getBackgroundColor} from '../theme-service';
 
 export default class HistoryModal extends Component {
+    _getStyles = () => StyleSheet.create({
+        wrapper: {
+            flex: 1,
+            paddingTop: '11%',
+            backgroundColor: getBackgroundColor(this.props.theme)
+        },
+        icon: {
+            left: '3%'
+        },
+        flatList: {
+            flex: 1,
+            height: '100%',
+            paddingTop: '3%'
+        }
+    });
+
     render() {
-        const {rounds, shouldShowHistory, actions, team1, team2} = this.props;
+        const {rounds, shouldShowHistory, actions, team1, team2, theme} = this.props;
+        const styles = this._getStyles();
 
         return (
             <Modal
@@ -41,6 +44,7 @@ export default class HistoryModal extends Component {
                         team2={team2}
                         rounds={rounds}
                         shouldShowHistory={shouldShowHistory}
+                        theme={theme}
                     />
                     <FlatList
                         data={rounds}

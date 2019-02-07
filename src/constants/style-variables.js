@@ -16,3 +16,6 @@ export const blue = '#5f6fee';
 export const violet = '#d35271';
 export const peach = '#DB8B76';
 export const darkBlue = '#2E1739';
+export const seaFoam = '#71eeb8';
+export const mintGreen = '#98ff98';
+export const voltBlue = '#3f6798';

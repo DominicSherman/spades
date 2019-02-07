@@ -5,53 +5,60 @@ import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 import {blue, lightBlue, peach, violet, white} from '../constants/style-variables';
 import LinearGradient from 'react-native-linear-gradient';
 import {shadow} from '../constants/shared-styles';
-
-const styles = StyleSheet.create({
-    teamView: {
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        width: Dimensions.get('screen').width / 2
-    },
-    nameText: {
-        color: white,
-        fontSize: 20,
-        fontWeight: '400'
-    },
-    headerText: {
-        fontSize: 40,
-        fontWeight: '600',
-        padding: 10,
-        fontFamily: 'ArialRoundedMTBold',
-        ...shadow
-    },
-    centeredRow: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        width: '100%'
-    },
-    singleColumn: {
-        alignItems: 'center',
-        height: 60,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        width: Dimensions.get('screen').width / 4
-    }
-});
+import {
+    getBlueOrWhiteGradient,
+    getLightBlueOrWhite, getPeachOrWhite,
+    getPlayerTextColor,
+    getVioletOrWhiteGradient
+} from '../theme-service';
 
 export default class Players extends Component {
+    _getStyles = () => StyleSheet.create({
+        teamView: {
+            flexDirection: 'column',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            width: Dimensions.get('screen').width / 2
+        },
+        nameText: {
+            color: getPlayerTextColor(this.props.theme),
+            fontSize: 20,
+            fontWeight: '400'
+        },
+        headerText: {
+            fontSize: 40,
+            fontWeight: '600',
+            padding: 10,
+            fontFamily: 'ArialRoundedMTBold',
+            ...shadow
+        },
+        centeredRow: {
+            flexDirection: 'row',
+            justifyContent: 'center',
+            width: '100%'
+        },
+        singleColumn: {
+            alignItems: 'center',
+            height: 60,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            width: Dimensions.get('screen').width / 4
+        }
+    });
+
     render() {
-        const {actions, team1, team2} = this.props;
+        const {actions, team1, team2, theme} = this.props;
+        const styles = this._getStyles();
 
         return (
             <View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={styles.teamView}>
-                        <Text style={[styles.headerText, {color: peach}]}>{team1.score}</Text>
+                        <Text style={[styles.headerText, {color: getPeachOrWhite(theme)}]}>{team1.score}</Text>
                         <LinearGradient
                             start={{x: 0, y: 0}}
                             end={{x: 1, y: 0}}
-                            colors={[violet, peach]}
+                            colors={getVioletOrWhiteGradient(theme)}
                             style={[
                                 styles.centeredRow,
                                 {
@@ -83,11 +90,11 @@ export default class Players extends Component {
                         </LinearGradient>
                     </View>
                     <View style={styles.teamView}>
-                        <Text style={[styles.headerText, {color: lightBlue}]}>{team2.score}</Text>
+                        <Text style={[styles.headerText, {color: getLightBlueOrWhite(theme)}]}>{team2.score}</Text>
                         <LinearGradient
                             start={{x: 0, y: 0}}
                             end={{x: 1, y: 0}}
-                            colors={[lightBlue, blue]}
+                            colors={getBlueOrWhiteGradient(theme)}
                             style={[
                                 styles.centeredRow,
                                 {

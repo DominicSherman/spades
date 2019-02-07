@@ -22,7 +22,7 @@ import {
     SET_TEAM_TWO_SCORE,
     SET_THEME,
     TOGGLE_SHOW_HISTORY,
-    TOGGLE_SHOW_INFO_MODAL,
+    TOGGLE_SHOW_INFO_MODAL, TOGGLE_SHOW_SETTINGS_MODAL,
     UNDO_ACTUAL,
     UNDO_BIDS
 } from '../constants/action-types';
@@ -53,7 +53,8 @@ const defaultState = {
     },
     theme: DARK,
     shouldShowHistory: false,
-    showInfoModal: false
+    showInfoModal: false,
+    showSettingsModal: false
 };
 
 const setIsBids = (state, isBids) => ({
@@ -276,6 +277,11 @@ const toggleShowInfoModal = (state) => ({
     showInfoModal: !state.showInfoModal
 });
 
+const toggleShowSettingsModal = (state) => ({
+    ...state,
+    showSettingsModal: !state.showSettingsModal
+});
+
 const restart = () => defaultState;
 
 const setTheme = (state, theme) => ({
@@ -309,6 +315,7 @@ const reducerMap = {
     [UNDO_ACTUAL]: undoActual,
     [TOGGLE_SHOW_HISTORY]: toggleShouldShowHistory,
     [TOGGLE_SHOW_INFO_MODAL]: toggleShowInfoModal,
+    [TOGGLE_SHOW_SETTINGS_MODAL]: toggleShowSettingsModal,
     [SET_THEME]: setTheme
 };
 

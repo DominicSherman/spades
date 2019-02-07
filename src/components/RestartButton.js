@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {getBackgroundColor, getHeaderFooterTextColor} from '../theme-service';
+import {getHeaderFooterTextColor, getIconColor} from '../theme-service';
 
 export default class RestartButton extends Component {
     _getStyles = () => StyleSheet.create({
@@ -37,7 +37,7 @@ export default class RestartButton extends Component {
                     <EvilIcons
                         size={70}
                         name={'undo'}
-                        color={getBackgroundColor(theme)}
+                        color={getIconColor(theme)}
                     />
                     <Text style={styles.restartText}>{'RESTART'}</Text>
                 </View>

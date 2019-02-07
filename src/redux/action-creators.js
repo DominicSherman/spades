@@ -17,7 +17,7 @@ import {
     SET_TEAM_TWO_BAGS,
     SET_TEAM_TWO_SCORE,
     UNDO_ACTUAL,
-    UNDO_BIDS, TOGGLE_SHOW_HISTORY, TOGGLE_SHOW_INFO_MODAL, SET_THEME
+    UNDO_BIDS, TOGGLE_SHOW_HISTORY, TOGGLE_SHOW_INFO_MODAL, SET_THEME, TOGGLE_SHOW_SETTINGS_MODAL
 } from '../constants/action-types';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 import {Alert} from 'react-native';
@@ -313,6 +313,10 @@ export const toggleShowHistory = () => ({
 
 export const toggleShowInfoModal = () => ({
     type: TOGGLE_SHOW_INFO_MODAL
+});
+
+export const toggleShowSettingsModal = () => ({
+    type: TOGGLE_SHOW_SETTINGS_MODAL
 });
 
 export const setTheme = (theme) => ({

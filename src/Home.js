@@ -28,7 +28,8 @@ class Home extends React.Component {
             team2,
             shouldShowHistory,
             showInfoModal,
-            theme
+            theme,
+            showSettingsModal
         } = this.props;
 
         return (
@@ -52,6 +53,7 @@ class Home extends React.Component {
                         team2={team2}
                         rounds={rounds}
                         shouldShowHistory={shouldShowHistory}
+                        theme={theme}
                     />
                     <CurrentRound
                         actions={actions}
@@ -72,6 +74,7 @@ class Home extends React.Component {
                 <Footer
                     actions={actions}
                     showInfoModal={showInfoModal}
+                    showSettingsModal={showSettingsModal}
                     isBids={isBids}
                     theme={theme}
                 />

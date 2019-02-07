@@ -12,7 +12,9 @@ export default class Header extends React.Component {
             height: '14%',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            width: '100%'
+            width: '100%',
+            borderBottomRightRadius: 25,
+            borderBottomLeftRadius: 25
         },
         headerText: {
             fontSize: 22,
