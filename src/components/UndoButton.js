@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {getHeaderFooterTextColor} from '../theme-service';
+import {getHeaderFooterTextColor, getUndoLogo} from '../theme-service';
 
 const styles = StyleSheet.create({
     touchable: {
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
 export default class UndoButton extends Component {
     render() {
-        const {actions, isBids} = this.props;
+        const {actions, isBids, theme} = this.props;
 
         return (
             <Touchable
@@ -43,7 +43,7 @@ export default class UndoButton extends Component {
                     <View style={styles.imageWrapper}>
                         <Image
                             resizeMode={'contain'}
-                            source={require('../../assets/undo.png')}
+                            source={getUndoLogo(theme)}
                             style={styles.image}
                         />
                     </View>

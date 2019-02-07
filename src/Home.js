@@ -19,21 +19,32 @@ class Home extends React.Component {
     }
 
     render() {
-        const {actions, rounds, isBids, currRound, team1, team2, shouldShowHistory, showInfoModal} = this.props;
+        const {
+            actions,
+            rounds,
+            isBids,
+            currRound,
+            team1,
+            team2,
+            shouldShowHistory,
+            showInfoModal,
+            theme
+        } = this.props;
 
         return (
             <SafeAreaView style={{
-                backgroundColor: getHeaderFooterColor(),
+                backgroundColor: getHeaderFooterColor(theme),
                 flex: 1
             }}>
                 <View style={{
-                    backgroundColor: getBackgroundColor(),
+                    backgroundColor: getBackgroundColor(theme),
                     flex: 0.85,
                     paddingBottom: '5%'
                 }}>
                     <Header
                         actions={actions}
                         isBids={isBids}
+                        theme={theme}
                     />
                     <Players
                         actions={actions}
@@ -55,12 +66,14 @@ class Home extends React.Component {
                     <ShowHistoryButton
                         actions={actions}
                         shouldShowHistory={shouldShowHistory}
+                        theme={theme}
                     />
                 </View>
                 <Footer
                     actions={actions}
                     showInfoModal={showInfoModal}
                     isBids={isBids}
+                    theme={theme}
                 />
                 <HistoryModal {...this.props} />
             </SafeAreaView>
