@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import RestartButton from './RestartButton';
 import UndoButton from './UndoButton';
-import {getHeaderFooterColor, getHeaderLogo} from '../theme-service';
+import {getHeaderFooterColor, getHeaderLogo} from '../constants/style-service';
 
 export default class Header extends React.Component {
     _getStyles = () => StyleSheet.create({

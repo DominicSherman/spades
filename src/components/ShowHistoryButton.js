@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {shadow} from '../constants/shared-styles';
-import {getBackgroundColor, getBlueOrWhiteGradient, getIconColor} from '../theme-service';
+import {shadow} from '../constants/shadow-styles';
+import {getBackgroundColor, getBlueOrWhiteGradient, getIconColor} from '../constants/style-service';
 import {peach} from '../constants/style-variables';
 import LinearGradient from 'react-native-linear-gradient';
 

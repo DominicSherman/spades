@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {getHeaderFooterTextColor, getUndoLogo} from '../theme-service';
+import {getHeaderFooterTextColor, getUndoLogo} from '../constants/style-service';
 
 export default class UndoButton extends Component {
     _getStyles = () => StyleSheet.create({

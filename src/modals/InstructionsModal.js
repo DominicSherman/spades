@@ -3,7 +3,7 @@ import {darkFontStyles} from '../constants/font-styles';
 import {Modal, ScrollView, Text, View, StyleSheet, SafeAreaView} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {instructions, scoring} from '../constants/instructions';
-import {getBackgroundColor} from '../theme-service';
+import {getBackgroundColor} from '../constants/style-service';
 
 export default class InstructionsModal extends Component {
     _getStyles = () => StyleSheet.create({

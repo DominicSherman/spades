@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import LinearGradient from 'react-native-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
-import {shadow} from '../constants/shared-styles';
+import {shadow} from '../constants/shadow-styles';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import InstructionsModal from '../modals/InstructionsModal';
 import SettingsModal from '../modals/SettingsModal';
@@ -13,7 +13,7 @@ import {
     getHeaderFooterColor,
     getHeaderFooterTextColor,
     getIconColor
-} from '../theme-service';
+} from '../constants/style-service';
 
 export default class Footer extends Component {
     _getStyles = () => StyleSheet.create({

@@ -3,7 +3,7 @@ import {FlatList, Modal, SafeAreaView, StyleSheet} from 'react-native';
 import SingleRound from '../components/SingleRound';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Players from '../components/Players';
-import {getBackgroundColor} from '../theme-service';
+import {getBackgroundColor} from '../constants/style-service';
 
 export default class HistoryModal extends Component {
     _getStyles = () => StyleSheet.create({

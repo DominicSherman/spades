@@ -1,19 +1,22 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
+import {persistReducer, persistStore} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
 
 import reducer from './redux/reducer';
 import Home from './Home';
-import {persistReducer, persistStore} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import {PersistGate} from 'redux-persist/integration/react'
-import thunk from 'redux-thunk';
 
+import {PersistGate} from 'redux-persist/integration/react';
+
+/* eslint-disable no-console */
 console.disableYellowBox = true;
+/* eslint-enable no-console */
 
 const persistConfig = {
     key: 'root',
-    storage,
+    storage
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
@@ -24,8 +27,11 @@ export default class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <PersistGate loading={null} persistor={persistor}>
-                    <Home/>
+                <PersistGate
+                    loading={null}
+                    persistor={persistor}
+                >
+                    <Home />
                 </PersistGate>
             </Provider>
         );

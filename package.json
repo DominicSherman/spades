@@ -2,21 +2,12 @@
   "name": "Spades",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "babel-preset-react-native-stage-0": "^1.0.1",
-    "jest": "^23.5.0",
-    "jest-react-native": "^18.0.0",
-    "react-test-renderer": "16.3.1"
-  },
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
     "fix": "cd node_modules/react-native/scripts && ./ios-install-third-party.sh && cd ../../../ && cd node_modules/react-native/third-party/glog-0.3.4/ && ../../scripts/ios-configure-glog.sh && cd ../../../../"
-  },
-  "jest": {
-    "preset": "react-native"
   },
   "dependencies": {
     "exp": "^55.0.5",
@@ -29,6 +20,45 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "eslint": "4.19.1",
+    "eslint-config-get-off-my-lawn": "^4.0.1",
+    "jest": "^23.5.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "jest-react-native": "^18.0.0",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "coverageDirectory": ".coverage",
+    "collectCoverageFrom": [
+      "<rootDir>/src/*/*.js",
+      "<rootDir>/src/*.js",
+      "<rootDir>/index.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/constants"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-router-native)/"
+    ],
+    "testMatch": [
+      "<rootDir>/test/**/*.test.js"
+    ],
+    "moduleNameMapper": {
+      "^react-redux": "<rootDir>/test/stubs/react-redux-stub.js",
+      "react-native-fetch-blob": "<rootDir>/test/stubs/react-native-fetch-blob-stub.js",
+      "^firebase": "<rootDir>/test/stubs/firebase-stub.js",
+      ".+\\.(png)$": "jest-transform-stub",
+      "react-native-mail": "<rootDir>/test/stubs/react-native-mail-stub.js"
+    }
   }
 }

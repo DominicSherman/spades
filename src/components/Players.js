@@ -4,13 +4,13 @@ import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
 import {blue, lightBlue, peach, violet, white} from '../constants/style-variables';
 import LinearGradient from 'react-native-linear-gradient';
-import {shadow} from '../constants/shared-styles';
+import {shadow} from '../constants/shadow-styles';
 import {
     getBlueOrWhiteGradient,
     getLightBlueOrWhite, getPeachOrWhite,
     getPlayerTextColor,
     getVioletOrWhiteGradient
-} from '../theme-service';
+} from '../constants/style-service';
 
 export default class Players extends Component {
     _getStyles = () => StyleSheet.create({

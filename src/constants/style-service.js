@@ -8,8 +8,8 @@ import {
     violet,
     voltBlue,
     white
-} from './constants/style-variables';
-import {LIGHT} from './constants/enum';
+} from './style-variables';
+import {LIGHT} from './enum';
 
 const isLight = (theme) => theme === LIGHT;
 
@@ -27,9 +27,9 @@ export const getVioletOrWhiteGradient = (theme) => isLight(theme) ? [violet, pea
 
 export const getIconColor = (theme) => isLight(theme) ? lightBlue : darkBlue;
 
-export const getHeaderLogo = (theme) => isLight(theme) ? require(`../assets/header-logo.png`) : require(`../assets/header-logo-dark.png`);
+export const getHeaderLogo = (theme) => isLight(theme) ? require(`./assets/header-logo.png`) : require(`./assets/header-logo-dark.png`);
 
-export const getUndoLogo = (theme) => isLight(theme) ? require(`../assets/undo.png`) : require(`../assets/undo-dark.png`);
+export const getUndoLogo = (theme) => isLight(theme) ? require(`./assets/undo.png`) : require(`./assets/undo-dark.png`);
 
 export const getPlayerTextColor = (theme) => isLight(theme) ? white : darkBlue;
 

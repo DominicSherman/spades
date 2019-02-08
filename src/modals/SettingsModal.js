@@ -3,7 +3,7 @@ import {darkFontStyles, lightFontStyles} from '../constants/font-styles';
 import {Modal, SafeAreaView, StyleSheet, Switch, Text, View} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {DARK, LIGHT} from '../constants/enum';
-import {getBackgroundColor} from '../theme-service';
+import {getBackgroundColor} from '../constants/style-service';
 
 export default class SettingsModal extends Component {
     _getStyles = () => StyleSheet.create({

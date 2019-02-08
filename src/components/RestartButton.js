@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {getHeaderFooterTextColor, getIconColor} from '../theme-service';
+import {getHeaderFooterTextColor, getIconColor} from '../constants/style-service';
 
 export default class RestartButton extends Component {
     _getStyles = () => StyleSheet.create({
