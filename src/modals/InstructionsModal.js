@@ -1,22 +1,34 @@
 import React, {Component} from 'react';
-import {darkFontStyles} from '../constants/font-styles';
-import {Modal, ScrollView, Text, View, StyleSheet, SafeAreaView} from 'react-native';
+import {Modal, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+
 import {instructions, scoring} from '../constants/instructions';
-import {getBackgroundColor} from '../constants/style-service';
+import {getBackgroundColor, getDarkTextColor} from '../constants/style-service';
 
 export default class InstructionsModal extends Component {
     _getStyles = () => StyleSheet.create({
-        wrapper: {
-            paddingLeft: '1%',
-            backgroundColor: getBackgroundColor(this.props.theme)
+        headerText: {
+            color: getDarkTextColor(this.props.theme),
+            fontSize: 25,
+            fontWeight: '600'
         },
         icon: {
+            color: getDarkTextColor(this.props.theme),
             left: '3%'
         },
         scrollView: {
             height: '100%',
             padding: '3%'
+        },
+        text: {
+            color: getDarkTextColor(this.props.theme),
+            fontSize: 20,
+            fontWeight: '200'
+        },
+        wrapper: {
+            backgroundColor: getBackgroundColor(this.props.theme),
+            marginBottom: '3%',
+            paddingLeft: '1%'
         }
     });
 
@@ -30,8 +42,8 @@ export default class InstructionsModal extends Component {
             >
                 <SafeAreaView style={styles.wrapper}>
                     <EvilIcons
-                        onPress={this.props.onClose}
                         name={'close'}
+                        onPress={this.props.onClose}
                         size={30}
                         style={styles.icon}
                     />
@@ -39,15 +51,15 @@ export default class InstructionsModal extends Component {
                         style={styles.scrollView}
                     >
                         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                            <Text style={[darkFontStyles.regular, {fontSize: 25}]}>{'Instructions'}</Text>
+                            <Text style={styles.headerText}>{'Instructions'}</Text>
                         </View>
-                        <Text style={darkFontStyles.light}>
+                        <Text style={styles.text}>
                             {instructions}
                         </Text>
                         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                            <Text style={[darkFontStyles.regular, {fontSize: 25}]}>{'Scoring'}</Text>
+                            <Text style={styles.headerText}>{'Scoring'}</Text>
                         </View>
-                        <Text style={darkFontStyles.light}>
+                        <Text style={styles.text}>
                             {scoring}
                         </Text>
                     </ScrollView>

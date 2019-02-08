@@ -1,7 +1,10 @@
+import {LIGHT} from '../constants/enum';
+import {lightGray} from '../constants/style-variables';
+
 import {
     ADD_BIDS,
     RESET,
-    RESTART,
+    RESTART, SET_COLOR,
     SET_IS_BIDS,
     SET_PLAYER_FOUR_ACTUAL,
     SET_PLAYER_FOUR_BID,
@@ -22,39 +25,42 @@ import {
     SET_TEAM_TWO_SCORE,
     SET_THEME,
     TOGGLE_SHOW_HISTORY,
-    TOGGLE_SHOW_INFO_MODAL, TOGGLE_SHOW_SETTINGS_MODAL,
+    TOGGLE_SHOW_INFO_MODAL,
+    TOGGLE_SHOW_SETTINGS_MODAL,
     UNDO_ACTUAL,
     UNDO_BIDS
-} from '../constants/action-types';
-import {DARK} from '../constants/enum';
+} from './action-types';
 
 const defaultState = {
     currRound: {
         player1Bid: 0,
         player2Bid: 0,
-        team1Total: 0,
         player3Bid: 0,
         player4Bid: 0,
+        team1Total: 0,
         team2Total: 0
     },
     isBids: true,
     rounds: [],
-    team1: {
-        firstPlayer: 'Player 1',
-        secondPlayer: 'Player 2',
-        score: 0,
-        bags: 0
-    },
-    team2: {
-        firstPlayer: 'Player 3',
-        secondPlayer: 'Player 4',
-        score: 0,
-        bags: 0
-    },
-    theme: DARK,
     shouldShowHistory: false,
     showInfoModal: false,
-    showSettingsModal: false
+    showSettingsModal: false,
+    team1: {
+        bags: 0,
+        firstPlayer: 'Player 1',
+        score: 0,
+        secondPlayer: 'Player 2'
+    },
+    team2: {
+        bags: 0,
+        firstPlayer: 'Player 3',
+        score: 0,
+        secondPlayer: 'Player 4'
+    },
+    theme: {
+        background: LIGHT,
+        color: lightGray
+    }
 };
 
 const setIsBids = (state, isBids) => ({
@@ -231,7 +237,7 @@ const undoBids = (state) => ({
         player1Bid: state.rounds[0].playerOne.bid,
         player2Bid: state.rounds[0].playerTwo.bid,
         player3Bid: state.rounds[0].playerThree.bid,
-        player4Bid: state.rounds[0].playerFour.bid,
+        player4Bid: state.rounds[0].playerFour.bid
     },
     rounds: [...state.rounds.slice(1)]
 });
@@ -242,7 +248,7 @@ const undoActual = (state) => ({
         player1Bid: state.rounds[0].playerOne.actual,
         player2Bid: state.rounds[0].playerTwo.actual,
         player3Bid: state.rounds[0].playerThree.actual,
-        player4Bid: state.rounds[0].playerFour.actual,
+        player4Bid: state.rounds[0].playerFour.actual
     },
     rounds: [{
         ...state.rounds[0],
@@ -284,9 +290,20 @@ const toggleShowSettingsModal = (state) => ({
 
 const restart = () => defaultState;
 
-const setTheme = (state, theme) => ({
+const setTheme = (state, background) => ({
     ...state,
-    theme
+    theme: {
+        background,
+        color: state.theme.color
+    }
+});
+
+const setColor = (state, color) => ({
+    ...state,
+    theme: {
+        background: state.theme.background,
+        color
+    }
 });
 
 const reducerMap = {
@@ -316,7 +333,8 @@ const reducerMap = {
     [TOGGLE_SHOW_HISTORY]: toggleShouldShowHistory,
     [TOGGLE_SHOW_INFO_MODAL]: toggleShowInfoModal,
     [TOGGLE_SHOW_SETTINGS_MODAL]: toggleShowSettingsModal,
-    [SET_THEME]: setTheme
+    [SET_THEME]: setTheme,
+    [SET_COLOR]: setColor
 };
 
 export default (state = defaultState, {type, data}) => {

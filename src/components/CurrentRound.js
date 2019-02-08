@@ -1,33 +1,8 @@
 import React, {Component} from 'react';
-import {FOUR, ONE, THREE, TWO} from '../constants/enum';
-import {lightFontStyles} from '../constants/font-styles';
-import {TextInput, TouchableOpacity, View, StyleSheet, Dimensions} from 'react-native';
-import {lightGray} from '../constants/style-variables';
+import {Dimensions, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 
-const styles = StyleSheet.create({
-    teamView: {
-        padding: 10,
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        width: Dimensions.get('screen').width / 2,
-    },
-    topRowView: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        width: Dimensions.get('screen').width / 2
-    },
-    buttonWrapper: {
-        height: Dimensions.get('screen').width / 4,
-        width: Dimensions.get('screen').width / 4,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: lightGray,
-        borderWidth: 1,
-        top: 0
-    }
-});
+import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+import {getLightTextColor} from '../constants/style-service';
 
 export default class CurrentRound extends Component {
     constructor(props) {
@@ -41,12 +16,43 @@ export default class CurrentRound extends Component {
         };
     }
 
+    _getStyles = () => StyleSheet.create({
+        buttonWrapper: {
+            alignItems: 'center',
+            borderColor: getLightTextColor(this.props.theme),
+            borderWidth: 1,
+            height: Dimensions.get('screen').width / 4,
+            justifyContent: 'center',
+            top: 0,
+            width: Dimensions.get('screen').width / 4
+        },
+        teamView: {
+            alignItems: 'center',
+            flexDirection: 'column',
+            justifyContent: 'space-evenly',
+            padding: 10,
+            width: Dimensions.get('screen').width / 2
+        },
+        text: {
+            color: getLightTextColor(this.props.theme),
+            fontSize: 20,
+            fontWeight: '600'
+        },
+        topRowView: {
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            width: Dimensions.get('screen').width / 2
+        }
+    });
+
     render() {
         const {actions, currRound} = this.props;
+        const styles = this._getStyles();
 
         return (
             <View style={{flexDirection: 'row'}}>
-                <View style={[styles.teamView]}>
+                <View style={styles.teamView}>
                     <View style={styles.topRowView}>
                         <TouchableOpacity
                             onPress={() => this.state.player1Input.focus()}
@@ -54,14 +60,14 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.medium}
+                                keyboardType={'number-pad'}
                                 onChangeText={(bid) => actions.submitValue(bid, ONE)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player1Input = input;
                                 }}
+                                style={styles.text}
                                 value={`${currRound.player1Bid}`}
-                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -70,14 +76,14 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.medium}
+                                keyboardType={'number-pad'}
                                 onChangeText={(bid) => actions.submitValue(bid, TWO)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player2Input = input;
                                 }}
+                                style={styles.text}
                                 value={`${currRound.player2Bid}`}
-                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                     </View>
@@ -90,14 +96,14 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.medium}
+                                keyboardType={'number-pad'}
                                 onChangeText={(bid) => actions.submitValue(bid, THREE)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player3Input = input;
                                 }}
+                                style={styles.text}
                                 value={`${currRound.player3Bid}`}
-                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -106,14 +112,14 @@ export default class CurrentRound extends Component {
                         >
                             <TextInput
                                 clearTextOnFocus
-                                style={lightFontStyles.medium}
+                                keyboardType={'number-pad'}
                                 onChangeText={(bid) => actions.submitValue(bid, FOUR)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player4Input = input;
                                 }}
+                                style={styles.text}
                                 value={`${currRound.player4Bid}`}
-                                keyboardType={'number-pad'}
                             />
                         </TouchableOpacity>
                     </View>

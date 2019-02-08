@@ -1,26 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
-import {lightFontStyles} from '../constants/font-styles';
-import {lightBlue, peach} from '../constants/style-variables';
 
-const styles = StyleSheet.create({
-    currentRoundScoreWrapper: {
-        alignItems: 'flex-start',
-        width: Dimensions.get('screen').width / 6,
-    },
-    currentRoundWrapper: {
-        alignItems: 'flex-end',
-        flexDirection: 'column',
-        height: '70%',
-        justifyContent: 'space-evenly',
-        width: Dimensions.get('screen').width / 4,
-    },
-    centeredRow: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        width: '100%'
-    }
-});
+import {getLightBlueOrWhite, getLightTextColor, getPeachOrWhite} from '../constants/style-service';
 
 export default class CurrentBids extends Component {
     shouldShowCurrBids = () => this.props.bids && !this.props.bids.team1Actual;
@@ -45,21 +26,56 @@ export default class CurrentBids extends Component {
         return 13 - (getBid(player1Bid) + getBid(player2Bid) + getBid(player3Bid) + getBid(player4Bid));
     };
 
+    _getStyles = () => StyleSheet.create({
+        centeredRow: {
+            flexDirection: 'row',
+            justifyContent: 'center',
+            width: '100%'
+        },
+        currentRoundScoreWrapper: {
+            alignItems: 'flex-start',
+            width: Dimensions.get('screen').width / 6
+        },
+        currentRoundWrapper: {
+            alignItems: 'flex-end',
+            flexDirection: 'column',
+            height: '70%',
+            justifyContent: 'space-evenly',
+            width: Dimensions.get('screen').width / 4
+        },
+        headerText: {
+            color: getLightTextColor(this.props.theme),
+            fontSize: 20,
+            fontWeight: '400'
+        },
+        team1Text: {
+            color: getPeachOrWhite(this.props.theme),
+            fontSize: 20,
+            fontWeight: '400'
+        },
+        team2Text: {
+            color: getLightBlueOrWhite(this.props.theme),
+            fontSize: 20,
+            fontWeight: '400'
+        }
+    });
+
     render() {
         const {
             team1,
             team2,
             bids
         } = this.props;
+        const styles = this._getStyles();
 
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View
-                    style={{flex: 1}}
                     keyboardShouldPersistTaps={'never'}
+                    style={{flex: 1}}
                 >
                     <View style={[styles.centeredRow, {padding: 20}]}>
-                        <Text style={lightFontStyles.medium}>
+                        <Text style={[styles.headerText, {fontWeight: '600'}]}>
                             {`Available Bags: ${this.getBags()}`}
                         </Text>
                     </View>
@@ -67,53 +83,55 @@ export default class CurrentBids extends Component {
                         this.shouldShowCurrBids() &&
                         <View style={{flex: 1}}>
                             <View style={styles.centeredRow}>
-                                <Text style={lightFontStyles.medium}>{'Bids'}</Text>
+                                <Text style={styles.headerText}>{'Bids'}</Text>
                             </View>
-                            <View style={{
-                                flexDirection: 'row',
-                                justifyContent: 'space-between'
-                            }}>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between'
+                                }}
+                            >
                                 <View style={styles.currentRoundWrapper}>
-                                    <Text style={[lightFontStyles.regular, {color: peach}]}>
+                                    <Text style={styles.team1Text}>
                                         {`${team1.firstPlayer}: `}
                                     </Text>
-                                    <Text style={[lightFontStyles.regular, {color: peach}]}>
+                                    <Text style={styles.team1Text}>
                                         {`${team1.secondPlayer}: `}
                                     </Text>
-                                    <Text style={[lightFontStyles.regular, {color: peach}]}>
+                                    <Text style={styles.team1Text}>
                                         {'Total: '}
                                     </Text>
                                 </View>
                                 <View style={[styles.currentRoundWrapper, styles.currentRoundScoreWrapper]}>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={styles.team1Text}>
                                         {bids.playerOne.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={styles.team1Text}>
                                         {bids.playerTwo.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={styles.team1Text}>
                                         {bids.team1Bids}
                                     </Text>
                                 </View>
                                 <View style={styles.currentRoundWrapper}>
-                                    <Text style={[lightFontStyles.regular, {color: lightBlue}]}>
+                                    <Text style={styles.team2Text}>
                                         {`${team2.firstPlayer}: `}
                                     </Text>
-                                    <Text style={[lightFontStyles.regular, {color: lightBlue}]}>
+                                    <Text style={styles.team2Text}>
                                         {`${team2.secondPlayer}: `}
                                     </Text>
-                                    <Text style={[lightFontStyles.regular, {color: lightBlue}]}>
+                                    <Text style={styles.team2Text}>
                                         {'Total: '}
                                     </Text>
                                 </View>
                                 <View style={[styles.currentRoundWrapper, styles.currentRoundScoreWrapper]}>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={styles.team2Text}>
                                         {bids.playerThree.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={styles.team2Text}>
                                         {bids.playerFour.bid}
                                     </Text>
-                                    <Text style={lightFontStyles.regular}>
+                                    <Text style={styles.team2Text}>
                                         {bids.team2Bids}
                                     </Text>
                                 </View>

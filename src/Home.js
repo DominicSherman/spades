@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView, View, StyleSheet} from 'react-native';
 
 import {withRedux} from './redux/redux-factory';
 import Header from './components/Header';
@@ -18,6 +18,18 @@ class Home extends React.Component {
         }
     }
 
+    _getStyles = () => StyleSheet.create({
+        safeArea: {
+            backgroundColor: getHeaderFooterColor(this.props.theme),
+            flex: 1
+        },
+        wrapper: {
+            backgroundColor: getBackgroundColor(this.props.theme),
+            flex: 0.85,
+            paddingBottom: '5%'
+        }
+    });
+
     render() {
         const {
             actions,
@@ -31,17 +43,15 @@ class Home extends React.Component {
             theme,
             showSettingsModal
         } = this.props;
+        const styles = this._getStyles();
 
         return (
-            <SafeAreaView style={{
-                backgroundColor: getHeaderFooterColor(theme),
-                flex: 1
-            }}>
-                <View style={{
-                    backgroundColor: getBackgroundColor(theme),
-                    flex: 0.85,
-                    paddingBottom: '5%'
-                }}>
+            <SafeAreaView
+                style={styles.safeArea}
+            >
+                <View
+                    style={styles.wrapper}
+                >
                     <Header
                         actions={actions}
                         isBids={isBids}
@@ -49,21 +59,23 @@ class Home extends React.Component {
                     />
                     <Players
                         actions={actions}
-                        team1={team1}
-                        team2={team2}
                         rounds={rounds}
                         shouldShowHistory={shouldShowHistory}
+                        team1={team1}
+                        team2={team2}
                         theme={theme}
                     />
                     <CurrentRound
                         actions={actions}
                         currRound={currRound}
+                        theme={theme}
                     />
                     <CurrentBids
-                        currRound={currRound}
                         bids={rounds[0]}
+                        currRound={currRound}
                         team1={team1}
                         team2={team2}
+                        theme={theme}
                     />
                     <ShowHistoryButton
                         actions={actions}
@@ -73,9 +85,9 @@ class Home extends React.Component {
                 </View>
                 <Footer
                     actions={actions}
+                    isBids={isBids}
                     showInfoModal={showInfoModal}
                     showSettingsModal={showSettingsModal}
-                    isBids={isBids}
                     theme={theme}
                 />
                 <HistoryModal {...this.props} />

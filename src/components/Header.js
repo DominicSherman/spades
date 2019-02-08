@@ -1,23 +1,25 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+
+import {getHeaderFooterColor, getHeaderLogo} from '../constants/style-service';
+
 import RestartButton from './RestartButton';
 import UndoButton from './UndoButton';
-import {getHeaderFooterColor, getHeaderLogo} from '../constants/style-service';
 
 export default class Header extends React.Component {
     _getStyles = () => StyleSheet.create({
+        headerText: {
+            fontSize: 22
+        },
         headerView: {
             alignItems: 'center',
             backgroundColor: getHeaderFooterColor(this.props.theme),
-            height: '14%',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
+            borderBottomLeftRadius: 25,
             borderBottomRightRadius: 25,
-            borderBottomLeftRadius: 25
-        },
-        headerText: {
-            fontSize: 22,
+            flexDirection: 'row',
+            height: '14%',
+            justifyContent: 'space-between',
+            width: '100%'
         },
         image: {
             height: '100%',

@@ -1,33 +1,43 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, Dimensions} from 'react-native';
-import {lightFontStyles} from '../constants/font-styles';
-import {lightGray} from '../constants/style-variables';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 
-const styles = StyleSheet.create({
-    teamView: {
-        padding: 10,
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        width: Dimensions.get('screen').width / 2,
-    },
-    actualView: {
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        width: Dimensions.get('screen').width / 2
-    },
-    rowView: {
-        borderBottomColor: lightGray,
-        borderBottomWidth: 1,
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        width: Dimensions.get('screen').width / 2
-    }
-});
+import {getLightTextColor} from '../constants/style-service';
 
 export default class SingleRound extends Component {
+    _getStyles = () => StyleSheet.create({
+        actualView: {
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            padding: 10,
+            width: Dimensions.get('screen').width / 2
+        },
+        rowView: {
+            borderBottomColor: getLightTextColor(this.props.theme),
+            borderBottomWidth: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            padding: 10,
+            width: Dimensions.get('screen').width / 2
+        },
+        scoreText: {
+            color: getLightTextColor(this.props.theme),
+            fontSize: 20,
+            fontWeight: '400'
+        },
+        teamView: {
+            alignItems: 'center',
+            flexDirection: 'column',
+            justifyContent: 'space-evenly',
+            padding: 10,
+            width: Dimensions.get('screen').width / 2
+        },
+        text: {
+            color: getLightTextColor(this.props.theme),
+            fontSize: 20,
+            fontWeight: '200'
+        }
+    });
+
     render() {
         const {
             playerOne,
@@ -36,28 +46,31 @@ export default class SingleRound extends Component {
             playerFour,
             score
         } = this.props.item;
+        const styles = this._getStyles();
 
         return (
             <View style={{flex: 1}}>
                 {playerOne.actual !== null && playerOne.actual !== undefined ?
                     <View>
-                        <View style={{
-                            flexDirection: 'row',
-                            justifyContent: 'center'
-                        }}>
-                            <Text style={lightFontStyles.medium}>{`${score.score1} - ${score.score2}`}</Text>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            <Text style={styles.scoreText}>{`${score.score1} - ${score.score2}`}</Text>
                         </View>
                         <View style={{flexDirection: 'row'}}>
                             <View style={styles.teamView}>
                                 <View style={styles.actualView}>
-                                    <Text style={lightFontStyles.light}>{`${playerOne.actual}`}</Text>
-                                    <Text style={lightFontStyles.light}>{`${playerTwo.actual}`}</Text>
+                                    <Text style={styles.text}>{`${playerOne.actual}`}</Text>
+                                    <Text style={styles.text}>{`${playerTwo.actual}`}</Text>
                                 </View>
                             </View>
                             <View style={styles.teamView}>
                                 <View style={styles.actualView}>
-                                    <Text style={lightFontStyles.light}>{`${playerThree.actual}`}</Text>
-                                    <Text style={lightFontStyles.light}>{`${playerFour.actual}`}</Text>
+                                    <Text style={styles.text}>{`${playerThree.actual}`}</Text>
+                                    <Text style={styles.text}>{`${playerFour.actual}`}</Text>
                                 </View>
                             </View>
                         </View>
@@ -68,18 +81,18 @@ export default class SingleRound extends Component {
                 <View style={{flexDirection: 'row'}}>
                     <View style={styles.teamView}>
                         <View style={styles.rowView}>
-                            <Text style={lightFontStyles.light}>{playerOne.bid}</Text>
-                            <Text style={lightFontStyles.light}>{playerTwo.bid}</Text>
+                            <Text style={styles.text}>{playerOne.bid}</Text>
+                            <Text style={styles.text}>{playerTwo.bid}</Text>
                         </View>
                     </View>
                     <View style={styles.teamView}>
                         <View style={styles.rowView}>
-                            <Text style={lightFontStyles.light}>{playerThree.bid}</Text>
-                            <Text style={lightFontStyles.light}>{playerFour.bid}</Text>
+                            <Text style={styles.text}>{playerThree.bid}</Text>
+                            <Text style={styles.text}>{playerFour.bid}</Text>
                         </View>
                     </View>
                 </View>
             </View>
         );
     }
-};
+}

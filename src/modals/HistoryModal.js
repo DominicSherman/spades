@@ -3,22 +3,23 @@ import {FlatList, Modal, SafeAreaView, StyleSheet} from 'react-native';
 import SingleRound from '../components/SingleRound';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Players from '../components/Players';
-import {getBackgroundColor} from '../constants/style-service';
+import {getBackgroundColor, getDarkTextColor} from '../constants/style-service';
 
 export default class HistoryModal extends Component {
     _getStyles = () => StyleSheet.create({
-        wrapper: {
-            flex: 1,
-            paddingTop: '11%',
-            backgroundColor: getBackgroundColor(this.props.theme)
-        },
-        icon: {
-            left: '3%'
-        },
         flatList: {
             flex: 1,
             height: '100%',
             paddingTop: '3%'
+        },
+        icon: {
+            color: getDarkTextColor(this.props.theme),
+            left: '3%'
+        },
+        wrapper: {
+            backgroundColor: getBackgroundColor(this.props.theme),
+            flex: 1,
+            paddingTop: '11%'
         }
     });
 
@@ -33,17 +34,17 @@ export default class HistoryModal extends Component {
             >
                 <SafeAreaView style={styles.wrapper}>
                     <EvilIcons
-                        onPress={actions.toggleShowHistory}
                         name={'close'}
+                        onPress={actions.toggleShowHistory}
                         size={30}
                         style={styles.icon}
                     />
                     <Players
                         actions={actions}
-                        team1={team1}
-                        team2={team2}
                         rounds={rounds}
                         shouldShowHistory={shouldShowHistory}
+                        team1={team1}
+                        team2={team2}
                         theme={theme}
                     />
                     <FlatList
@@ -52,6 +53,7 @@ export default class HistoryModal extends Component {
                         renderItem={({item}) => (
                             <SingleRound
                                 item={item}
+                                theme={theme}
                             />
                         )}
                         style={styles.flatList}

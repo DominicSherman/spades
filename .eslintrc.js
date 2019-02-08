@@ -8,6 +8,7 @@ module.exports = {
         'react/prefer-stateless-function': 0,
         'jest/consistent-test-it': 0,
         'react/no-set-state': 0,
+        'react/no-direct-mutation-state': 0,
         'react/no-did-mount-set-state': 0,
         'react/no-did-update-set-state': 0,
         'react/no-access-state-in-setstate': 0,
