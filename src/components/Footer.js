@@ -3,8 +3,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import LinearGradient from 'react-native-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
-import {shadow} from '../constants/shadow-styles';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+
+import {shadow} from '../constants/shadow-styles';
 import InstructionsModal from '../modals/InstructionsModal';
 import SettingsModal from '../modals/SettingsModal';
 import {
@@ -17,65 +18,63 @@ import {
 
 export default class Footer extends Component {
     _getStyles = () => StyleSheet.create({
-        text: {
-            color: getHeaderFooterTextColor(this.props.theme),
-            fontSize: 20,
-            fontWeight: '800',
+        diamond: {
+            backgroundColor: getHeaderFooterColor(this.props.theme),
+            borderRadius: 4,
+            height: 120,
             position: 'absolute',
-            top: 70,
-            fontFamily: 'ArialRoundedMTBold'
-        },
-        iconBackground: {
             top: -10,
             transform: [{rotate: '45deg'}],
-            width: 60,
-            height: 60,
-            borderRadius: 4,
-            position: 'absolute'
+            width: 120
         },
         icon: {
-            top: -15,
             position: 'absolute',
+            top: -15,
             ...shadow
         },
-        diamond: {
+        iconBackground: {
+            borderRadius: 4,
+            height: 60,
+            position: 'absolute',
             top: -10,
             transform: [{rotate: '45deg'}],
-            width: 120,
-            height: 120,
-            borderRadius: 4,
-            position: 'absolute',
-            backgroundColor: getHeaderFooterColor(this.props.theme)
+            width: 60
         },
         infoWrapper: {
-            flexDirection: 'row',
-            justifyContent: 'center',
             alignItems: 'center',
-            flex: 1
-        },
-        infoIcon: {
-            paddingRight: '40%'
-        },
-        settingsIcon: {
-            paddingLeft: '40%'
+            flex: 0.5,
+            flexDirection: 'row',
+            justifyContent: 'center'
         },
         settingsWrapper: {
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
             alignItems: 'center',
+            flex: 0.5,
+            flexDirection: 'row',
+            justifyContent: 'center'
+        },
+        submitTouchable: {
             flex: 1
         },
         submitWrapper: {
             alignItems: 'center',
+            flex: 1,
             flexDirection: 'column',
-            justifyContent: 'center',
-            flex: 1
+            justifyContent: 'center'
+        },
+        text: {
+            color: getHeaderFooterTextColor(this.props.theme),
+            fontFamily: 'ArialRoundedMTBold',
+            fontSize: 18,
+            fontWeight: '800',
+            position: 'absolute',
+            top: 70
         },
         wrapper: {
+            backgroundColor: getHeaderFooterColor(this.props.theme),
             bottom: 0,
             flex: 0.15,
-            backgroundColor: getHeaderFooterColor(this.props.theme),
-            flexDirection: 'row'
+            flexDirection: 'row',
+            justifyContent: 'space-between'
         }
     });
 
@@ -91,21 +90,27 @@ export default class Footer extends Component {
                     style={styles.infoWrapper}
                 >
                     <EvilIcons
-                        size={50}
-                        name={'question'}
                         color={getIconColor(theme)}
-                        style={styles.infoIcon}
+                        name={'question'}
+                        size={50}
                     />
                 </Touchable>
                 <Touchable
                     onPress={actions.submit}
+                    style={styles.submitTouchable}
                 >
                     <View style={styles.submitWrapper}>
-                        <View style={styles.diamond}/>
+                        <View style={styles.diamond} />
                         <LinearGradient
-                            start={{x: 0, y: 0}}
-                            end={{x: 1, y: 0}}
                             colors={getBlueOrWhiteGradient(theme)}
+                            end={{
+                                x: 1,
+                                y: 0
+                            }}
+                            start={{
+                                x: 0,
+                                y: 0
+                            }}
                             style={styles.iconBackground}
                         />
                         <Feather
@@ -119,25 +124,24 @@ export default class Footer extends Component {
                 </Touchable>
                 <Touchable
                     onPress={actions.toggleShowSettingsModal}
-                    style={styles.infoWrapper}
+                    style={styles.settingsWrapper}
                 >
                     <EvilIcons
-                        size={50}
-                        name={'gear'}
                         color={getIconColor(theme)}
-                        style={styles.settingsIcon}
+                        name={'gear'}
+                        size={50}
                     />
                 </Touchable>
                 <InstructionsModal
-                    showInfoModal={showInfoModal}
                     onClose={actions.toggleShowInfoModal}
+                    showInfoModal={showInfoModal}
                     theme={theme}
                 />
                 <SettingsModal
                     actions={actions}
-                    theme={theme}
-                    showSettingsModal={showSettingsModal}
                     onClose={actions.toggleShowSettingsModal}
+                    showSettingsModal={showSettingsModal}
+                    theme={theme}
                 />
             </View>
         );
