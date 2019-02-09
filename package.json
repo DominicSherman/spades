@@ -6,11 +6,19 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "test": "jest",
+    "lint": "eslint . --ext .json --ext .js",
+    "test": "yarn lint && yarn coverage",
+    "coverage": "jest --coverage",
     "fix": "cd node_modules/react-native/scripts && ./ios-install-third-party.sh && cd ../../../ && cd node_modules/react-native/third-party/glog-0.3.4/ && ../../scripts/ios-configure-glog.sh && cd ../../../../"
   },
   "dependencies": {
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "chance": "^1.0.18",
+    "eslint": "4.19.1",
+    "eslint-config-get-off-my-lawn": "^4.0.1",
     "exp": "^55.0.5",
+    "jest": "^23.5.0",
+    "jest-react-native": "^18.0.0",
     "react": "16.3.1",
     "react-native": "~0.55.2",
     "react-native-linear-gradient": "^2.5.3",
@@ -18,15 +26,10 @@
     "react-native-scripts": "^2.0.1",
     "react-native-vector-icons": "^4.6.0",
     "react-redux": "^5.0.7",
+    "react-test-renderer": "16.3.1",
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0",
-    "eslint": "4.19.1",
-    "eslint-config-get-off-my-lawn": "^4.0.1",
-    "jest": "^23.5.0",
-    "babel-preset-react-native-stage-0": "^1.0.1",
-    "jest-react-native": "^18.0.0",
-    "react-test-renderer": "16.3.1"
+    "redux-thunk": "^2.3.0"
   },
   "jest": {
     "coverageDirectory": ".coverage",

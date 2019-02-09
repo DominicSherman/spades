@@ -6,7 +6,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import {DARK, GRAY, LIGHT, MINT_GREEN, SEA_FOAM, VOLT_BLUE} from '../constants/enum';
 import {getBackgroundColor, getDarkTextColor} from '../constants/style-service';
-import {green, lightGray, mintGreen, seaFoam, voltBlue} from '../constants/style-variables';
+import {black, green, lightGray, mintGreen, seaFoam, voltBlue} from '../constants/style-variables';
 
 export default class SettingsModal extends Component {
     _getStyles = () => StyleSheet.create({
@@ -28,7 +28,7 @@ export default class SettingsModal extends Component {
         },
         icon: {
             color: getDarkTextColor(this.props.theme),
-            left: '3%',
+            left: '3%'
         },
         optionsWrapper: {
             alignItems: 'flex-start',
@@ -41,7 +41,7 @@ export default class SettingsModal extends Component {
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'flex-start',
-            width: '28%'
+            width: '29%'
         },
         secondWrapper: {
             alignItems: 'center',
@@ -125,6 +125,16 @@ export default class SettingsModal extends Component {
                                         <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Gray'}</Text>
                                     </View>
                                 </Touchable>
+                                <Touchable onPress={() => actions.setColor(black)}>
+                                    <View style={styles.optionWrapper}>
+                                        <Feather
+                                            color={this._getIconColor(black)}
+                                            name={this._getIconName(black)}
+                                            size={20}
+                                        />
+                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Black'}</Text>
+                                    </View>
+                                </Touchable>
                                 <Touchable onPress={() => actions.setColor(seaFoam)}>
                                     <View style={styles.optionWrapper}>
                                         <Feather
@@ -132,7 +142,7 @@ export default class SettingsModal extends Component {
                                             name={this._getIconName(seaFoam)}
                                             size={20}
                                         />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Sea foam'}</Text>
+                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Sea Foam'}</Text>
                                     </View>
                                 </Touchable>
                                 <Touchable onPress={() => actions.setColor(mintGreen)}>
@@ -142,7 +152,7 @@ export default class SettingsModal extends Component {
                                             name={this._getIconName(mintGreen)}
                                             size={20}
                                         />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Mint green'}</Text>
+                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Mint Green'}</Text>
                                     </View>
                                 </Touchable>
                                 <Touchable onPress={() => actions.setColor(voltBlue)}>
@@ -152,7 +162,7 @@ export default class SettingsModal extends Component {
                                             name={this._getIconName(voltBlue)}
                                             size={20}
                                         />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Volt blue'}</Text>
+                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Volt Blue'}</Text>
                                     </View>
                                 </Touchable>
                             </View>
