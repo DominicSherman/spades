@@ -1,8 +1,10 @@
-export const ONE = 1;
-export const TWO = 2;
-export const THREE = 3;
-export const FOUR = 4;
+export const PLAYER_ONE = 1;
+export const PLAYER_TWO = 2;
+export const PLAYER_THREE = 3;
+export const PLAYER_FOUR = 4;
 export const NAME = 'NAME';
 export const BID = 'BID';
 export const DARK = 'DARK';
 export const LIGHT = 'LIGHT';
+export const TEAM_ONE = 'TEAM_ONE';
+export const TEAM_TWO = 'TEAM_TWO';

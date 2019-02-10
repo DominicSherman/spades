@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/enum';
 import {shadow} from '../constants/shadow-styles';
 import {
     getBlueOrWhiteGradient,
@@ -78,7 +78,7 @@ export default class Players extends Component {
                             <View style={styles.singleColumn}>
                                 <TextInput
                                     clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, ONE)}
+                                    onChangeText={(name) => actions.setName(name, PLAYER_ONE)}
                                     placeholder={'Player 1'}
                                     style={styles.nameText}
                                     value={team1.firstPlayer}
@@ -87,7 +87,7 @@ export default class Players extends Component {
                             <View style={styles.singleColumn}>
                                 <TextInput
                                     clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, TWO)}
+                                    onChangeText={(name) => actions.setName(name, PLAYER_TWO)}
                                     placeholder={'Player 2'}
                                     style={styles.nameText}
                                     value={team1.secondPlayer}
@@ -112,7 +112,7 @@ export default class Players extends Component {
                             <View style={styles.singleColumn}>
                                 <TextInput
                                     clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, THREE)}
+                                    onChangeText={(name) => actions.setName(name, PLAYER_THREE)}
                                     placeholder={'Player 3'}
                                     style={styles.nameText}
                                     value={team2.firstPlayer}
@@ -121,7 +121,7 @@ export default class Players extends Component {
                             <View style={styles.singleColumn}>
                                 <TextInput
                                     clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, FOUR)}
+                                    onChangeText={(name) => actions.setName(name, PLAYER_FOUR)}
                                     placeholder={'Player 4'}
                                     style={styles.nameText}
                                     value={team2.secondPlayer}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 
-import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/enum';
 import {getLightTextColor} from '../services/style-service';
 
 export default class CurrentRound extends Component {
@@ -61,7 +61,7 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, ONE)}
+                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_ONE)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player1Input = input;
@@ -77,7 +77,7 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, TWO)}
+                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_TWO)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player2Input = input;
@@ -97,7 +97,7 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, THREE)}
+                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_THREE)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player3Input = input;
@@ -113,7 +113,7 @@ export default class CurrentRound extends Component {
                             <TextInput
                                 clearTextOnFocus
                                 keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, FOUR)}
+                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_FOUR)}
                                 placeholder={'0'}
                                 ref={(input) => {
                                     this.state.player4Input = input;

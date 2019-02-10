@@ -1,7 +1,7 @@
 import {Alert} from 'react-native';
 
-import {FOUR, ONE, THREE, TWO} from '../constants/enum';
-import {calculateScore} from '../services/score-service';
+import {TEAM_ONE, TEAM_TWO} from '../constants/enum';
+import {calculateScore, getSetBidAction, getSetNameAction, getTeamTotal} from '../services/score-service';
 
 import {
     ADD_BIDS,
@@ -9,14 +9,6 @@ import {
     RESTART,
     SET_COLOR,
     SET_IS_BIDS,
-    SET_PLAYER_FOUR_BID,
-    SET_PLAYER_FOUR_NAME,
-    SET_PLAYER_ONE_BID,
-    SET_PLAYER_ONE_NAME,
-    SET_PLAYER_THREE_BID,
-    SET_PLAYER_THREE_NAME,
-    SET_PLAYER_TWO_BID,
-    SET_PLAYER_TWO_NAME,
     SET_ROUNDS,
     SET_TEAM_ONE_BAGS,
     SET_TEAM_ONE_SCORE,
@@ -31,12 +23,7 @@ import {
 } from './action-types';
 
 export const calculateTeamScore = (rounds) => (dispatch) => {
-    const {
-        bags1,
-        bags2,
-        score1,
-        score2
-    } = calculateScore(rounds);
+    const {bags1, bags2, score1, score2} = calculateScore(rounds);
 
     dispatch({
         data: score1,
@@ -59,22 +46,13 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
     });
 };
 
-const submitBids = (roundBids) => (dispatch) => {
-    let team1Total = Number(roundBids.player1Bid) + Number(roundBids.player2Bid),
-        team2Total = Number(roundBids.player3Bid) + Number(roundBids.player4Bid);
-
-    if (Number(roundBids.player1Bid) === 100 || Number(roundBids.player2Bid) === 100) {
-        team1Total -= 100;
-    }
-
-    if (Number(roundBids.player3Bid) === 100 || Number(roundBids.player4Bid) === 100) {
-        team2Total -= 100;
-    }
+const submitBids = () => (dispatch, getState) => {
+    const {currRound} = getState();
 
     const roundWithTotals = {
-        ...roundBids,
-        team1Total,
-        team2Total
+        ...currRound,
+        team1Total: getTeamTotal(currRound, TEAM_ONE),
+        team2Total: getTeamTotal(currRound, TEAM_TWO)
     };
 
     dispatch({
@@ -92,31 +70,30 @@ const submitBids = (roundBids) => (dispatch) => {
     });
 };
 
-const submitActuals = (roundActual) => (dispatch, getState) => {
-    const team1Actual = Number(roundActual.player1Bid) + Number(roundActual.player2Bid);
-    const team2Actual = Number(roundActual.player3Bid) + Number(roundActual.player4Bid);
+const submitActuals = () => (dispatch, getState) => {
+    const {currRound, rounds} = getState();
+
+    const team1Actual = getTeamTotal(currRound, TEAM_ONE);
+    const team2Actual = getTeamTotal(currRound, TEAM_TWO);
 
     if (team1Actual + team2Actual === 13) {
-        const {rounds} = getState();
-
         const updatedRounds = [{
             ...rounds[0],
-            playerOne: {
-                ...rounds[0].playerOne,
-                actual: Number(roundActual.player1Bid)
-            },
-            playerTwo:
-                {
-                    ...rounds[0].playerTwo,
-                    actual: Number(roundActual.player2Bid)
-                },
-            playerThree: {
-                ...rounds[0].playerThree,
-                actual: Number(roundActual.player3Bid)
-            },
             playerFour: {
                 ...rounds[0].playerFour,
-                actual: Number(roundActual.player4Bid)
+                actual: Number(currRound.player4Bid)
+            },
+            playerOne: {
+                ...rounds[0].playerOne,
+                actual: Number(currRound.player1Bid)
+            },
+            playerThree: {
+                ...rounds[0].playerThree,
+                actual: Number(currRound.player3Bid)
+            },
+            playerTwo: {
+                ...rounds[0].playerTwo,
+                actual: Number(currRound.player2Bid)
             },
             team1Actual,
             team2Actual
@@ -141,62 +118,24 @@ const submitActuals = (roundActual) => (dispatch, getState) => {
 };
 
 export const submit = () => (dispatch, getState) => {
-    const {isBids, currRound} = getState();
+    const {isBids} = getState();
 
     if (isBids) {
-        submitBids(currRound)(dispatch, getState);
+        submitBids()(dispatch, getState);
     } else {
-        submitActuals(currRound)(dispatch, getState);
+        submitActuals()(dispatch, getState);
     }
 };
 
-export const setName = (name, player) => (dispatch) => {
-    if (player === ONE) {
-        dispatch({
-            data: name,
-            type: SET_PLAYER_ONE_NAME
-        });
-    } else if (player === TWO) {
-        dispatch({
-            data: name,
-            type: SET_PLAYER_TWO_NAME
-        });
-    } else if (player === THREE) {
-        dispatch({
-            data: name,
-            type: SET_PLAYER_THREE_NAME
-        });
-    } else if (player === FOUR) {
-        dispatch({
-            data: name,
-            type: SET_PLAYER_FOUR_NAME
-        });
-    }
-};
+export const setName = (name, player) => ({
+    data: name,
+    type: getSetNameAction[player]
+});
 
-export const submitValue = (bid, player) => (dispatch) => {
-    if (player === ONE) {
-        dispatch({
-            data: bid,
-            type: SET_PLAYER_ONE_BID
-        });
-    } else if (player === TWO) {
-        dispatch({
-            data: bid,
-            type: SET_PLAYER_TWO_BID
-        });
-    } else if (player === THREE) {
-        dispatch({
-            data: bid,
-            type: SET_PLAYER_THREE_BID
-        });
-    } else if (player === FOUR) {
-        dispatch({
-            data: bid,
-            type: SET_PLAYER_FOUR_BID
-        });
-    }
-};
+export const submitValue = (bid, player) => ({
+    data: bid,
+    type: getSetBidAction[player]
+});
 
 export const restart = () => (dispatch) => Alert.alert(
     'Are you sure you want to restart?',
@@ -243,11 +182,11 @@ export const toggleShowSettingsModal = () => ({
 });
 
 export const setTheme = (theme) => ({
-    type: SET_THEME,
-    data: theme
+    data: theme,
+    type: SET_THEME
 });
 
 export const setColor = (color) => ({
-    type: SET_COLOR,
-    data: color
+    data: color,
+    type: SET_COLOR
 });

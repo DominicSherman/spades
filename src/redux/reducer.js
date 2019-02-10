@@ -71,17 +71,17 @@ const setIsBids = (state, isBids) => ({
 const addBids = (state, bids) => ({
     ...state,
     rounds: [{
+        playerFour: {
+            bid: Number(bids.player4Bid)
+        },
         playerOne: {
             bid: Number(bids.player1Bid)
-        },
-        playerTwo: {
-            bid: Number(bids.player2Bid)
         },
         playerThree: {
             bid: Number(bids.player3Bid)
         },
-        playerFour: {
-            bid: Number(bids.player4Bid)
+        playerTwo: {
+            bid: Number(bids.player2Bid)
         },
         team1Bids: Number(bids.team1Total),
         team2Bids: Number(bids.team2Total)
