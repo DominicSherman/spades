@@ -1,30 +1,63 @@
-import React from 'react';
+import Chance from 'chance';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import {SafeAreaView, View} from 'react-native';
+import React from 'react';
+import {SafeAreaView} from 'react-native';
 
-import Home from '../src/Home';
+import {withRedux} from '../src/redux/redux-factory';
+import {calculateTeamScore} from '../src/redux/action-creators';
+
+jest.mock('../src/redux/redux-factory');
+jest.mock('../src/constants/style-service');
+
+const chance = new Chance();
 
 describe('Home', () => {
-    let expectedProps,
-
-        renderedComponent;
-
-    const cacheChildren = () => {};
+    let Home,
+        renderedComponent,
+        renderedInstance,
+        expectedProps;
 
     const renderComponent = () => {
+        require('../src/Home');
+        Home = withRedux.mock.calls[0][0];
+
         const shallowRenderer = ShallowRenderer.createRenderer();
 
         shallowRenderer.render(<Home {...expectedProps} />);
 
         renderedComponent = shallowRenderer.getRenderOutput();
-
-        cacheChildren();
+        renderedInstance = shallowRenderer.getMountedInstance();
     };
 
     beforeEach(() => {
-        expectedProps = {};
+        expectedProps = {
+            actions: {
+                calculateTeamScore: jest.fn()
+            },
+            rounds: chance.string()
+        };
 
         renderComponent();
+    });
+
+    describe('componentDidUpdate', () => {
+        it('should calculate the score if the rounds have changed', () => {
+            const prevProps = {
+                ...expectedProps,
+                rounds: chance.string()
+            };
+
+            renderedInstance.componentDidUpdate(prevProps);
+
+            expect(expectedProps.actions.calculateTeamScore).toHaveBeenCalledTimes(1);
+            expect(expectedProps.actions.calculateTeamScore).toHaveBeenCalledWith(expectedProps.rounds);
+        });
+
+        it('should **not** calculate the score if the rounds have not changed', () => {
+            renderedInstance.componentDidUpdate(expectedProps);
+
+            expect(expectedProps.actions.calculateTeamScore).not.toHaveBeenCalled();
+        });
     });
 
     it('should render a root SafeAreaView', () => {

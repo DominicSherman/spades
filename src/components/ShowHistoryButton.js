@@ -1,41 +1,41 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
+import LinearGradient from 'react-native-linear-gradient';
+
 import {shadow} from '../constants/shadow-styles';
 import {getBackgroundColor, getBlueOrWhiteGradient, getIconColor} from '../constants/style-service';
-import {peach} from '../constants/style-variables';
-import LinearGradient from 'react-native-linear-gradient';
 
 export default class ShowHistoryButton extends Component {
     _getStyles = () => StyleSheet.create({
+        showHistoryButton: {
+            alignItems: 'center',
+            backgroundColor: getIconColor(this.props.theme),
+            borderRadius: 100,
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            ...shadow
+        },
+        text: {
+            color: getBackgroundColor(this.props.theme),
+            fontFamily: 'ArialRoundedMTBold',
+            fontSize: 22,
+            fontWeight: '400'
+        },
+        touchable: {
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            width: '50%'
+        },
         wrapper: {
             alignItems: 'center',
             flex: 0.2,
             flexDirection: 'column',
             justifyContent: 'center',
-            width: '100%',
-            paddingBottom: '2%'
-        },
-        showHistoryButton: {
-            alignItems: 'center',
-            borderRadius: 100,
-            flexDirection: 'row',
-            flex: 1,
-            justifyContent: 'center',
-            backgroundColor: getIconColor(this.props.theme),
-            ...shadow
-        },
-        text: {
-            color: getBackgroundColor(this.props.theme),
-            fontSize: 22,
-            fontWeight: '400',
-            fontFamily: 'ArialRoundedMTBold'
-        },
-        touchable: {
-            justifyContent: 'center',
-            flexDirection: 'row',
-            width: '50%',
-            flex: 1
+            paddingBottom: '2%',
+            width: '100%'
         }
     });
 
@@ -45,13 +45,20 @@ export default class ShowHistoryButton extends Component {
 
         return (
             <View style={styles.wrapper}>
-                <Touchable onPress={toggleShowHistory}
+                <Touchable
+                    onPress={toggleShowHistory}
                     style={styles.touchable}
                 >
                     <LinearGradient
-                        start={{x: 0, y: 0}}
-                        end={{x: 1, y: 0}}
                         colors={getBlueOrWhiteGradient(theme)}
+                        end={{
+                            x: 1,
+                            y: 0
+                        }}
+                        start={{
+                            x: 0,
+                            y: 0
+                        }}
                         style={styles.showHistoryButton}
                     >
                         <Text style={styles.text}>{'Show History'}</Text>

@@ -1,8 +1,12 @@
+import {Alert} from 'react-native';
+
+import {FOUR, ONE, THREE, TWO} from '../constants/enum';
+
 import {
-    SET_ROUNDS,
     ADD_BIDS,
     RESET,
     RESTART,
+    SET_COLOR,
     SET_IS_BIDS,
     SET_PLAYER_FOUR_BID,
     SET_PLAYER_FOUR_NAME,
@@ -12,15 +16,18 @@ import {
     SET_PLAYER_THREE_NAME,
     SET_PLAYER_TWO_BID,
     SET_PLAYER_TWO_NAME,
+    SET_ROUNDS,
     SET_TEAM_ONE_BAGS,
     SET_TEAM_ONE_SCORE,
     SET_TEAM_TWO_BAGS,
     SET_TEAM_TWO_SCORE,
+    SET_THEME,
+    TOGGLE_SHOW_HISTORY,
+    TOGGLE_SHOW_INFO_MODAL,
+    TOGGLE_SHOW_SETTINGS_MODAL,
     UNDO_ACTUAL,
-    UNDO_BIDS, TOGGLE_SHOW_HISTORY, TOGGLE_SHOW_INFO_MODAL, SET_THEME, TOGGLE_SHOW_SETTINGS_MODAL, SET_COLOR
+    UNDO_BIDS
 } from './action-types';
-import {FOUR, ONE, THREE, TWO} from '../constants/enum';
-import {Alert} from 'react-native';
 
 const calculateScore = (rounds) => {
     let score1 = 0,
@@ -32,39 +39,39 @@ const calculateScore = (rounds) => {
         const {playerOne, playerTwo, playerThree, playerFour, team1Actual, team2Actual, team1Bids, team2Bids} = round;
 
         if (playerOne.actual !== null && playerOne.actual !== undefined) {
-            if ((!playerOne.bid && !playerOne.actual) || (!playerTwo.bid && !playerTwo.actual)) {
+            if (!playerOne.bid && !playerOne.actual || !playerTwo.bid && !playerTwo.actual) {
                 score1 += 100;
-            } else if ((!playerOne.bid && playerOne.actual) || (!playerTwo.bid && playerTwo.actual)) {
+            } else if (!playerOne.bid && playerOne.actual || !playerTwo.bid && playerTwo.actual) {
                 score1 -= 100;
             }
 
-            if ((playerOne.bid === 100 && !playerOne.actual) || (playerTwo.bid === 100 && !playerTwo.actual)) {
+            if (playerOne.bid === 100 && !playerOne.actual || playerTwo.bid === 100 && !playerTwo.actual) {
                 score1 += 200;
-            } else if ((playerOne.bid === 100 && playerOne.actual) || (playerTwo.bid === 100 && playerTwo.actual)) {
+            } else if (playerOne.bid === 100 && playerOne.actual || playerTwo.bid === 100 && playerTwo.actual) {
                 score1 -= 200;
             }
 
-            if ((!playerThree.bid && !playerThree.actual) || (!playerFour.bid && !playerFour.actual)) {
+            if (!playerThree.bid && !playerThree.actual || !playerFour.bid && !playerFour.actual) {
                 score2 += 100;
-            } else if ((!playerThree.bid && playerThree.actual) || (!playerFour.bid && playerFour.actual)) {
+            } else if (!playerThree.bid && playerThree.actual || !playerFour.bid && playerFour.actual) {
                 score2 -= 100;
             }
 
-            if ((playerThree.bid === 100 && !playerThree.actual) || (playerFour.bid === 100 && !playerFour.actual)) {
+            if (playerThree.bid === 100 && !playerThree.actual || playerFour.bid === 100 && !playerFour.actual) {
                 score2 += 200;
-            } else if ((playerThree.bid === 100 && playerThree.actual) || (playerFour.bid === 100 && playerFour.actual)) {
+            } else if (playerThree.bid === 100 && playerThree.actual || playerFour.bid === 100 && playerFour.actual) {
                 score2 -= 200;
             }
 
             if (team1Actual >= team1Bids) {
-                score1 += (10 * team1Bids) + (team1Actual - team1Bids);
-                bags1 += (team1Actual - team1Bids);
+                score1 += 10 * team1Bids + (team1Actual - team1Bids);
+                bags1 += team1Actual - team1Bids;
 
                 if (team1Bids >= 10 && team1Actual >= 10) {
                     score1 += 100;
                 }
             } else {
-                score1 -= (10 * team1Bids);
+                score1 -= 10 * team1Bids;
 
                 if (team1Bids >= 10) {
                     score1 -= 100;
@@ -72,14 +79,14 @@ const calculateScore = (rounds) => {
             }
 
             if (team2Actual >= team2Bids) {
-                score2 += (10 * team2Bids) + (team2Actual - team2Bids);
-                bags2 += (team2Actual - team2Bids);
+                score2 += 10 * team2Bids + (team2Actual - team2Bids);
+                bags2 += team2Actual - team2Bids;
 
                 if (team2Bids >= 10 && team2Actual >= 10) {
                     score2 += 100;
                 }
             } else {
-                score2 -= (10 * team2Bids);
+                score2 -= 10 * team2Bids;
 
                 if (team2Bids >= 10) {
                     score2 -= 100;
@@ -99,18 +106,19 @@ const calculateScore = (rounds) => {
     });
 
     return {
-        score1,
-        score2,
         bags1,
-        bags2
+        bags2,
+        score1,
+        score2
     };
 };
+
 export const calculateTeamScore = (rounds) => (dispatch) => {
     const {
-        score1,
-        score2,
         bags1,
-        bags2
+        bags2,
+        score1,
+        score2
     } = calculateScore(rounds);
 
     dispatch({
@@ -164,17 +172,17 @@ const submitBids = (roundBids) => (dispatch) => {
     dispatch({
         data: false,
         type: SET_IS_BIDS
-    })
+    });
 };
 
 const submitActuals = (roundActual) => (dispatch, getState) => {
     const team1Actual = Number(roundActual.player1Bid) + Number(roundActual.player2Bid);
     const team2Actual = Number(roundActual.player3Bid) + Number(roundActual.player4Bid);
 
-    if ((team1Actual + team2Actual) === 13) {
+    if (team1Actual + team2Actual === 13) {
         const {rounds} = getState();
 
-        let updatedRounds = [{
+        const updatedRounds = [{
             ...rounds[0],
             playerOne: {
                 ...rounds[0].playerOne,
@@ -184,13 +192,11 @@ const submitActuals = (roundActual) => (dispatch, getState) => {
                 {
                     ...rounds[0].playerTwo,
                     actual: Number(roundActual.player2Bid)
-                }
-            ,
+                },
             playerThree: {
                 ...rounds[0].playerThree,
                 actual: Number(roundActual.player3Bid)
-            }
-            ,
+            },
             playerFour: {
                 ...rounds[0].playerFour,
                 actual: Number(roundActual.player4Bid)

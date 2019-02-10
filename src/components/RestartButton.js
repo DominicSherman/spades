@@ -2,24 +2,25 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+
 import {getHeaderFooterTextColor, getIconColor} from '../constants/style-service';
 
 export default class RestartButton extends Component {
     _getStyles = () => StyleSheet.create({
-        touchable: {
-            paddingLeft: '3%'
-        },
         restartText: {
             color: getHeaderFooterTextColor(this.props.theme),
+            fontFamily: 'ArialRoundedMTBold',
             fontSize: 12,
-            fontWeight: '800',
-            fontFamily: 'ArialRoundedMTBold'
+            fontWeight: '800'
+        },
+        touchable: {
+            paddingLeft: '3%'
         },
         wrapper: {
             alignItems: 'center',
             flexDirection: 'column',
-            justifyContent: 'space-evenly',
             height: '70%',
+            justifyContent: 'space-evenly',
             width: 60
         }
     });
@@ -35,9 +36,9 @@ export default class RestartButton extends Component {
             >
                 <View style={styles.wrapper}>
                     <EvilIcons
-                        size={70}
-                        name={'undo'}
                         color={getIconColor(theme)}
+                        name={'undo'}
+                        size={70}
                     />
                     <Text style={styles.restartText}>{'RESTART'}</Text>
                 </View>

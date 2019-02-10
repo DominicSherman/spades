@@ -1,8 +1,13 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import {Provider} from 'react-redux';
+import {persistReducer, persistStore} from 'redux-persist';
+import {createStore} from 'redux';
 
 import App from '../src/App';
+
+jest.mock('redux-persist');
+jest.mock('redux');
 
 describe('App.js', () => {
     let renderedComponent;
@@ -24,9 +29,9 @@ describe('App.js', () => {
     });
 
     it('should create the store and the persistor', () => {
-        expect(reduxPersist.persistReducer).toHaveBeenCalledTimes(1);
-        expect(redux.createStore).toHaveBeenCalledTimes(1);
-        expect(reduxPersist.persistStore).toHaveBeenCalledTimes(1);
+        expect(persistReducer).toHaveBeenCalledTimes(1);
+        expect(createStore).toHaveBeenCalledTimes(1);
+        expect(persistStore).toHaveBeenCalledTimes(1);
     });
 
     it('should render a root Provider', () => {
