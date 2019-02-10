@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Dimensions, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 
 import {FOUR, ONE, THREE, TWO} from '../constants/enum';
-import {getLightTextColor} from '../constants/style-service';
+import {getLightTextColor} from '../services/style-service';
 
 export default class CurrentRound extends Component {
     constructor(props) {

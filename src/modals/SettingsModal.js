@@ -4,8 +4,8 @@ import Touchable from 'react-native-platform-touchable';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {DARK, GRAY, LIGHT, MINT_GREEN, SEA_FOAM, VOLT_BLUE} from '../constants/enum';
-import {getBackgroundColor, getDarkTextColor} from '../constants/style-service';
+import {DARK, LIGHT} from '../constants/enum';
+import {getBackgroundColor, getDarkTextColor} from '../services/style-service';
 import {black, green, lightGray, mintGreen, seaFoam, voltBlue} from '../constants/style-variables';
 
 export default class SettingsModal extends Component {

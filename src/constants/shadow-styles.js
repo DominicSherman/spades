@@ -1,4 +1,4 @@
-import {getShadowColor} from './style-service';
+import {getShadowColor} from '../services/style-service';
 
 export const shadow = {
     shadowColor: getShadowColor(),

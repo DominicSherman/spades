@@ -4,10 +4,9 @@ import React from 'react';
 import {SafeAreaView} from 'react-native';
 
 import {withRedux} from '../src/redux/redux-factory';
-import {calculateTeamScore} from '../src/redux/action-creators';
 
 jest.mock('../src/redux/redux-factory');
-jest.mock('../src/constants/style-service');
+jest.mock('../src/services/style-service');
 
 const chance = new Chance();
 

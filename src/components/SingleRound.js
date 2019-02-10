@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
 
-import {getLightTextColor} from '../constants/style-service';
+import {getLightTextColor} from '../services/style-service';
 
 export default class SingleRound extends Component {
     _getStyles = () => StyleSheet.create({

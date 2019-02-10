@@ -5,7 +5,7 @@ import {View} from 'react-native';
 import Footer from '../../src/components/Footer';
 import {createRandomProps} from '../model-factory';
 
-jest.mock('../../src/constants/style-service');
+jest.mock('../../src/services/style-service');
 
 describe('Footer', () => {
     let expectedProps,

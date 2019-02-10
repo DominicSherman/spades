@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import ShowHistoryButton from './components/ShowHistoryButton';
 import HistoryModal from './modals/HistoryModal';
 import CurrentBids from './components/CurrentBids';
-import {getBackgroundColor, getHeaderFooterColor} from './constants/style-service';
+import {getBackgroundColor, getHeaderFooterColor} from './services/style-service';
 
 class Home extends React.Component {
     componentDidUpdate(prevProps) {

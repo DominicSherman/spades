@@ -4,7 +4,7 @@ import Touchable from 'react-native-platform-touchable';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {shadow} from '../constants/shadow-styles';
-import {getBackgroundColor, getBlueOrWhiteGradient, getIconColor} from '../constants/style-service';
+import {getBackgroundColor, getBlueOrWhiteGradient, getIconColor} from '../services/style-service';
 
 export default class ShowHistoryButton extends Component {
     _getStyles = () => StyleSheet.create({

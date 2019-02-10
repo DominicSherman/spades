@@ -1,13 +1,11 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
-import {View} from 'react-native';
+import {Modal} from 'react-native';
 
-import Header from '../../src/components/Header';
+import InstructionsModal from '../../src/modals/InstructionsModal';
 import {createRandomProps} from '../model-factory';
 
-jest.mock('../../src/services/style-service');
-
-describe('Header', () => {
+describe('InstructionsModal', () => {
     let expectedProps,
 
         renderedComponent;
@@ -15,7 +13,7 @@ describe('Header', () => {
     const renderComponent = () => {
         const shallowRenderer = ShallowRenderer.createRenderer();
 
-        shallowRenderer.render(<Header {...expectedProps} />);
+        shallowRenderer.render(<InstructionsModal {...expectedProps} />);
 
         renderedComponent = shallowRenderer.getRenderOutput();
     };
@@ -26,7 +24,7 @@ describe('Header', () => {
         renderComponent();
     });
 
-    it('should render a root View', () => {
-        expect(renderedComponent.type).toBe(View);
+    it('should render a root Modal', () => {
+        expect(renderedComponent.type).toBe(Modal);
     });
 });

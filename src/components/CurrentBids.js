@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 
-import {getLightBlueOrWhite, getLightTextColor, getPeachOrWhite} from '../constants/style-service';
+import {getLightBlueOrWhite, getLightTextColor, getPeachOrWhite} from '../services/style-service';
 
 export default class CurrentBids extends Component {
     shouldShowCurrBids = () => this.props.bids && !this.props.bids.team1Actual;

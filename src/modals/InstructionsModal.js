@@ -3,10 +3,14 @@ import {Modal, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-nat
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import {instructions, scoring} from '../constants/instructions';
-import {getBackgroundColor, getDarkTextColor} from '../constants/style-service';
+import {getBackgroundColor, getDarkTextColor} from '../services/style-service';
 
 export default class InstructionsModal extends Component {
     _getStyles = () => StyleSheet.create({
+        centeredRow: {
+            flexDirection: 'row',
+            justifyContent: 'center'
+        },
         headerText: {
             color: getDarkTextColor(this.props.theme),
             fontSize: 25,
@@ -50,13 +54,13 @@ export default class InstructionsModal extends Component {
                     <ScrollView
                         style={styles.scrollView}
                     >
-                        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                        <View style={styles.centeredRow}>
                             <Text style={styles.headerText}>{'Instructions'}</Text>
                         </View>
                         <Text style={styles.text}>
                             {instructions}
                         </Text>
-                        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                        <View style={styles.centeredRow}>
                             <Text style={styles.headerText}>{'Scoring'}</Text>
                         </View>
                         <Text style={styles.text}>

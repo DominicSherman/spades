@@ -1,26 +1,11 @@
 import React, {Component} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import {getHeaderFooterTextColor, getUndoLogo} from '../constants/style-service';
+
+import {getHeaderFooterTextColor, getUndoLogo} from '../services/style-service';
 
 export default class UndoButton extends Component {
     _getStyles = () => StyleSheet.create({
-        touchable: {
-            paddingRight: '3%'
-        },
-        text: {
-            color: getHeaderFooterTextColor(this.props.theme),
-            fontSize: 12,
-            fontWeight: '800',
-            fontFamily: 'ArialRoundedMTBold'
-        },
-        wrapper: {
-            alignItems: 'center',
-            flexDirection: 'column',
-            justifyContent: 'space-evenly',
-            height: '70%',
-            width: 60
-        },
         image: {
             height: '100%',
             width: '100%'
@@ -28,6 +13,22 @@ export default class UndoButton extends Component {
         imageWrapper: {
             height: '100%',
             width: '50%'
+        },
+        text: {
+            color: getHeaderFooterTextColor(this.props.theme),
+            fontFamily: 'ArialRoundedMTBold',
+            fontSize: 12,
+            fontWeight: '800'
+        },
+        touchable: {
+            paddingRight: '3%'
+        },
+        wrapper: {
+            alignItems: 'center',
+            flexDirection: 'column',
+            height: '70%',
+            justifyContent: 'space-evenly',
+            width: 60
         }
     });
 

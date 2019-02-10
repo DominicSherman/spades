@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
-import {getHeaderFooterColor, getHeaderLogo} from '../constants/style-service';
+import {getHeaderFooterColor, getHeaderLogo} from '../services/style-service';
 
 import RestartButton from './RestartButton';
 import UndoButton from './UndoButton';

@@ -1,5 +1,5 @@
-import {blue, darkBlue, darkFont, lightBlue, lightFont, mediumGray, peach, violet, white} from './style-variables';
-import {LIGHT} from './enum';
+import {blue, darkBlue, darkFont, lightBlue, lightFont, mediumGray, peach, violet, white} from '../constants/style-variables';
+import {LIGHT} from '../constants/enum';
 
 const isLight = (theme) => theme && theme.background === LIGHT;
 

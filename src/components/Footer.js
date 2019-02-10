@@ -14,7 +14,7 @@ import {
     getHeaderFooterColor,
     getHeaderFooterTextColor,
     getIconColor
-} from '../constants/style-service';
+} from '../services/style-service';
 
 export default class Footer extends Component {
     _getStyles = () => StyleSheet.create({

@@ -59,5 +59,9 @@ export const createRandomProps = (props = {}) => ({
         fourthPlayer: chance.string(),
         thirdPlayer: chance.string()
     },
+    theme: {
+        background: chance.string(),
+        color: chance.string()
+    },
     ...props
 });

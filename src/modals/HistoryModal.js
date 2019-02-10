@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {FlatList, Modal, SafeAreaView, StyleSheet} from 'react-native';
-import SingleRound from '../components/SingleRound';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+
+import SingleRound from '../components/SingleRound';
 import Players from '../components/Players';
-import {getBackgroundColor, getDarkTextColor} from '../constants/style-service';
+import {getBackgroundColor, getDarkTextColor} from '../services/style-service';
 
 export default class HistoryModal extends Component {
     _getStyles = () => StyleSheet.create({

@@ -10,7 +10,7 @@ import {
     getPeachOrWhite,
     getPlayerTextColor,
     getVioletOrWhiteGradient
-} from '../constants/style-service';
+} from '../services/style-service';
 
 export default class Players extends Component {
     _getStyles = () => StyleSheet.create({
