@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 
-import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/enum';
+import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/constants';
 import {getLightTextColor} from '../services/style-service';
 
 export default class CurrentRound extends Component {

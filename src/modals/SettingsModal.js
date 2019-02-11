@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Modal, SafeAreaView, StyleSheet, Switch, Text, View} from 'react-native';
+import {FlatList, Modal, SafeAreaView, StyleSheet, Switch, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {DARK, LIGHT} from '../constants/enum';
-import {getBackgroundColor, getDarkTextColor} from '../services/style-service';
-import {black, green, lightGray, mintGreen, seaFoam, voltBlue} from '../constants/style-variables';
+import {DARK, LIGHT} from '../constants/constants';
+import {getBackgroundColor, getColorsForTheme, getDarkTextColor, setDefault} from '../services/style-service';
+import {green, lightGray} from '../constants/style-variables';
 
 export default class SettingsModal extends Component {
     _getStyles = () => StyleSheet.create({
@@ -20,7 +20,7 @@ export default class SettingsModal extends Component {
             color: getDarkTextColor(this.props.theme),
             fontSize: 20,
             fontWeight: '400',
-            paddingBottom: '3%'
+            paddingBottom: '5%'
         },
         headerWrapper: {
             flexDirection: 'row',
@@ -34,18 +34,18 @@ export default class SettingsModal extends Component {
             alignItems: 'flex-start',
             flexDirection: 'column',
             height: '70%',
-            justifyContent: 'space-between',
-            marginTop: '5%'
+            justifyContent: 'space-between'
         },
         optionWrapper: {
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'flex-start',
-            width: '29%'
+            width: '100%'
         },
         secondWrapper: {
             alignItems: 'center',
             flexDirection: 'column',
+            height: '100%',
             paddingTop: '10%'
         },
         settingsWrapper: {
@@ -79,9 +79,16 @@ export default class SettingsModal extends Component {
 
     _getIconColor = (color) => this.props.theme.color === color ? green : lightGray;
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.theme.background !== this.props.theme.background) {
+            setDefault(this.props.theme, this.props.actions.setColor);
+        }
+    }
+
     render() {
         const {actions, showSettingsModal, onClose, theme} = this.props;
         const styles = this._getStyles();
+        const colors = getColorsForTheme(theme);
 
         return (
             <Modal
@@ -114,58 +121,25 @@ export default class SettingsModal extends Component {
                         </View>
                         <View style={styles.secondWrapper}>
                             <Text style={styles.headerText2}>{'Color'}</Text>
-                            <View style={styles.optionsWrapper}>
-                                <Touchable onPress={() => actions.setColor(lightGray)}>
-                                    <View style={styles.optionWrapper}>
-                                        <Feather
-                                            color={this._getIconColor(lightGray)}
-                                            name={this._getIconName(lightGray)}
-                                            size={20}
-                                        />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Gray'}</Text>
-                                    </View>
-                                </Touchable>
-                                <Touchable onPress={() => actions.setColor(black)}>
-                                    <View style={styles.optionWrapper}>
-                                        <Feather
-                                            color={this._getIconColor(black)}
-                                            name={this._getIconName(black)}
-                                            size={20}
-                                        />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Black'}</Text>
-                                    </View>
-                                </Touchable>
-                                <Touchable onPress={() => actions.setColor(seaFoam)}>
-                                    <View style={styles.optionWrapper}>
-                                        <Feather
-                                            color={this._getIconColor(seaFoam)}
-                                            name={this._getIconName(seaFoam)}
-                                            size={20}
-                                        />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Sea Foam'}</Text>
-                                    </View>
-                                </Touchable>
-                                <Touchable onPress={() => actions.setColor(mintGreen)}>
-                                    <View style={styles.optionWrapper}>
-                                        <Feather
-                                            color={this._getIconColor(mintGreen)}
-                                            name={this._getIconName(mintGreen)}
-                                            size={20}
-                                        />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Mint Green'}</Text>
-                                    </View>
-                                </Touchable>
-                                <Touchable onPress={() => actions.setColor(voltBlue)}>
-                                    <View style={styles.optionWrapper}>
-                                        <Feather
-                                            color={this._getIconColor(voltBlue)}
-                                            name={this._getIconName(voltBlue)}
-                                            size={20}
-                                        />
-                                        <Text style={[styles.text, {paddingLeft: '10%'}]}>{'Volt Blue'}</Text>
-                                    </View>
-                                </Touchable>
-                            </View>
+                            {
+                                <FlatList
+                                    data={colors}
+                                    renderItem={({item}) =>
+                                        <View style={styles.optionsWrapper}>
+                                            <Touchable onPress={() => actions.setColor(item)}>
+                                                <View style={styles.optionWrapper}>
+                                                    <Feather
+                                                        color={this._getIconColor(item)}
+                                                        name={this._getIconName(item)}
+                                                        size={20}
+                                                    />
+                                                    <Text style={[styles.text, {paddingLeft: '5%'}]}>{item}</Text>
+                                                </View>
+                                            </Touchable>
+                                        </View>
+                                    }
+                                />
+                            }
                         </View>
                     </View>
                 </SafeAreaView>

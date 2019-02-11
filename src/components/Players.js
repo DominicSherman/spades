@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/enum';
+import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/constants';
 import {shadow} from '../constants/shadow-styles';
 import {
-    getBlueOrWhiteGradient,
+    getRightTeamGradient,
     getLightBlueOrWhite,
     getPeachOrWhite,
     getPlayerTextColor,
-    getVioletOrWhiteGradient
+    getLeftTeamGradient, getPlayerDividerColor
 } from '../services/style-service';
 
 export default class Players extends Component {
@@ -33,6 +33,14 @@ export default class Players extends Component {
             fontWeight: '600',
             padding: 10,
             ...shadow
+        },
+        leftTeamView: {
+            borderRightWidth: 1,
+            borderRightColor: getPlayerDividerColor(this.props.theme)
+        },
+        rightTeamView: {
+            borderLeftWidth: 1,
+            borderLeftColor: getPlayerDividerColor(this.props.theme)
         },
         nameText: {
             color: getPlayerTextColor(this.props.theme),
@@ -61,10 +69,10 @@ export default class Players extends Component {
         return (
             <View>
                 <View style={{flexDirection: 'row'}}>
-                    <View style={styles.teamView}>
+                    <View style={[styles.teamView, styles.leftTeamView]}>
                         <Text style={[styles.headerText, {color: getPeachOrWhite(theme)}]}>{team1.score}</Text>
                         <LinearGradient
-                            colors={getVioletOrWhiteGradient(theme)}
+                            colors={getLeftTeamGradient(theme)}
                             end={{
                                 x: 1,
                                 y: 0
@@ -95,10 +103,10 @@ export default class Players extends Component {
                             </View>
                         </LinearGradient>
                     </View>
-                    <View style={styles.teamView}>
+                    <View style={[styles.teamView, styles.rightTeamView]}>
                         <Text style={[styles.headerText, {color: getLightBlueOrWhite(theme)}]}>{team2.score}</Text>
                         <LinearGradient
-                            colors={getBlueOrWhiteGradient(theme)}
+                            colors={getRightTeamGradient(theme)}
                             end={{
                                 x: 1,
                                 y: 0

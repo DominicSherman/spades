@@ -10,7 +10,7 @@ import InstructionsModal from '../modals/InstructionsModal';
 import SettingsModal from '../modals/SettingsModal';
 import {
     getBackgroundColor,
-    getBlueOrWhiteGradient,
+    getRightTeamGradient,
     getHeaderFooterColor,
     getHeaderFooterTextColor,
     getIconColor
@@ -102,7 +102,7 @@ export default class Footer extends Component {
                     <View style={styles.submitWrapper}>
                         <View style={styles.diamond} />
                         <LinearGradient
-                            colors={getBlueOrWhiteGradient(theme)}
+                            colors={getRightTeamGradient(theme)}
                             end={{
                                 x: 1,
                                 y: 0

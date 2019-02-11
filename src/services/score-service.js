@@ -1,4 +1,4 @@
-import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO, TEAM_ONE, TEAM_TWO} from '../constants/enum';
+import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO, TEAM_ONE, TEAM_TWO} from '../constants/constants';
 import {
     SET_PLAYER_FOUR_BID,
     SET_PLAYER_FOUR_NAME,

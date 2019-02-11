@@ -1,4 +1,4 @@
-import {LIGHT} from '../constants/enum';
+import {LIGHT, ORIGINAL} from '../constants/constants';
 import {lightGray} from '../constants/style-variables';
 
 import {
@@ -59,7 +59,7 @@ const defaultState = {
     },
     theme: {
         background: LIGHT,
-        color: lightGray
+        color: ORIGINAL
     }
 };
 
@@ -288,8 +288,6 @@ const toggleShowSettingsModal = (state) => ({
     showSettingsModal: !state.showSettingsModal
 });
 
-const restart = () => defaultState;
-
 const setTheme = (state, background) => ({
     ...state,
     theme: {
@@ -305,6 +303,8 @@ const setColor = (state, color) => ({
         color
     }
 });
+
+const restart = (state) => defaultState;
 
 const reducerMap = {
     [SET_TEAM_ONE_SCORE]: setTeamOneScore,

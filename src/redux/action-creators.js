@@ -1,6 +1,6 @@
 import {Alert} from 'react-native';
 
-import {TEAM_ONE, TEAM_TWO} from '../constants/enum';
+import {TEAM_ONE, TEAM_TWO} from '../constants/constants';
 import {calculateScore, getSetBidAction, getSetNameAction, getTeamTotal} from '../services/score-service';
 
 import {
