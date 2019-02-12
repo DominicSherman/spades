@@ -21,3 +21,37 @@ export const roundHasResults = (round) => round.playerOne.actual !== null && rou
 export const getScoreForNil = (player) => isNil(player.actual) ? 100 : -100;
 
 export const getScoreForBlindNil = (player) => isNil(player.actual) ? 200 : -200;
+
+export const calculateNilScoreForPlayer = (player) => {
+    if (isNil(player.bid)) {
+        return getScoreForNil(player);
+    }
+
+    if (isBidBlindNil(player.bid)) {
+        return getScoreForBlindNil(player);
+    }
+
+    return 0;
+};
+
+export const calculateTeamScoreForBids = (actual, bids) => {
+    let score = 0;
+
+    if (actual >= bids) {
+        score += 10 * bids + (actual - bids);
+
+        if (bids >= 10) {
+            score += 100;
+        }
+    } else {
+        score -= 10 * bids;
+
+        if (bids >= 10) {
+            score -= 100;
+        }
+    }
+
+    return score;
+};
+
+export const calculateTeamBags = (actual, bids) => actual >= bids ? actual - bids : 0;

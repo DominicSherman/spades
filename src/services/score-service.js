@@ -10,10 +10,9 @@ import {
     SET_PLAYER_TWO_NAME
 } from '../redux/action-types';
 import {
-    getScoreForBlindNil,
-    getScoreForNil,
-    isBidBlindNil,
-    isNil,
+    calculateNilScoreForPlayer,
+    calculateTeamBags,
+    calculateTeamScoreForBids,
     roundHasResults,
     teamHasBidBlindNil
 } from '../constants/score-helpers';
@@ -76,40 +75,6 @@ export const addCurrRoundResults = (currRound, rounds) => [
     },
     ...rounds.slice(1)
 ];
-
-const calculateNilScoreForPlayer = (player) => {
-    if (isNil(player.bid)) {
-        return getScoreForNil(player);
-    }
-
-    if (isBidBlindNil(player.bid)) {
-        return getScoreForBlindNil(player);
-    }
-
-    return 0;
-};
-
-const calculateTeamScoreForBids = (actual, bids) => {
-    let score = 0;
-
-    if (actual >= bids) {
-        score += 10 * bids + (actual - bids);
-
-        if (bids >= 10) {
-            score += 100;
-        }
-    } else {
-        score -= 10 * bids;
-
-        if (bids >= 10) {
-            score -= 100;
-        }
-    }
-
-    return score;
-};
-
-const calculateTeamBags = (actual, bids) => actual >= bids ? actual - bids : 0;
 
 export const calculateScore = (rounds) => {
     let score1 = 0,
