@@ -3,6 +3,7 @@ import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import thunk from 'redux-thunk';
 
 import reducer from './redux/reducer';
@@ -16,6 +17,7 @@ console.disableYellowBox = true;
 
 const persistConfig = {
     key: 'root',
+    stateReconciler: autoMergeLevel2,
     storage
 };
 

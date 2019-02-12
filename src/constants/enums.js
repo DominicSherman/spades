@@ -4,11 +4,13 @@ import {
     green,
     greenLogo,
     lightBlue,
-    lightGray, mediumGray,
+    lightGray,
+    mediumGray,
     mintGreen,
     orange,
     orangeLogo,
-    peach, peach2,
+    peach,
+    peach2,
     seaFoam,
     violet,
     violetLogo,
@@ -17,7 +19,7 @@ import {
 } from './style-variables';
 import {
     BLUE,
-    DARK_ORIGINAL,
+    DARK_ORIGINAL, DARK_SEA_FOAM,
     GREEN,
     MINT_GREEN,
     ORANGE,
@@ -54,14 +56,16 @@ const BASIC_DARK_THEMES = {
 export const COLOR_THEMES = {
     [BLUE]: {
         ...BASIC_LIGHT_THEMES,
-        headerFooterBackground: blue,
-        headerLogo: violetLogo
+        headerFooterBackground: blue
     },
     [DARK_ORIGINAL]: BASIC_DARK_THEMES,
+    [DARK_SEA_FOAM]: {
+        ...BASIC_DARK_THEMES,
+        headerFooterBackground: seaFoam
+    },
     [GREEN]: {
         ...BASIC_LIGHT_THEMES,
         headerFooterBackground: green,
-        headerLogo: greenLogo,
         leftGradient: [green, green],
         rightGradient: [green, green]
     },
@@ -72,7 +76,6 @@ export const COLOR_THEMES = {
     [ORANGE]: {
         ...BASIC_LIGHT_THEMES,
         headerFooterBackground: orange,
-        headerLogo: orangeLogo,
         leftGradient: [orange, orange],
         rightGradient: [orange, orange]
     },
@@ -90,13 +93,14 @@ export const COLOR_THEMES = {
     [PEACH]: {
         ...BASIC_LIGHT_THEMES,
         headerFooterBackground: peach2,
-        headerLogo: white,
         leftGradient: [peach2, peach2],
         rightGradient: [peach2, peach2]
     },
     [SEA_FOAM]: {
-        ...BASIC_DARK_THEMES,
-        headerFooterBackground: seaFoam
+        ...BASIC_LIGHT_THEMES,
+        headerFooterBackground: seaFoam,
+        leftGradient: [seaFoam, seaFoam],
+        rightGradient: [seaFoam, seaFoam]
     },
     [VIOLET]: {
         ...BASIC_DARK_THEMES,

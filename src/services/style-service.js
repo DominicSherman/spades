@@ -1,13 +1,15 @@
-import {darkBlue, darkFont, lightBlue, lightFont, mediumGray, peach, white} from '../constants/style-variables';
+import {darkBlue, darkFont, lightBlue, lightFont, mediumGray, white} from '../constants/style-variables';
 import {
     BLUE,
     DARK_ORIGINAL,
+    DARK_SEA_FOAM,
     GREEN,
     LIGHT,
     MINT_GREEN,
-    ORANGE,
-    ORIGINAL, PEACH,
-    SEA_FOAM, VIOLET,
+    ORIGINAL,
+    PEACH,
+    SEA_FOAM,
+    VIOLET,
     VOLT_BLUE
 } from '../constants/constants';
 import {COLOR_THEMES} from '../constants/enums';
@@ -18,9 +20,9 @@ const isOriginal = (theme) => theme && theme.color === ORIGINAL;
 
 export const getColorsForTheme = (theme) =>
     isLight(theme) ?
-        [ORIGINAL, BLUE, ORANGE, GREEN, PEACH]
+        [ORIGINAL, BLUE, GREEN, SEA_FOAM, PEACH]
         :
-        [DARK_ORIGINAL, VOLT_BLUE, MINT_GREEN, SEA_FOAM, VIOLET];
+        [DARK_ORIGINAL, VOLT_BLUE, MINT_GREEN, DARK_SEA_FOAM, VIOLET];
 
 export const setDefault = (theme, setColor) => isLight(theme) ? setColor(ORIGINAL) : setColor(DARK_ORIGINAL);
 

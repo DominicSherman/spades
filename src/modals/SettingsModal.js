@@ -36,16 +36,18 @@ export default class SettingsModal extends Component {
             color: getDarkTextColor(this.props.theme),
             left: '3%'
         },
-        optionsWrapper: {
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-            height: '70%',
-            justifyContent: 'space-between'
+        optionTouchable: {
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            paddingLeft: 100,
+            width: '100%'
         },
         optionWrapper: {
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'flex-start',
+            paddingBottom: 15,
+            paddingTop: 15,
             width: '100%'
         },
         secondWrapper: {
@@ -89,7 +91,6 @@ export default class SettingsModal extends Component {
         const {actions, showSettingsModal, onClose, theme} = this.props;
         const styles = this._getStyles();
         const colors = getColorsForTheme(theme);
-        console.log('colors', colors);
 
         return (
             <Modal
@@ -126,18 +127,19 @@ export default class SettingsModal extends Component {
                                 <FlatList
                                     data={colors}
                                     renderItem={({item}) =>
-                                        <View style={styles.optionsWrapper}>
-                                            <Touchable onPress={() => actions.setColor(item)}>
-                                                <View style={styles.optionWrapper}>
-                                                    <Feather
-                                                        color={this._getIconColor(item)}
-                                                        name={this._getIconName(item)}
-                                                        size={20}
-                                                    />
-                                                    <Text style={[styles.text, {paddingLeft: '5%'}]}>{item}</Text>
-                                                </View>
-                                            </Touchable>
-                                        </View>
+                                        <Touchable
+                                            onPress={() => actions.setColor(item)}
+                                            style={styles.optionTouchable}
+                                        >
+                                            <View style={styles.optionWrapper}>
+                                                <Feather
+                                                    color={this._getIconColor(item)}
+                                                    name={this._getIconName(item)}
+                                                    size={20}
+                                                />
+                                                <Text style={[styles.text, {paddingLeft: 15}]}>{item}</Text>
+                                            </View>
+                                        </Touchable>
                                     }
                                 />
                             }

@@ -2,9 +2,9 @@ import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Touchable from 'react-native-platform-touchable';
 
-import UndoButton from '../../src/components/UndoButton';
+import HeaderIcon from '../../src/components/HeaderIcon';
 
-describe('UndoButton', () => {
+describe('HeaderIcon', () => {
     let expectedProps,
 
         renderedComponent;
@@ -12,7 +12,7 @@ describe('UndoButton', () => {
     const renderComponent = () => {
         const shallowRenderer = ShallowRenderer.createRenderer();
 
-        shallowRenderer.render(<UndoButton {...expectedProps} />);
+        shallowRenderer.render(<HeaderIcon {...expectedProps} />);
 
         renderedComponent = shallowRenderer.getRenderOutput();
     };

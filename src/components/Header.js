@@ -4,8 +4,7 @@ import {Image, StyleSheet, View} from 'react-native';
 import {getHeaderFooterColor, getHeaderLogoColor} from '../services/style-service';
 import {getShadow} from '../constants/shadow-styles';
 
-import RestartButton from './RestartButton';
-import UndoButton from './UndoButton';
+import HeaderIcon from './HeaderIcon';
 
 export default class Header extends React.Component {
     _getStyles = () => StyleSheet.create({
@@ -40,9 +39,12 @@ export default class Header extends React.Component {
 
         return (
             <View style={styles.headerView}>
-                <RestartButton
-                    actions={actions}
+                <HeaderIcon
+                    icon={require('../assets/restart.png')}
+                    onPress={actions.restart}
+                    text={'RESTART'}
                     theme={theme}
+                    width={'65%'}
                 />
                 <View style={styles.imageWrapper}>
                     <Image
@@ -51,10 +53,12 @@ export default class Header extends React.Component {
                         style={styles.image}
                     />
                 </View>
-                <UndoButton
-                    actions={actions}
-                    isBids={isBids}
+                <HeaderIcon
+                    icon={require('../assets/undo.png')}
+                    onPress={() => actions.undo(isBids)}
+                    text={'UNDO'}
                     theme={theme}
+                    width={'50%'}
                 />
             </View>
         );

@@ -10,7 +10,6 @@ import SettingsModal from '../modals/SettingsModal';
 import {
     getFooterIconColor,
     getHeaderFooterColor,
-    getHeaderIconColor,
     getSubmitArrowColor,
     getSubmitTextColor
 } from '../services/style-service';
@@ -38,19 +37,22 @@ export default class Footer extends Component {
             position: 'absolute',
             top: -10,
             transform: [{rotate: '45deg'}],
-            width: 60
+            width: 60,
+            ...getShadow(this.props.theme)
         },
         infoWrapper: {
             alignItems: 'center',
             flex: 0.5,
             flexDirection: 'row',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            ...getShadow(this.props.theme)
         },
         settingsWrapper: {
             alignItems: 'center',
             flex: 0.5,
             flexDirection: 'row',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            ...getShadow(this.props.theme)
         },
         submitTouchable: {
             flex: 1
@@ -67,7 +69,8 @@ export default class Footer extends Component {
             fontSize: 18,
             fontWeight: '800',
             position: 'absolute',
-            top: 70
+            top: 70,
+            ...getShadow(this.props.theme)
         },
         wrapper: {
             backgroundColor: getHeaderFooterColor(this.props.theme),

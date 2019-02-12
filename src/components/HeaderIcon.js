@@ -3,8 +3,9 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 
 import {getHeaderFooterTextColor, getHeaderIconColor, getUndoLogo} from '../services/style-service';
+import {getShadow} from '../constants/shadow-styles';
 
-export default class UndoButton extends Component {
+export default class HeaderIcon extends Component {
     _getStyles = () => StyleSheet.create({
         image: {
             height: '100%',
@@ -13,7 +14,7 @@ export default class UndoButton extends Component {
         },
         imageWrapper: {
             height: '100%',
-            width: '50%'
+            width: this.props.width
         },
         text: {
             color: getHeaderFooterTextColor(this.props.theme),
@@ -22,6 +23,7 @@ export default class UndoButton extends Component {
             fontWeight: '800'
         },
         touchable: {
+            paddingLeft: '3%',
             paddingRight: '3%'
         },
         wrapper: {
@@ -29,28 +31,29 @@ export default class UndoButton extends Component {
             flexDirection: 'column',
             height: '70%',
             justifyContent: 'space-evenly',
-            width: 60
+            width: 60,
+            ...getShadow(this.props.theme)
         }
     });
 
     render() {
-        const {actions, isBids, theme} = this.props;
+        const {onPress, icon, text} = this.props;
         const styles = this._getStyles();
 
         return (
             <Touchable
-                onPress={() => actions.undo(isBids)}
+                onPress={onPress}
                 style={styles.touchable}
             >
                 <View style={styles.wrapper}>
                     <View style={styles.imageWrapper}>
                         <Image
                             resizeMode={'contain'}
-                            source={require('../assets/undo.png')}
+                            source={icon}
                             style={styles.image}
                         />
                     </View>
-                    <Text style={styles.text}>{'UNDO'}</Text>
+                    <Text style={styles.text}>{text}</Text>
                 </View>
             </Touchable>
         );
