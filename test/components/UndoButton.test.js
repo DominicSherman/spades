@@ -4,6 +4,8 @@ import Touchable from 'react-native-platform-touchable';
 
 import HeaderIcon from '../../src/components/HeaderIcon';
 
+jest.mock('../../src/services/style-service');
+
 describe('HeaderIcon', () => {
     let expectedProps,
 

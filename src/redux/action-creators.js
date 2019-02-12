@@ -1,7 +1,13 @@
 import {Alert} from 'react-native';
 
 import {TEAM_ONE, TEAM_TWO} from '../constants/constants';
-import {calculateScore, getSetBidAction, getSetNameAction, getTeamTotal} from '../services/score-service';
+import {
+    addCurrRoundResults,
+    calculateScore,
+    getTeamTotalBids,
+    setBidsActionEnum,
+    setNameActionsEnum
+} from '../services/score-service';
 
 import {
     ADD_BIDS,
@@ -21,6 +27,7 @@ import {
     UNDO_ACTUAL,
     UNDO_BIDS
 } from './action-types';
+import {bidsAddUpTo13} from '../constants/score-helpers';
 
 export const calculateTeamScore = (rounds) => (dispatch) => {
     const {bags1, bags2, score1, score2} = calculateScore(rounds);
@@ -51,8 +58,8 @@ const submitBids = () => (dispatch, getState) => {
 
     const roundWithTotals = {
         ...currRound,
-        team1Total: getTeamTotal(currRound, TEAM_ONE),
-        team2Total: getTeamTotal(currRound, TEAM_TWO)
+        team1Total: getTeamTotalBids(currRound, TEAM_ONE),
+        team2Total: getTeamTotalBids(currRound, TEAM_TWO)
     };
 
     dispatch({
@@ -70,34 +77,11 @@ const submitBids = () => (dispatch, getState) => {
     });
 };
 
-const submitActuals = () => (dispatch, getState) => {
+const submitResults = () => (dispatch, getState) => {
     const {currRound, rounds} = getState();
 
-    const team1Actual = getTeamTotal(currRound, TEAM_ONE);
-    const team2Actual = getTeamTotal(currRound, TEAM_TWO);
-
-    if (team1Actual + team2Actual === 13) {
-        const updatedRounds = [{
-            ...rounds[0],
-            playerFour: {
-                ...rounds[0].playerFour,
-                actual: Number(currRound.player4Bid)
-            },
-            playerOne: {
-                ...rounds[0].playerOne,
-                actual: Number(currRound.player1Bid)
-            },
-            playerThree: {
-                ...rounds[0].playerThree,
-                actual: Number(currRound.player3Bid)
-            },
-            playerTwo: {
-                ...rounds[0].playerTwo,
-                actual: Number(currRound.player2Bid)
-            },
-            team1Actual,
-            team2Actual
-        }, ...rounds.slice(1)];
+    if (bidsAddUpTo13(currRound)) {
+        const updatedRounds = addCurrRoundResults(currRound, rounds);
 
         updatedRounds[0].score = calculateScore(updatedRounds);
 
@@ -123,18 +107,18 @@ export const submit = () => (dispatch, getState) => {
     if (isBids) {
         submitBids()(dispatch, getState);
     } else {
-        submitActuals()(dispatch, getState);
+        submitResults()(dispatch, getState);
     }
 };
 
 export const setName = (name, player) => ({
     data: name,
-    type: getSetNameAction[player]
+    type: setNameActionsEnum[player]
 });
 
 export const submitValue = (bid, player) => ({
     data: bid,
-    type: getSetBidAction[player]
+    type: setBidsActionEnum[player]
 });
 
 export const restart = () => (dispatch) => Alert.alert(

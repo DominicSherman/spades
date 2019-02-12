@@ -5,6 +5,8 @@ import {View} from 'react-native';
 import Players from '../../src/components/Players';
 import {createRandomProps} from '../model-factory';
 
+jest.mock('../../src/services/style-service');
+
 describe('Players', () => {
     let expectedProps,
 

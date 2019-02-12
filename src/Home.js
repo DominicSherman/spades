@@ -73,6 +73,7 @@ class Home extends React.Component {
                     <CurrentBids
                         bids={rounds[0]}
                         currRound={currRound}
+                        isBids={isBids}
                         team1={team1}
                         team2={team2}
                         theme={theme}

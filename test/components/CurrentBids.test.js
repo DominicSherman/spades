@@ -5,6 +5,8 @@ import {TouchableWithoutFeedback} from 'react-native';
 import CurrentBids from '../../src/components/CurrentBids';
 import {createRandomProps} from '../model-factory';
 
+jest.mock('../../src/services/style-service');
+
 describe('CurrentBids', () => {
     let expectedProps,
 

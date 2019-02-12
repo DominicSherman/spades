@@ -4,7 +4,7 @@ import {Dimensions, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View} 
 import {getRightScoreColor, getLightTextColor, getLeftScoreColor} from '../services/style-service';
 
 export default class CurrentBids extends Component {
-    shouldShowCurrBids = () => this.props.bids && !this.props.bids.team1Actual;
+    shouldShowCurrBids = () => !this.props.isBids;
 
     getBags = () => {
         const {
