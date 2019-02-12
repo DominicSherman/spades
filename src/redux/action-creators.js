@@ -8,6 +8,7 @@ import {
     setBidsActionEnum,
     setNameActionsEnum
 } from '../services/score-service';
+import {bidsAddUpTo13} from '../constants/score-helpers';
 
 import {
     ADD_BIDS,
@@ -27,7 +28,6 @@ import {
     UNDO_ACTUAL,
     UNDO_BIDS
 } from './action-types';
-import {bidsAddUpTo13} from '../constants/score-helpers';
 
 export const calculateTeamScore = (rounds) => (dispatch) => {
     const {bags1, bags2, score1, score2} = calculateScore(rounds);
