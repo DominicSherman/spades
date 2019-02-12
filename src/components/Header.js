@@ -1,7 +1,8 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
-import {getHeaderFooterColor, getHeaderLogo} from '../services/style-service';
+import {getHeaderFooterColor, getHeaderLogoColor} from '../services/style-service';
+import {getShadow} from '../constants/shadow-styles';
 
 import RestartButton from './RestartButton';
 import UndoButton from './UndoButton';
@@ -23,7 +24,9 @@ export default class Header extends React.Component {
         },
         image: {
             height: '100%',
-            width: '100%'
+            tintColor: getHeaderLogoColor(this.props.theme),
+            width: '100%',
+            ...getShadow(this.props.theme)
         },
         imageWrapper: {
             height: '80%',
@@ -44,7 +47,7 @@ export default class Header extends React.Component {
                 <View style={styles.imageWrapper}>
                     <Image
                         resizeMode={'contain'}
-                        source={getHeaderLogo(theme)}
+                        source={require('../assets/header-logo.png')}
                         style={styles.image}
                     />
                 </View>

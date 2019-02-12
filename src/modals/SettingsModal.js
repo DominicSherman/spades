@@ -9,6 +9,12 @@ import {getBackgroundColor, getColorsForTheme, getDarkTextColor, setDefault} fro
 import {green, lightGray} from '../constants/style-variables';
 
 export default class SettingsModal extends Component {
+    componentDidUpdate(prevProps) {
+        if (prevProps.theme.background !== this.props.theme.background) {
+            setDefault(this.props.theme, this.props.actions.setColor);
+        }
+    }
+
     _getStyles = () => StyleSheet.create({
         headerText: {
             color: getDarkTextColor(this.props.theme),
@@ -79,16 +85,11 @@ export default class SettingsModal extends Component {
 
     _getIconColor = (color) => this.props.theme.color === color ? green : lightGray;
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.theme.background !== this.props.theme.background) {
-            setDefault(this.props.theme, this.props.actions.setColor);
-        }
-    }
-
     render() {
         const {actions, showSettingsModal, onClose, theme} = this.props;
         const styles = this._getStyles();
         const colors = getColorsForTheme(theme);
+        console.log('colors', colors);
 
         return (
             <Modal

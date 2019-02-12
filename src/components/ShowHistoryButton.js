@@ -1,33 +1,32 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import LinearGradient from 'react-native-linear-gradient';
 
-import {shadow} from '../constants/shadow-styles';
-import {getBackgroundColor, getRightTeamGradient, getIconColor} from '../services/style-service';
+import {getShadow} from '../constants/shadow-styles';
+import {getFooterIconColor, getSubmitArrowColor} from '../services/style-service';
 
 export default class ShowHistoryButton extends Component {
     _getStyles = () => StyleSheet.create({
         showHistoryButton: {
             alignItems: 'center',
-            backgroundColor: getIconColor(this.props.theme),
+            backgroundColor: getFooterIconColor(this.props.theme),
             borderRadius: 100,
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'center',
-            ...shadow
+            ...getShadow(this.props.theme)
         },
         text: {
-            color: getBackgroundColor(this.props.theme),
+            color: getSubmitArrowColor(this.props.theme),
             fontFamily: 'ArialRoundedMTBold',
-            fontSize: 22,
-            fontWeight: '400'
+            fontSize: 20
         },
         touchable: {
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'center',
-            width: '50%'
+            width: '50%',
+            ...getShadow(this.props.theme)
         },
         wrapper: {
             alignItems: 'center',
@@ -40,7 +39,7 @@ export default class ShowHistoryButton extends Component {
     });
 
     render() {
-        const {actions: {toggleShowHistory}, theme} = this.props;
+        const {actions: {toggleShowHistory}} = this.props;
         const styles = this._getStyles();
 
         return (
@@ -49,20 +48,9 @@ export default class ShowHistoryButton extends Component {
                     onPress={toggleShowHistory}
                     style={styles.touchable}
                 >
-                    <LinearGradient
-                        colors={getRightTeamGradient(theme)}
-                        end={{
-                            x: 1,
-                            y: 0
-                        }}
-                        start={{
-                            x: 0,
-                            y: 0
-                        }}
-                        style={styles.showHistoryButton}
-                    >
+                    <View style={styles.showHistoryButton}>
                         <Text style={styles.text}>{'Show History'}</Text>
-                    </LinearGradient>
+                    </View>
                 </Touchable>
             </View>
         );

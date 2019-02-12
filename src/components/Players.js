@@ -3,11 +3,11 @@ import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/constants';
-import {shadow} from '../constants/shadow-styles';
+import {getShadow} from '../constants/shadow-styles';
 import {
     getRightTeamGradient,
-    getLightBlueOrWhite,
-    getPeachOrWhite,
+    getRightScoreColor,
+    getLeftScoreColor,
     getPlayerTextColor,
     getLeftTeamGradient, getPlayerDividerColor
 } from '../services/style-service';
@@ -28,24 +28,25 @@ export default class Players extends Component {
             width: '100%'
         },
         headerText: {
+            color: getLeftScoreColor(this.props.theme),
             fontFamily: 'ArialRoundedMTBold',
             fontSize: 40,
             fontWeight: '600',
             padding: 10,
-            ...shadow
+            ...getShadow(this.props.theme)
         },
         leftTeamView: {
-            borderRightWidth: 1,
-            borderRightColor: getPlayerDividerColor(this.props.theme)
-        },
-        rightTeamView: {
-            borderLeftWidth: 1,
-            borderLeftColor: getPlayerDividerColor(this.props.theme)
+            borderRightColor: getPlayerDividerColor(this.props.theme),
+            borderRightWidth: 1
         },
         nameText: {
             color: getPlayerTextColor(this.props.theme),
             fontSize: 20,
             fontWeight: '400'
+        },
+        rightTeamView: {
+            borderLeftColor: getPlayerDividerColor(this.props.theme),
+            borderLeftWidth: 1
         },
         singleColumn: {
             alignItems: 'center',
@@ -70,7 +71,7 @@ export default class Players extends Component {
             <View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={[styles.teamView, styles.leftTeamView]}>
-                        <Text style={[styles.headerText, {color: getPeachOrWhite(theme)}]}>{team1.score}</Text>
+                        <Text style={[styles.headerText, {color: getLeftScoreColor(theme)}]}>{team1.score}</Text>
                         <LinearGradient
                             colors={getLeftTeamGradient(theme)}
                             end={{
@@ -104,7 +105,7 @@ export default class Players extends Component {
                         </LinearGradient>
                     </View>
                     <View style={[styles.teamView, styles.rightTeamView]}>
-                        <Text style={[styles.headerText, {color: getLightBlueOrWhite(theme)}]}>{team2.score}</Text>
+                        <Text style={[styles.headerText, {color: getRightScoreColor(theme)}]}>{team2.score}</Text>
                         <LinearGradient
                             colors={getRightTeamGradient(theme)}
                             end={{

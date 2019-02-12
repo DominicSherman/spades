@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 
-import {getLightBlueOrWhite, getLightTextColor, getPeachOrWhite} from '../services/style-service';
+import {getRightScoreColor, getLightTextColor, getLeftScoreColor} from '../services/style-service';
 
 export default class CurrentBids extends Component {
     shouldShowCurrBids = () => this.props.bids && !this.props.bids.team1Actual;
@@ -49,12 +49,12 @@ export default class CurrentBids extends Component {
             fontWeight: '400'
         },
         team1Text: {
-            color: getPeachOrWhite(this.props.theme),
+            color: getLeftScoreColor(this.props.theme),
             fontSize: 20,
             fontWeight: '400'
         },
         team2Text: {
-            color: getLightBlueOrWhite(this.props.theme),
+            color: getRightScoreColor(this.props.theme),
             fontSize: 20,
             fontWeight: '400'
         }

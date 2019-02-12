@@ -1,10 +1,10 @@
 import {getShadowColor} from '../services/style-service';
 
-export const shadow = {
-    shadowColor: getShadowColor(),
+export const getShadow = (theme) => ({
+    shadowColor: getShadowColor(theme),
     shadowOffset: {
         height: 3,
         width: 3
     },
-    shadowOpacity: 0.15
-};
+    shadowOpacity: 0.2
+});

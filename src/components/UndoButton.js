@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 
-import {getHeaderFooterTextColor, getUndoLogo} from '../services/style-service';
+import {getHeaderFooterTextColor, getHeaderIconColor, getUndoLogo} from '../services/style-service';
 
 export default class UndoButton extends Component {
     _getStyles = () => StyleSheet.create({
         image: {
             height: '100%',
+            tintColor: getHeaderIconColor(this.props.theme),
             width: '100%'
         },
         imageWrapper: {
@@ -45,7 +46,7 @@ export default class UndoButton extends Component {
                     <View style={styles.imageWrapper}>
                         <Image
                             resizeMode={'contain'}
-                            source={getUndoLogo(theme)}
+                            source={require('../assets/undo.png')}
                             style={styles.image}
                         />
                     </View>

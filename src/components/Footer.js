@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import LinearGradient from 'react-native-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-import {shadow} from '../constants/shadow-styles';
+import {getShadow} from '../constants/shadow-styles';
 import InstructionsModal from '../modals/InstructionsModal';
 import SettingsModal from '../modals/SettingsModal';
 import {
-    getBackgroundColor,
-    getRightTeamGradient,
+    getFooterIconColor,
     getHeaderFooterColor,
-    getHeaderFooterTextColor,
-    getIconColor
+    getHeaderIconColor,
+    getSubmitArrowColor,
+    getSubmitTextColor
 } from '../services/style-service';
 
 export default class Footer extends Component {
@@ -30,9 +29,10 @@ export default class Footer extends Component {
         icon: {
             position: 'absolute',
             top: -15,
-            ...shadow
+            ...getShadow(this.props.theme)
         },
         iconBackground: {
+            backgroundColor: getFooterIconColor(this.props.theme),
             borderRadius: 4,
             height: 60,
             position: 'absolute',
@@ -62,7 +62,7 @@ export default class Footer extends Component {
             justifyContent: 'center'
         },
         text: {
-            color: getHeaderFooterTextColor(this.props.theme),
+            color: getSubmitTextColor(this.props.theme),
             fontFamily: 'ArialRoundedMTBold',
             fontSize: 18,
             fontWeight: '800',
@@ -90,7 +90,7 @@ export default class Footer extends Component {
                     style={styles.infoWrapper}
                 >
                     <EvilIcons
-                        color={getIconColor(theme)}
+                        color={getFooterIconColor(theme)}
                         name={'question'}
                         size={50}
                     />
@@ -101,20 +101,9 @@ export default class Footer extends Component {
                 >
                     <View style={styles.submitWrapper}>
                         <View style={styles.diamond} />
-                        <LinearGradient
-                            colors={getRightTeamGradient(theme)}
-                            end={{
-                                x: 1,
-                                y: 0
-                            }}
-                            start={{
-                                x: 0,
-                                y: 0
-                            }}
-                            style={styles.iconBackground}
-                        />
+                        <View style={styles.iconBackground} />
                         <Feather
-                            color={getBackgroundColor(theme)}
+                            color={getSubmitArrowColor(theme)}
                             name={'arrow-up'}
                             size={70}
                             style={styles.icon}
@@ -127,7 +116,7 @@ export default class Footer extends Component {
                     style={styles.settingsWrapper}
                 >
                     <EvilIcons
-                        color={getIconColor(theme)}
+                        color={getFooterIconColor(theme)}
                         name={'gear'}
                         size={50}
                     />

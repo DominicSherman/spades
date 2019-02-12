@@ -304,7 +304,10 @@ const setColor = (state, color) => ({
     }
 });
 
-const restart = (state) => defaultState;
+const restart = (state) => ({
+    ...defaultState,
+    theme: state.theme
+});
 
 const reducerMap = {
     [SET_TEAM_ONE_SCORE]: setTeamOneScore,
