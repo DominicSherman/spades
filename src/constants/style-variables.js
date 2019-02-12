@@ -23,3 +23,4 @@ export const orange = '#F38059';
 export const orangeLogo = '#F7B15E';
 export const greenLogo = '#6AD16B';
 export const violetLogo = '#798CEC';
+export const peach2 = '#D77075';

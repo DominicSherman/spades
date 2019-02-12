@@ -6,8 +6,8 @@ import {
     LIGHT,
     MINT_GREEN,
     ORANGE,
-    ORIGINAL,
-    SEA_FOAM,
+    ORIGINAL, PEACH,
+    SEA_FOAM, VIOLET,
     VOLT_BLUE
 } from '../constants/constants';
 import {COLOR_THEMES} from '../constants/enums';
@@ -18,9 +18,9 @@ const isOriginal = (theme) => theme && theme.color === ORIGINAL;
 
 export const getColorsForTheme = (theme) =>
     isLight(theme) ?
-        [ORIGINAL, BLUE, ORANGE, GREEN]
+        [ORIGINAL, BLUE, ORANGE, GREEN, PEACH]
         :
-        [DARK_ORIGINAL, VOLT_BLUE, MINT_GREEN, SEA_FOAM];
+        [DARK_ORIGINAL, VOLT_BLUE, MINT_GREEN, SEA_FOAM, VIOLET];
 
 export const setDefault = (theme, setColor) => isLight(theme) ? setColor(ORIGINAL) : setColor(DARK_ORIGINAL);
 

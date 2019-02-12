@@ -4,20 +4,31 @@ import {
     green,
     greenLogo,
     lightBlue,
-    lightGray,
+    lightGray, mediumGray,
     mintGreen,
     orange,
     orangeLogo,
-    peach,
+    peach, peach2,
     seaFoam,
     violet,
     violetLogo,
     voltBlue,
     white
 } from './style-variables';
-import {BLUE, DARK_ORIGINAL, GREEN, MINT_GREEN, ORANGE, ORIGINAL, SEA_FOAM, VOLT_BLUE} from './constants';
+import {
+    BLUE,
+    DARK_ORIGINAL,
+    GREEN,
+    MINT_GREEN,
+    ORANGE,
+    ORIGINAL,
+    PEACH,
+    SEA_FOAM,
+    VIOLET,
+    VOLT_BLUE
+} from './constants';
 
-export const BASIC_LIGHT_THEMES = {
+const BASIC_LIGHT_THEMES = {
     headerFooterBackground: blue,
     headerFooterText: white,
     headerIcons: white,
@@ -28,7 +39,7 @@ export const BASIC_LIGHT_THEMES = {
     rightGradient: [blue, blue],
     rightScore: darkBlue
 };
-export const BASIC_DARK_THEMES = {
+const BASIC_DARK_THEMES = {
     headerFooterBackground: blue,
     headerFooterText: white,
     headerIcons: darkBlue,
@@ -50,7 +61,9 @@ export const COLOR_THEMES = {
     [GREEN]: {
         ...BASIC_LIGHT_THEMES,
         headerFooterBackground: green,
-        headerLogo: greenLogo
+        headerLogo: greenLogo,
+        leftGradient: [green, green],
+        rightGradient: [green, green]
     },
     [MINT_GREEN]: {
         ...BASIC_DARK_THEMES,
@@ -59,12 +72,14 @@ export const COLOR_THEMES = {
     [ORANGE]: {
         ...BASIC_LIGHT_THEMES,
         headerFooterBackground: orange,
-        headerLogo: orangeLogo
+        headerLogo: orangeLogo,
+        leftGradient: [orange, orange],
+        rightGradient: [orange, orange]
     },
     [ORIGINAL]: {
         ...BASIC_LIGHT_THEMES,
         headerFooterBackground: lightGray,
-        headerFooterText: white,
+        headerFooterText: mediumGray,
         headerIcons: lightBlue,
         headerLogo: lightBlue,
         leftGradient: [violet, peach],
@@ -72,9 +87,20 @@ export const COLOR_THEMES = {
         rightGradient: [lightBlue, blue],
         rightScore: lightBlue
     },
+    [PEACH]: {
+        ...BASIC_LIGHT_THEMES,
+        headerFooterBackground: peach2,
+        headerLogo: white,
+        leftGradient: [peach2, peach2],
+        rightGradient: [peach2, peach2]
+    },
     [SEA_FOAM]: {
         ...BASIC_DARK_THEMES,
         headerFooterBackground: seaFoam
+    },
+    [VIOLET]: {
+        ...BASIC_DARK_THEMES,
+        headerFooterBackground: violet
     },
     [VOLT_BLUE]: {
         ...BASIC_DARK_THEMES,

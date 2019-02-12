@@ -16,3 +16,6 @@ export const DARK_ORIGINAL = 'Dark Original';
 export const VOLT_BLUE = 'Volt Blue';
 export const MINT_GREEN = 'Mint Green';
 export const SEA_FOAM = 'Sea Foam';
+export const VIOLET = 'Violet';
+export const PEACH = 'Peach';
+
