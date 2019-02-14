@@ -3,23 +3,18 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 
-import {withRedux} from '../src/redux/redux-factory';
+import Home from '../src/Home';
 
-jest.mock('../src/redux/redux-factory');
 jest.mock('../src/services/style-service');
 
 const chance = new Chance();
 
 describe('Home', () => {
-    let Home,
-        renderedComponent,
+    let renderedComponent,
         renderedInstance,
         expectedProps;
 
     const renderComponent = () => {
-        require('../src/Home');
-        Home = withRedux.mock.calls[0][0];
-
         const shallowRenderer = ShallowRenderer.createRenderer();
 
         shallowRenderer.render(<Home {...expectedProps} />);

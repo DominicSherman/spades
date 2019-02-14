@@ -29,4 +29,13 @@ describe('Header', () => {
     it('should render a root View', () => {
         expect(renderedComponent.type).toBe(View);
     });
+
+    it('should pass undo onPress to the undo headerIcon', () => {
+        const renderedUndo = renderedComponent.props.children[2];
+
+        renderedUndo.props.onPress();
+
+        expect(expectedProps.actions.undo).toHaveBeenCalledTimes(1);
+        expect(expectedProps.actions.undo).toHaveBeenCalledWith(expectedProps.isBids);
+    });
 });

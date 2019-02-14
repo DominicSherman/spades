@@ -1,10 +1,10 @@
 import {LIGHT, ORIGINAL} from '../constants/constants';
-import {lightGray} from '../constants/style-variables';
 
 import {
     ADD_BIDS,
     RESET,
-    RESTART, SET_COLOR,
+    RESTART,
+    SET_COLOR,
     SET_IS_BIDS,
     SET_PLAYER_FOUR_ACTUAL,
     SET_PLAYER_FOUR_BID,
@@ -252,20 +252,20 @@ const undoActual = (state) => ({
     },
     rounds: [{
         ...state.rounds[0],
-        playerOne: {
-            ...state.rounds[0].playerOne,
+        playerFour: {
+            ...state.rounds[0].playerFour,
             actual: null
         },
-        playerTwo: {
-            ...state.rounds[0].playerTwo,
+        playerOne: {
+            ...state.rounds[0].playerOne,
             actual: null
         },
         playerThree: {
             ...state.rounds[0].playerThree,
             actual: null
         },
-        playerFour: {
-            ...state.rounds[0].playerFour,
+        playerTwo: {
+            ...state.rounds[0].playerTwo,
             actual: null
         },
         team1Actual: null,
@@ -310,34 +310,34 @@ const restart = (state) => ({
 });
 
 const reducerMap = {
-    [SET_TEAM_ONE_SCORE]: setTeamOneScore,
-    [SET_TEAM_TWO_SCORE]: setTeamTwoScore,
-    [SET_TEAM_ONE_BAGS]: setTeamOneBags,
-    [SET_TEAM_TWO_BAGS]: setTeamTwoBags,
-    [SET_IS_BIDS]: setIsBids,
+    [ADD_BIDS]: addBids,
     [RESET]: reset,
     [RESTART]: restart,
-    [ADD_BIDS]: addBids,
-    [SET_ROUNDS]: setRounds,
-    [SET_PLAYER_ONE_NAME]: setPlayerOneName,
-    [SET_PLAYER_TWO_NAME]: setPlayerTwoName,
-    [SET_PLAYER_THREE_NAME]: setPlayerThreeName,
-    [SET_PLAYER_FOUR_NAME]: setPlayerFourName,
-    [SET_PLAYER_ONE_BID]: setPlayerOneBid,
-    [SET_PLAYER_TWO_BID]: setPlayerTwoBid,
-    [SET_PLAYER_THREE_BID]: setPlayerThreeBid,
-    [SET_PLAYER_FOUR_BID]: setPlayerFourBid,
-    [SET_PLAYER_ONE_ACTUAL]: setPlayerOneActual,
-    [SET_PLAYER_TWO_ACTUAL]: setPlayerTwoActual,
-    [SET_PLAYER_THREE_ACTUAL]: setPlayerThreeActual,
+    [SET_COLOR]: setColor,
+    [SET_IS_BIDS]: setIsBids,
     [SET_PLAYER_FOUR_ACTUAL]: setPlayerFourActual,
-    [UNDO_BIDS]: undoBids,
-    [UNDO_ACTUAL]: undoActual,
+    [SET_PLAYER_FOUR_BID]: setPlayerFourBid,
+    [SET_PLAYER_FOUR_NAME]: setPlayerFourName,
+    [SET_PLAYER_ONE_ACTUAL]: setPlayerOneActual,
+    [SET_PLAYER_ONE_BID]: setPlayerOneBid,
+    [SET_PLAYER_ONE_NAME]: setPlayerOneName,
+    [SET_PLAYER_THREE_ACTUAL]: setPlayerThreeActual,
+    [SET_PLAYER_THREE_BID]: setPlayerThreeBid,
+    [SET_PLAYER_THREE_NAME]: setPlayerThreeName,
+    [SET_PLAYER_TWO_ACTUAL]: setPlayerTwoActual,
+    [SET_PLAYER_TWO_BID]: setPlayerTwoBid,
+    [SET_PLAYER_TWO_NAME]: setPlayerTwoName,
+    [SET_ROUNDS]: setRounds,
+    [SET_TEAM_ONE_BAGS]: setTeamOneBags,
+    [SET_TEAM_ONE_SCORE]: setTeamOneScore,
+    [SET_TEAM_TWO_BAGS]: setTeamTwoBags,
+    [SET_TEAM_TWO_SCORE]: setTeamTwoScore,
+    [SET_THEME]: setTheme,
     [TOGGLE_SHOW_HISTORY]: toggleShouldShowHistory,
     [TOGGLE_SHOW_INFO_MODAL]: toggleShowInfoModal,
     [TOGGLE_SHOW_SETTINGS_MODAL]: toggleShowSettingsModal,
-    [SET_THEME]: setTheme,
-    [SET_COLOR]: setColor
+    [UNDO_ACTUAL]: undoActual,
+    [UNDO_BIDS]: undoBids
 };
 
 export default (state = defaultState, {type, data}) => {

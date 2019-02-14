@@ -3,11 +3,11 @@ import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import thunk from 'redux-thunk';
 
 import reducer from './redux/reducer';
-import Home from './Home';
+import HomeContainer from './HomeContainer';
 
 import {PersistGate} from 'redux-persist/integration/react';
 
@@ -33,7 +33,7 @@ export default class App extends React.Component {
                     loading={null}
                     persistor={persistor}
                 >
-                    <Home />
+                    <HomeContainer />
                 </PersistGate>
             </Provider>
         );

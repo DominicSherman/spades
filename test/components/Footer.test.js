@@ -10,7 +10,15 @@ jest.mock('../../src/services/style-service');
 describe('Footer', () => {
     let expectedProps,
 
-        renderedComponent;
+        renderedComponent,
+        renderedSubmitText;
+
+    const cacheChildren = () => {
+        const renderedSubmitTouchable = renderedComponent.props.children[1];
+        const renderedSubmitView = renderedSubmitTouchable.props.children;
+
+        renderedSubmitText = renderedSubmitView.props.children[3];
+    };
 
     const renderComponent = () => {
         const shallowRenderer = ShallowRenderer.createRenderer();
@@ -18,6 +26,7 @@ describe('Footer', () => {
         shallowRenderer.render(<Footer {...expectedProps} />);
 
         renderedComponent = shallowRenderer.getRenderOutput();
+        cacheChildren();
     };
 
     beforeEach(() => {
@@ -28,5 +37,19 @@ describe('Footer', () => {
 
     it('should render a root View', () => {
         expect(renderedComponent.type).toBe(View);
+    });
+
+    it('should render the text as SUBMIT BIDS when isBids', () => {
+        expectedProps.isBids = true;
+        renderComponent();
+
+        expect(renderedSubmitText.props.children).toBe('SUBMIT BIDS');
+    });
+
+    it('should render the text as SUBMIT RESULTS when not isBids', () => {
+        expectedProps.isBids = false;
+        renderComponent();
+
+        expect(renderedSubmitText.props.children).toBe('SUBMIT RESULTS');
     });
 });

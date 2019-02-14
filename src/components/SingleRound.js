@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
 
 import {getLightTextColor} from '../services/style-service';
+import {roundHasResults} from '../constants/score-helpers';
 
 export default class SingleRound extends Component {
     _getStyles = () => StyleSheet.create({
@@ -50,7 +51,7 @@ export default class SingleRound extends Component {
 
         return (
             <View style={{flex: 1}}>
-                {playerOne.actual !== null && playerOne.actual !== undefined ?
+                {roundHasResults(this.props.item) ?
                     <View>
                         <View
                             style={{

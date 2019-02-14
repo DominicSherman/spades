@@ -1,7 +1,6 @@
 import React from 'react';
 import {SafeAreaView, View, StyleSheet} from 'react-native';
 
-import {withRedux} from './redux/redux-factory';
 import Header from './components/Header';
 import Players from './components/Players';
 import CurrentRound from './components/CurrentRound';
@@ -11,7 +10,7 @@ import HistoryModal from './modals/HistoryModal';
 import CurrentBids from './components/CurrentBids';
 import {getBackgroundColor, getHeaderFooterColor} from './services/style-service';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.rounds !== this.props.rounds) {
             this.props.actions.calculateTeamScore(this.props.rounds);
@@ -96,5 +95,3 @@ class Home extends React.Component {
         );
     }
 }
-
-export default withRedux(Home);

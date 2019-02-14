@@ -27,7 +27,8 @@ export const createRandomProps = (props = {}) => ({
     actions: {
         restart: jest.fn(),
         toggleShowHistory: jest.fn(),
-        toggleShowInfoModal: jest.fn()
+        toggleShowInfoModal: jest.fn(),
+        undo: jest.fn()
     },
     bids: {
         playerFour: {
@@ -41,7 +42,9 @@ export const createRandomProps = (props = {}) => ({
         },
         playerTwo: {
             bid: chance.natural()
-        }
+        },
+        team1Bids: chance.natural(),
+        team2Bids: chance.natural()
     },
     currRound: {
         player1Bid: chance.natural(),
