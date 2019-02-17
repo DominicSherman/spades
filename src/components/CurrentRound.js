@@ -1,48 +1,28 @@
 import React, {Component} from 'react';
-import {Dimensions, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {Dimensions, StyleSheet, TextInput, View} from 'react-native';
 
 import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/constants';
 import {getLightTextColor} from '../services/style-service';
 
 export default class CurrentRound extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            player1Input: null,
-            player2Input: null,
-            player3Input: null,
-            player4Input: null
-        };
-    }
-
     _getStyles = () => StyleSheet.create({
-        buttonWrapper: {
+        textInput: {
             alignItems: 'center',
             borderColor: getLightTextColor(this.props.theme),
             borderWidth: 1,
-            height: Dimensions.get('screen').width / 4,
-            justifyContent: 'center',
-            top: 0,
-            width: Dimensions.get('screen').width / 4
-        },
-        teamView: {
-            alignItems: 'center',
-            flexDirection: 'column',
-            justifyContent: 'space-evenly',
-            padding: 10,
-            width: Dimensions.get('screen').width / 2
-        },
-        text: {
             color: getLightTextColor(this.props.theme),
             fontSize: 20,
-            fontWeight: '600'
+            fontWeight: '600',
+            height: Dimensions.get('screen').width / 4,
+            justifyContent: 'center',
+            marginBottom: 10,
+            marginTop: 10,
+            textAlign: 'center',
+            width: Dimensions.get('screen').width / 4
         },
-        topRowView: {
-            alignItems: 'center',
+        wrapper: {
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            width: Dimensions.get('screen').width / 2
+            justifyContent: 'center'
         }
     });
 
@@ -51,79 +31,39 @@ export default class CurrentRound extends Component {
         const styles = this._getStyles();
 
         return (
-            <View style={{flexDirection: 'row'}}>
-                <View style={styles.teamView}>
-                    <View style={styles.topRowView}>
-                        <TouchableOpacity
-                            onPress={() => this.state.player1Input.focus()}
-                            style={styles.buttonWrapper}
-                        >
-                            <TextInput
-                                clearTextOnFocus
-                                keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_ONE)}
-                                placeholder={'0'}
-                                ref={(input) => {
-                                    this.state.player1Input = input;
-                                }}
-                                style={styles.text}
-                                value={`${currRound.player1Bid}`}
-                            />
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => this.state.player2Input.focus()}
-                            style={styles.buttonWrapper}
-                        >
-                            <TextInput
-                                clearTextOnFocus
-                                keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_TWO)}
-                                placeholder={'0'}
-                                ref={(input) => {
-                                    this.state.player2Input = input;
-                                }}
-                                style={styles.text}
-                                value={`${currRound.player2Bid}`}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={[styles.teamView]}>
-                    <View style={styles.topRowView}>
-                        <TouchableOpacity
-                            onPress={() => this.state.player3Input.focus()}
-                            style={styles.buttonWrapper}
-                        >
-                            <TextInput
-                                clearTextOnFocus
-                                keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_THREE)}
-                                placeholder={'0'}
-                                ref={(input) => {
-                                    this.state.player3Input = input;
-                                }}
-                                style={styles.text}
-                                value={`${currRound.player3Bid}`}
-                            />
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => this.state.player4Input.focus()}
-                            style={styles.buttonWrapper}
-                        >
-                            <TextInput
-                                clearTextOnFocus
-                                keyboardType={'number-pad'}
-                                onChangeText={(bid) => actions.submitValue(bid, PLAYER_FOUR)}
-                                placeholder={'0'}
-                                ref={(input) => {
-                                    this.state.player4Input = input;
-                                }}
-                                style={styles.text}
-                                value={`${currRound.player4Bid}`}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
+            <View style={styles.wrapper}>
+                <TextInput
+                    clearTextOnFocus
+                    keyboardType={'number-pad'}
+                    onChangeText={(bid) => actions.submitValue(bid, PLAYER_ONE)}
+                    placeholder={'0'}
+                    style={styles.textInput}
+                    value={`${currRound.player1Bid}`}
+                />
+                <TextInput
+                    clearTextOnFocus
+                    keyboardType={'number-pad'}
+                    onChangeText={(bid) => actions.submitValue(bid, PLAYER_TWO)}
+                    placeholder={'0'}
+                    style={styles.textInput}
+                    value={`${currRound.player2Bid}`}
+                />
+                <TextInput
+                    clearTextOnFocus
+                    keyboardType={'number-pad'}
+                    onChangeText={(bid) => actions.submitValue(bid, PLAYER_THREE)}
+                    placeholder={'0'}
+                    style={styles.textInput}
+                    value={`${currRound.player3Bid}`}
+                />
+                <TextInput
+                    clearTextOnFocus
+                    keyboardType={'number-pad'}
+                    onChangeText={(bid) => actions.submitValue(bid, PLAYER_FOUR)}
+                    placeholder={'0'}
+                    style={styles.textInput}
+                    value={`${currRound.player4Bid}`}
+                />
             </View>
         );
     }
