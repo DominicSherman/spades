@@ -26,7 +26,9 @@ export const createRandomRound = (round = {}) => ({
 export const createRandomProps = (props = {}) => ({
     actions: {
         restart: jest.fn(),
+        setColor: jest.fn(),
         setName: jest.fn(),
+        setTheme: jest.fn(),
         submitValue: jest.fn(),
         toggleShowHistory: jest.fn(),
         toggleShowInfoModal: jest.fn(),

@@ -123,26 +123,24 @@ export default class SettingsModal extends Component {
                         </View>
                         <View style={styles.secondWrapper}>
                             <Text style={styles.headerText2}>{'Color'}</Text>
-                            {
-                                <FlatList
-                                    data={colors}
-                                    renderItem={({item}) =>
-                                        <Touchable
-                                            onPress={() => actions.setColor(item)}
-                                            style={styles.optionTouchable}
-                                        >
-                                            <View style={styles.optionWrapper}>
-                                                <Feather
-                                                    color={this._getIconColor(item)}
-                                                    name={this._getIconName(item)}
-                                                    size={20}
-                                                />
-                                                <Text style={[styles.text, {paddingLeft: 15}]}>{item}</Text>
-                                            </View>
-                                        </Touchable>
-                                    }
-                                />
-                            }
+                            <FlatList
+                                data={colors}
+                                renderItem={({item}) =>
+                                    <Touchable
+                                        onPress={() => actions.setColor(item)}
+                                        style={styles.optionTouchable}
+                                    >
+                                        <View style={styles.optionWrapper}>
+                                            <Feather
+                                                color={this._getIconColor(item)}
+                                                name={this._getIconName(item)}
+                                                size={20}
+                                            />
+                                            <Text style={[styles.text, {paddingLeft: 15}]}>{item}</Text>
+                                        </View>
+                                    </Touchable>
+                                }
+                            />
                         </View>
                     </View>
                 </SafeAreaView>
