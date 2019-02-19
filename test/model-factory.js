@@ -1,4 +1,5 @@
 import Chance from 'chance';
+import {DARK, LIGHT} from '../src/constants/constants';
 
 const chance = new Chance();
 
@@ -67,7 +68,7 @@ export const createRandomProps = (props = {}) => ({
         thirdPlayer: chance.string()
     },
     theme: {
-        background: chance.string(),
+        background: chance.pickone([LIGHT, DARK]),
         color: chance.string()
     },
     ...props

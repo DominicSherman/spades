@@ -68,6 +68,11 @@ const setIsBids = (state, isBids) => ({
     isBids
 });
 
+const setRounds = (state, rounds) => ({
+    ...state,
+    rounds
+});
+
 const addBids = (state, bids) => ({
     ...state,
     rounds: [{
@@ -86,11 +91,6 @@ const addBids = (state, bids) => ({
         team1Bids: Number(bids.team1Total),
         team2Bids: Number(bids.team2Total)
     }, ...state.rounds]
-});
-
-const setRounds = (state, rounds) => ({
-    ...state,
-    rounds
 });
 
 const reset = (state) => ({
