@@ -51,33 +51,34 @@ export default class SingleRound extends Component {
 
         return (
             <View style={{flex: 1}}>
-                {roundHasResults(this.props.item) ?
-                    <View>
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                justifyContent: 'center'
-                            }}
-                        >
-                            <Text style={styles.scoreText}>{`${score.score1} - ${score.score2}`}</Text>
-                        </View>
-                        <View style={{flexDirection: 'row'}}>
-                            <View style={styles.teamView}>
-                                <View style={styles.actualView}>
-                                    <Text style={styles.text}>{`${playerOne.actual}`}</Text>
-                                    <Text style={styles.text}>{`${playerTwo.actual}`}</Text>
+                {
+                    roundHasResults(this.props.item) ?
+                        <View>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'center'
+                                }}
+                            >
+                                <Text style={styles.scoreText}>{`${score.score1} - ${score.score2}`}</Text>
+                            </View>
+                            <View style={{flexDirection: 'row'}}>
+                                <View style={styles.teamView}>
+                                    <View style={styles.actualView}>
+                                        <Text style={styles.text}>{`${playerOne.actual}`}</Text>
+                                        <Text style={styles.text}>{`${playerTwo.actual}`}</Text>
+                                    </View>
+                                </View>
+                                <View style={styles.teamView}>
+                                    <View style={styles.actualView}>
+                                        <Text style={styles.text}>{`${playerThree.actual}`}</Text>
+                                        <Text style={styles.text}>{`${playerFour.actual}`}</Text>
+                                    </View>
                                 </View>
                             </View>
-                            <View style={styles.teamView}>
-                                <View style={styles.actualView}>
-                                    <Text style={styles.text}>{`${playerThree.actual}`}</Text>
-                                    <Text style={styles.text}>{`${playerFour.actual}`}</Text>
-                                </View>
-                            </View>
                         </View>
-                    </View>
-                    :
-                    null
+                        :
+                        null
                 }
                 <View style={{flexDirection: 'row'}}>
                     <View style={styles.teamView}>

@@ -5,11 +5,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/constants';
 import {getShadow} from '../constants/shadow-styles';
 import {
-    getRightTeamGradient,
-    getRightScoreColor,
     getLeftScoreColor,
+    getLeftTeamGradient,
+    getPlayerDividerColor,
     getPlayerTextColor,
-    getLeftTeamGradient, getPlayerDividerColor
+    getRightScoreColor,
+    getRightTeamGradient
 } from '../services/style-service';
 
 export default class Players extends Component {
@@ -68,76 +69,74 @@ export default class Players extends Component {
         const styles = this._getStyles();
 
         return (
-            <View>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={[styles.teamView, styles.leftTeamView]}>
-                        <Text style={[styles.headerText, {color: getLeftScoreColor(theme)}]}>{team1.score}</Text>
-                        <LinearGradient
-                            colors={getLeftTeamGradient(theme)}
-                            end={{
-                                x: 1,
-                                y: 0
-                            }}
-                            start={{
-                                x: 0,
-                                y: 0
-                            }}
-                            style={[styles.centeredRow, styles.borderLeft]}
-                        >
-                            <View style={styles.singleColumn}>
-                                <TextInput
-                                    clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, PLAYER_ONE)}
-                                    placeholder={'Player 1'}
-                                    style={styles.nameText}
-                                    value={team1.firstPlayer}
-                                />
-                            </View>
-                            <View style={styles.singleColumn}>
-                                <TextInput
-                                    clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, PLAYER_TWO)}
-                                    placeholder={'Player 2'}
-                                    style={styles.nameText}
-                                    value={team1.secondPlayer}
-                                />
-                            </View>
-                        </LinearGradient>
-                    </View>
-                    <View style={[styles.teamView, styles.rightTeamView]}>
-                        <Text style={[styles.headerText, {color: getRightScoreColor(theme)}]}>{team2.score}</Text>
-                        <LinearGradient
-                            colors={getRightTeamGradient(theme)}
-                            end={{
-                                x: 1,
-                                y: 0
-                            }}
-                            start={{
-                                x: 0,
-                                y: 0
-                            }}
-                            style={[styles.centeredRow, styles.borderRight]}
-                        >
-                            <View style={styles.singleColumn}>
-                                <TextInput
-                                    clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, PLAYER_THREE)}
-                                    placeholder={'Player 3'}
-                                    style={styles.nameText}
-                                    value={team2.firstPlayer}
-                                />
-                            </View>
-                            <View style={styles.singleColumn}>
-                                <TextInput
-                                    clearTextOnFocus
-                                    onChangeText={(name) => actions.setName(name, PLAYER_FOUR)}
-                                    placeholder={'Player 4'}
-                                    style={styles.nameText}
-                                    value={team2.secondPlayer}
-                                />
-                            </View>
-                        </LinearGradient>
-                    </View>
+            <View style={{flexDirection: 'row'}}>
+                <View style={[styles.teamView, styles.leftTeamView]}>
+                    <Text style={[styles.headerText, {color: getLeftScoreColor(theme)}]}>{team1.score}</Text>
+                    <LinearGradient
+                        colors={getLeftTeamGradient(theme)}
+                        end={{
+                            x: 1,
+                            y: 0
+                        }}
+                        start={{
+                            x: 0,
+                            y: 0
+                        }}
+                        style={[styles.centeredRow, styles.borderLeft]}
+                    >
+                        <View style={styles.singleColumn}>
+                            <TextInput
+                                clearTextOnFocus
+                                onChangeText={(name) => actions.setName(name, PLAYER_ONE)}
+                                placeholder={'Player 1'}
+                                style={styles.nameText}
+                                value={team1.firstPlayer}
+                            />
+                        </View>
+                        <View style={styles.singleColumn}>
+                            <TextInput
+                                clearTextOnFocus
+                                onChangeText={(name) => actions.setName(name, PLAYER_TWO)}
+                                placeholder={'Player 2'}
+                                style={styles.nameText}
+                                value={team1.secondPlayer}
+                            />
+                        </View>
+                    </LinearGradient>
+                </View>
+                <View style={[styles.teamView, styles.rightTeamView]}>
+                    <Text style={[styles.headerText, {color: getRightScoreColor(theme)}]}>{team2.score}</Text>
+                    <LinearGradient
+                        colors={getRightTeamGradient(theme)}
+                        end={{
+                            x: 1,
+                            y: 0
+                        }}
+                        start={{
+                            x: 0,
+                            y: 0
+                        }}
+                        style={[styles.centeredRow, styles.borderRight]}
+                    >
+                        <View style={styles.singleColumn}>
+                            <TextInput
+                                clearTextOnFocus
+                                onChangeText={(name) => actions.setName(name, PLAYER_THREE)}
+                                placeholder={'Player 3'}
+                                style={styles.nameText}
+                                value={team2.firstPlayer}
+                            />
+                        </View>
+                        <View style={styles.singleColumn}>
+                            <TextInput
+                                clearTextOnFocus
+                                onChangeText={(name) => actions.setName(name, PLAYER_FOUR)}
+                                placeholder={'Player 4'}
+                                style={styles.nameText}
+                                value={team2.secondPlayer}
+                            />
+                        </View>
+                    </LinearGradient>
                 </View>
             </View>
         );
