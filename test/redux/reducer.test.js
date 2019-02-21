@@ -5,7 +5,8 @@ import {LIGHT, ORIGINAL} from '../../src/constants/constants';
 import {
     ADD_BIDS,
     RESET,
-    RESTART, SET_COLOR,
+    RESTART,
+    SET_COLOR,
     SET_IS_BIDS,
     SET_PLAYER_FOUR_ACTUAL,
     SET_PLAYER_FOUR_BID,
@@ -23,13 +24,15 @@ import {
     SET_TEAM_ONE_BAGS,
     SET_TEAM_ONE_SCORE,
     SET_TEAM_TWO_BAGS,
-    SET_TEAM_TWO_SCORE, SET_THEME,
-    TOGGLE_SHOW_HISTORY, TOGGLE_SHOW_INFO_MODAL, TOGGLE_SHOW_SETTINGS_MODAL,
+    SET_TEAM_TWO_SCORE,
+    SET_THEME,
+    TOGGLE_SHOW_HISTORY,
+    TOGGLE_SHOW_INFO_MODAL,
+    TOGGLE_SHOW_SETTINGS_MODAL,
     UNDO_ACTUAL,
     UNDO_BIDS
 } from '../../src/redux/action-types';
 import {createRandomRound} from '../model-factory';
-import {calculateScore} from '../../src/services/score-service';
 
 const chance = new Chance();
 

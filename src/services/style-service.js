@@ -54,8 +54,8 @@ export const getRightTeamGradient = (theme) => COLOR_THEMES[theme.color].rightGr
 
 export const getLeftTeamGradient = (theme) => COLOR_THEMES[theme.color].leftGradient;
 
-export const getLeftScoreColor = (theme) => COLOR_THEMES[theme.color].leftScore;
-
 export const getRightScoreColor = (theme) => COLOR_THEMES[theme.color].rightScore;
+
+export const getLeftScoreColor = (theme) => COLOR_THEMES[theme.color].leftScore;
 
 export const getPlayerDividerColor = (theme) => COLOR_THEMES[theme.color].playerDivider;

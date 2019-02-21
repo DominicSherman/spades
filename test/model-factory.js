@@ -1,4 +1,5 @@
 import Chance from 'chance';
+
 import {DARK, LIGHT} from '../src/constants/constants';
 
 const chance = new Chance();
@@ -22,6 +23,14 @@ export const createRandomRound = (round = {}) => ({
     },
     score: chance.natural(),
     ...round
+});
+
+export const createRandomCurrRound = (currRound = {}) => ({
+    player1Bid: chance.natural(),
+    player2Bid: chance.natural(),
+    player3Bid: chance.natural(),
+    player4Bid: chance.natural(),
+    ...currRound
 });
 
 export const createRandomProps = (props = {}) => ({
@@ -51,12 +60,7 @@ export const createRandomProps = (props = {}) => ({
         team1Bids: chance.natural(),
         team2Bids: chance.natural()
     },
-    currRound: {
-        player1Bid: chance.natural(),
-        player2Bid: chance.natural(),
-        player3Bid: chance.natural(),
-        player4Bid: chance.natural()
-    },
+    currRound: createRandomCurrRound(),
     isBids: chance.natural(),
     rounds: chance.n(createRandomRound, chance.d6() + 1),
     team1: {

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 
-import {getHeaderFooterTextColor, getHeaderIconColor, getUndoLogo} from '../services/style-service';
+import {getHeaderFooterTextColor, getHeaderIconColor} from '../services/style-service';
 import {getShadow} from '../constants/shadow-styles';
 
 export default class HeaderIcon extends Component {

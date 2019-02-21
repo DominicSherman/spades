@@ -12,16 +12,12 @@ jest.mock('redux');
 describe('App.js', () => {
     let renderedComponent;
 
-    const cacheChildren = () => {};
-
     const renderComponent = () => {
         const shallowRenderer = ShallowRenderer.createRenderer();
 
         shallowRenderer.render(<App />);
 
         renderedComponent = shallowRenderer.getRenderOutput();
-
-        cacheChildren();
     };
 
     beforeEach(() => {
