@@ -306,6 +306,16 @@ const setColor = (state, color) => ({
 
 const restart = (state) => ({
     ...defaultState,
+    team1: {
+        ...defaultState.team1,
+        firstPlayer: state.team1.firstPlayer,
+        secondPlayer: state.team1.secondPlayer
+    },
+    team2: {
+        ...defaultState.team2,
+        firstPlayer: state.team2.firstPlayer,
+        secondPlayer: state.team2.secondPlayer
+    },
     theme: state.theme
 });
 

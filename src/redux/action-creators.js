@@ -10,7 +10,7 @@ import {
 } from '../services/score-service';
 import {bidsAddUpTo13} from '../constants/score-helpers';
 import {logAnalyticsEvent} from '../services/analytics-service';
-import {BIDS_SUBMITTED, CHANGED_COLOR, CHANGED_THEME, RESULTS_SUBMITTED, UNDO} from '../constants/events';
+import {BIDS_SUBMITTED, CHANGED_COLOR, CHANGED_THEME, RESULTS_SUBMITTED, UNDO, RESTART_GAME} from '../constants/events';
 
 import {
     ADD_BIDS,
@@ -63,7 +63,7 @@ const submitBids = () => (dispatch, getState) => {
         team2Total: getTeamTotalBids(currRound, TEAM_TWO)
     };
 
-    logAnalyticsEvent(BIDS_SUBMITTED, roundWithTotals);
+    logAnalyticsEvent(BIDS_SUBMITTED);
 
     dispatch({
         data: roundWithTotals,
@@ -81,7 +81,7 @@ const submitBids = () => (dispatch, getState) => {
 };
 
 const submitResults = () => (dispatch, getState) => {
-    const {currRound, rounds} = getState();
+    const {currRound, rounds, team1, team2} = getState();
 
     if (bidsAddUpTo13(currRound)) {
         const updatedRounds = addCurrRoundResults(currRound, rounds);
@@ -89,9 +89,16 @@ const submitResults = () => (dispatch, getState) => {
         updatedRounds[0].score = calculateScore(updatedRounds);
 
         logAnalyticsEvent(RESULTS_SUBMITTED, {
-            ...updatedRounds[0],
-            score1: updatedRounds[0].score.score1,
-            score2: updatedRounds[0].score.score2
+            [`${team1.firstPlayer}_bid`]: updatedRounds[0].playerOne.bid,
+            [`${team1.firstPlayer}_actual`]: updatedRounds[0].playerOne.actual,
+            [`${team1.secondPlayer}_bid`]: updatedRounds[0].playerTwo.bid,
+            [`${team1.secondPlayer}_actual`]: updatedRounds[0].playerTwo.actual,
+            [`${team2.firstPlayer}_bid`]: updatedRounds[0].playerThree.bid,
+            [`${team2.firstPlayer}_actual`]: updatedRounds[0].playerThree.actual,
+            [`${team2.secondPlayer}_bid`]: updatedRounds[0].playerFour.bid,
+            [`${team2.secondPlayer}_actual`]: updatedRounds[0].playerFour.actual,
+            [`${team1.firstPlayer}_${team1.secondPlayer}_score`]: updatedRounds[0].score.score1,
+            [`${team2.firstPlayer}_${team2.secondPlayer}_score`]: updatedRounds[0].score.score2
         });
 
         dispatch({
@@ -137,7 +144,7 @@ export const restart = () => (dispatch) => Alert.alert(
         {text: 'Cancel'},
         {
             onPress: () => {
-                logAnalyticsEvent(RESTART);
+                logAnalyticsEvent(RESTART_GAME);
 
                 dispatch({type: RESTART});
             },
