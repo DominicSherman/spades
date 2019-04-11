@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 
 import reducer from './redux/reducer';
 import HomeContainer from './HomeContainer';
+import {enableAnalytics} from './services/analytics-service';
 
 import {PersistGate} from 'redux-persist/integration/react';
 
@@ -26,6 +27,12 @@ const store = createStore(persistedReducer, applyMiddleware(thunk));
 const persistor = persistStore(store);
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        enableAnalytics();
+    };
+
     render() {
         return (
             <Provider store={store}>

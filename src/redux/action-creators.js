@@ -9,6 +9,8 @@ import {
     setNameActionsEnum
 } from '../services/score-service';
 import {bidsAddUpTo13} from '../constants/score-helpers';
+import {logAnalyticsEvent} from '../services/analytics-service';
+import {BIDS_SUBMITTED, CHANGED_COLOR, CHANGED_THEME, RESULTS_SUBMITTED, UNDO} from '../constants/events';
 
 import {
     ADD_BIDS,
@@ -55,12 +57,13 @@ export const calculateTeamScore = (rounds) => (dispatch) => {
 
 const submitBids = () => (dispatch, getState) => {
     const {currRound} = getState();
-
     const roundWithTotals = {
         ...currRound,
         team1Total: getTeamTotalBids(currRound, TEAM_ONE),
         team2Total: getTeamTotalBids(currRound, TEAM_TWO)
     };
+
+    logAnalyticsEvent(BIDS_SUBMITTED, roundWithTotals);
 
     dispatch({
         data: roundWithTotals,
@@ -84,6 +87,12 @@ const submitResults = () => (dispatch, getState) => {
         const updatedRounds = addCurrRoundResults(currRound, rounds);
 
         updatedRounds[0].score = calculateScore(updatedRounds);
+
+        logAnalyticsEvent(RESULTS_SUBMITTED, {
+            ...updatedRounds[0],
+            score1: updatedRounds[0].score.score1,
+            score2: updatedRounds[0].score.score2
+        });
 
         dispatch({
             data: updatedRounds,
@@ -127,7 +136,11 @@ export const restart = () => (dispatch) => Alert.alert(
     [
         {text: 'Cancel'},
         {
-            onPress: () => dispatch({type: RESTART}),
+            onPress: () => {
+                logAnalyticsEvent(RESTART);
+
+                dispatch({type: RESTART});
+            },
             text: 'Yes'
         }
     ]
@@ -151,6 +164,8 @@ export const undo = (isBids) => (dispatch, getState) => {
             });
         }
     }
+
+    logAnalyticsEvent(UNDO);
 };
 
 export const toggleShowHistory = () => ({
@@ -165,12 +180,20 @@ export const toggleShowSettingsModal = () => ({
     type: TOGGLE_SHOW_SETTINGS_MODAL
 });
 
-export const setTheme = (theme) => ({
-    data: theme,
-    type: SET_THEME
-});
+export const setTheme = (theme) => (dispatch) => {
+    logAnalyticsEvent(CHANGED_THEME, {theme});
 
-export const setColor = (color) => ({
-    data: color,
-    type: SET_COLOR
-});
+    dispatch({
+        data: theme,
+        type: SET_THEME
+    });
+};
+
+export const setColor = (color) => (dispatch) => {
+    logAnalyticsEvent(CHANGED_COLOR, {color});
+
+    dispatch({
+        data: color,
+        type: SET_COLOR
+    });
+};
