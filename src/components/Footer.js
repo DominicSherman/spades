@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Animated, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import Feather from 'react-native-vector-icons/Feather';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -15,6 +15,14 @@ import {
 } from '../services/style-service';
 
 export default class Footer extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            scale: new Animated.Value(1)
+        };
+    }
+
     _getStyles = () => StyleSheet.create({
         diamond: {
             backgroundColor: getHeaderFooterColor(this.props.theme),
@@ -81,6 +89,18 @@ export default class Footer extends Component {
         }
     });
 
+    _animateIn = () => Animated.timing(this.state.scale, {
+        duration: 100,
+        toValue: 0.9,
+        useNativeDriver: true
+    }).start();
+
+    _animateOut = () => Animated.timing(this.state.scale, {
+        duration: 150,
+        toValue: 1,
+        useNativeDriver: true
+    }).start();
+
     render() {
         const {actions, isBids, showInfoModal, theme, showSettingsModal} = this.props;
         const submitText = isBids ? 'SUBMIT BIDS' : 'SUBMIT RESULTS';
@@ -99,10 +119,18 @@ export default class Footer extends Component {
                     />
                 </Touchable>
                 <Touchable
+                    activeOpacity={1}
                     onPress={actions.submit}
+                    onPressIn={this._animateIn}
+                    onPressOut={this._animateOut}
                     style={styles.submitTouchable}
                 >
-                    <View style={styles.submitWrapper}>
+                    <Animated.View
+                        style={[
+                            styles.submitWrapper,
+                            {transform: [{scale: this.state.scale}]}
+                        ]}
+                    >
                         <View style={styles.diamond} />
                         <View style={styles.iconBackground} />
                         <Feather
@@ -112,7 +140,7 @@ export default class Footer extends Component {
                             style={styles.icon}
                         />
                         <Text style={styles.text}>{submitText}</Text>
-                    </View>
+                    </Animated.View>
                 </Touchable>
                 <Touchable
                     onPress={actions.toggleShowSettingsModal}

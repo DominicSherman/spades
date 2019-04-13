@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import AnimateNumber from 'react-native-animate-number';
 
 import {PLAYER_FOUR, PLAYER_ONE, PLAYER_THREE, PLAYER_TWO} from '../constants/constants';
 import {getShadow} from '../constants/shadow-styles';
@@ -71,7 +72,12 @@ export default class Players extends Component {
         return (
             <View style={{flexDirection: 'row'}}>
                 <View style={[styles.teamView, styles.leftTeamView]}>
-                    <Text style={[styles.headerText, {color: getLeftScoreColor(theme)}]}>{team1.score}</Text>
+                    <AnimateNumber
+                        countBy={5}
+                        steps={10}
+                        style={[styles.headerText, {color: getLeftScoreColor(theme)}]}
+                        value={team1.score}
+                    />
                     <LinearGradient
                         colors={getLeftTeamGradient(theme)}
                         end={{
@@ -105,7 +111,12 @@ export default class Players extends Component {
                     </LinearGradient>
                 </View>
                 <View style={[styles.teamView, styles.rightTeamView]}>
-                    <Text style={[styles.headerText, {color: getRightScoreColor(theme)}]}>{team2.score}</Text>
+                    <AnimateNumber
+                        countBy={5}
+                        steps={10}
+                        style={[styles.headerText, {color: getRightScoreColor(theme)}]}
+                        value={team2.score}
+                    />
                     <LinearGradient
                         colors={getRightTeamGradient(theme)}
                         end={{
