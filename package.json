@@ -60,9 +60,7 @@
     ],
     "moduleNameMapper": {
       "^react-redux": "<rootDir>/test/stubs/react-redux-stub.js",
-      "react-native-fetch-blob": "<rootDir>/test/stubs/react-native-fetch-blob-stub.js",
-      "^firebase": "<rootDir>/test/stubs/firebase-stub.js",
-      "react-native-mail": "<rootDir>/test/stubs/react-native-mail-stub.js"
+      "^react-native-firebase": "<rootDir>/test/stubs/react-native-firebase-stub.js"
     }
   }
 }

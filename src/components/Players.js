@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Dimensions, StyleSheet, TextInput, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import AnimateNumber from 'react-native-animate-number';
 

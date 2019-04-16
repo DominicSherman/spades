@@ -95,11 +95,18 @@ export default class Footer extends Component {
         useNativeDriver: true
     }).start();
 
-    _animateOut = () => Animated.timing(this.state.scale, {
-        duration: 150,
-        toValue: 1,
-        useNativeDriver: true
-    }).start();
+    _animateOut = () => Animated.sequence([
+        Animated.timing(this.state.scale, {
+            duration: 150,
+            toValue: 1.1,
+            useNativeDriver: true
+        }),
+        Animated.timing(this.state.scale, {
+            duration: 150,
+            toValue: 1,
+            useNativeDriver: true
+        })
+    ]).start();
 
     render() {
         const {actions, isBids, showInfoModal, theme, showSettingsModal} = this.props;

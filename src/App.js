@@ -31,7 +31,7 @@ export default class App extends React.Component {
         super(props);
 
         enableAnalytics();
-    };
+    }
 
     render() {
         return (

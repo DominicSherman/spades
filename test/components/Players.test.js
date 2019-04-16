@@ -1,8 +1,9 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Chance from 'chance';
-import {Text, TextInput, View} from 'react-native';
+import {TextInput, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import AnimateNumber from 'react-native-animate-number';
 
 import Players from '../../src/components/Players';
 import {createRandomProps} from '../model-factory';
@@ -95,8 +96,7 @@ describe('Players', () => {
     });
 
     it('should render the left score text', () => {
-        expect(renderedLeftScoreText.type).toBe(Text);
-        expect(renderedLeftScoreText.props.children).toBe(expectedProps.team1.score);
+        expect(renderedLeftScoreText.type).toBe(AnimateNumber);
     });
 
     it('should render the left linear gradient', () => {
@@ -138,8 +138,7 @@ describe('Players', () => {
     });
 
     it('should render the right score text', () => {
-        expect(renderedRightScoreText.type).toBe(Text);
-        expect(renderedRightScoreText.props.children).toBe(expectedProps.team1.score);
+        expect(renderedRightScoreText.type).toBe(AnimateNumber);
     });
 
     it('should render the right linear gradient', () => {

@@ -1,7 +1,7 @@
 import Chance from 'chance';
 import {Alert} from 'react-native';
 
-import {createRandomProps} from '../model-factory';
+import {createRandomProps, createRandomRound} from '../model-factory';
 import {
     addCurrRoundResults,
     calculateScore,
@@ -36,9 +36,12 @@ import {
 } from '../../src/redux/action-types';
 import {TEAM_ONE, TEAM_TWO} from '../../src/constants/constants';
 import {bidsAddUpTo13} from '../../src/constants/score-helpers';
+import {logAnalyticsEvent} from '../../src/services/analytics-service';
+import {BIDS_SUBMITTED} from '../../src/constants/events';
 
 jest.mock('../../src/services/score-service');
 jest.mock('../../src/constants/score-helpers');
+jest.mock('../../src/services/analytics-service');
 
 const chance = new Chance();
 
@@ -124,6 +127,11 @@ describe('action-creators', () => {
                 submit()(dispatchSpy, getStateStub);
             });
 
+            it('should log an analyticsEvent', () => {
+                expect(logAnalyticsEvent).toHaveBeenCalledTimes(1);
+                expect(logAnalyticsEvent).toHaveBeenCalledWith(BIDS_SUBMITTED);
+            });
+
             it('should dispatch 3 actions', () => {
                 expect(dispatchSpy).toHaveBeenCalledTimes(3);
             });
@@ -174,7 +182,7 @@ describe('action-creators', () => {
                     expectedScore;
 
                 beforeEach(() => {
-                    expectedUpdatedRounds = chance.string();
+                    expectedUpdatedRounds = chance.n(createRandomRound, chance.d6());
                     expectedScore = chance.natural();
 
                     addCurrRoundResults.mockReturnValue(expectedUpdatedRounds);
@@ -348,12 +356,13 @@ describe('action-creators', () => {
     describe('setTheme', () => {
         let expectedTheme;
 
-        it('should return an action to SET_THEME', () => {
+        it('should dispatch an action to SET_THEME', () => {
             expectedTheme = chance.natural();
 
-            const actualAction = setTheme(expectedTheme);
+            setTheme(expectedTheme)(dispatchSpy);
 
-            expect(actualAction).toEqual({
+            expect(dispatchSpy).toHaveBeenCalledTimes(1);
+            expect(dispatchSpy).toHaveBeenCalledWith({
                 data: expectedTheme,
                 type: SET_THEME
             });
@@ -366,9 +375,10 @@ describe('action-creators', () => {
         it('should return an action to SET_COLOR', () => {
             expectedColor = chance.natural();
 
-            const actualAction = setColor(expectedColor);
+            setColor(expectedColor)(dispatchSpy);
 
-            expect(actualAction).toEqual({
+            expect(dispatchSpy).toHaveBeenCalledTimes(1);
+            expect(dispatchSpy).toHaveBeenCalledWith({
                 data: expectedColor,
                 type: SET_COLOR
             });

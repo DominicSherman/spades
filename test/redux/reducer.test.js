@@ -32,7 +32,7 @@ import {
     UNDO_ACTUAL,
     UNDO_BIDS
 } from '../../src/redux/action-types';
-import {createRandomRound} from '../model-factory';
+import {createRandomProps, createRandomRound} from '../model-factory';
 
 const chance = new Chance();
 
@@ -90,12 +90,7 @@ describe('reducer', () => {
     });
 
     it('should restart when the action is RESTART', () => {
-        const originalState = {
-            [chance.string()]: chance.string(),
-            theme: {
-                [chance.string()]: chance.string()
-            }
-        };
+        const originalState = createRandomProps();
 
         const action = {
             type: RESTART
@@ -105,6 +100,16 @@ describe('reducer', () => {
 
         expect(actualState).toEqual({
             ...defaultState,
+            team1: {
+                ...defaultState.team1,
+                firstPlayer: originalState.team1.firstPlayer,
+                secondPlayer: originalState.team1.secondPlayer
+            },
+            team2: {
+                ...defaultState.team2,
+                firstPlayer: originalState.team2.firstPlayer,
+                secondPlayer: originalState.team2.secondPlayer
+            },
             theme: originalState.theme
         });
     });
