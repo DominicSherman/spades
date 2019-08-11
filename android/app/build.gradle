@@ -88,7 +88,7 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = false
+def enableSeparateBuildPerCPUArchitecture = true
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
@@ -124,10 +124,10 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
-                storeFile file(MYAPP_RELEASE_STORE_FILE)
+            if (project.hasProperty('SPADES_UPLOAD_STORE_FILE')) {
+                storeFile file(SPADES_UPLOAD_STORE_FILE)
                 storePassword pass
-                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyAlias SPADES_UPLOAD_KEY_ALIAS
                 keyPassword pass
             }
         }

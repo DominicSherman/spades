@@ -28,3 +28,4 @@ chrome-user-data
 xcuserdata
 # CocoaPods
 /ios/Pods/
+my-upload-key.keystore
