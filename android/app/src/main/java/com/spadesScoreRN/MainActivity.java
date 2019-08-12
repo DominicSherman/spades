@@ -1,4 +1,4 @@
-package com.spades;
+package com.spadesScoreRN;
 
 import com.facebook.react.ReactActivity;
 
