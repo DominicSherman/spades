@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:763395317982:android:cbfd47e1a24c800b",
+        "mobilesdk_app_id": "1:763395317982:android:4c92d47172f91709",
         "android_client_info": {
-          "package_name": "com.spades"
+          "package_name": "com.reactnative.spades"
         }
       },
       "oauth_client": [
