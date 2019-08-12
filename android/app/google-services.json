@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "763395317982",
+    "firebase_url": "https://spades-c7358.firebaseio.com",
+    "project_id": "spades-c7358",
+    "storage_bucket": "spades-c7358.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763395317982:android:cbfd47e1a24c800b",
+        "android_client_info": {
+          "package_name": "com.spades"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763395317982-a50lvluohib279gfflfoob8u3obt1ue5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8tX-A1wNxtqUrrbjoApdwQAWWdjEtxA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763395317982-a50lvluohib279gfflfoob8u3obt1ue5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "763395317982-0tl6su59pslrtcadm61bkkk4ebpbp3hb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.spades",
+                "app_store_id": "1439916717"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

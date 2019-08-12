@@ -33,12 +33,12 @@ import {
 
 const defaultState = {
     currRound: {
-        player1Bid: 0,
-        player2Bid: 0,
-        player3Bid: 0,
-        player4Bid: 0,
-        team1Total: 0,
-        team2Total: 0
+        player1Bid: '',
+        player2Bid: '',
+        player3Bid: '',
+        player4Bid: '',
+        team1Total: '',
+        team2Total: ''
     },
     isBids: true,
     rounds: [],
@@ -96,10 +96,10 @@ const addBids = (state, bids) => ({
 const reset = (state) => ({
     ...state,
     currRound: {
-        player1Bid: 0,
-        player2Bid: 0,
-        player3Bid: 0,
-        player4Bid: 0
+        player1Bid: '',
+        player2Bid: '',
+        player3Bid: '',
+        player4Bid: ''
     }
 });
 

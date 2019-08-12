@@ -4,6 +4,7 @@
 scripts/flow/*/.flowconfig
 *~
 *.pyc
+.gradle/
 .grunt
 _SpecRunner.html
 __benchmarks__
@@ -25,3 +26,6 @@ chrome-user-data
 *.swo
 .coverage
 xcuserdata
+# CocoaPods
+/ios/Pods/
+my-upload-key.keystore
