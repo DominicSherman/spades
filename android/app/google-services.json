@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:763395317982:android:cbfd47e1a24c800b",
+        "mobilesdk_app_id": "1:763395317982:android:995fe958f4db0428",
         "android_client_info": {
-          "package_name": "com.spades"
+          "package_name": "com.spadesScoreRN"
         }
       },
       "oauth_client": [
