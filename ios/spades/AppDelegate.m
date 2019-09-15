@@ -16,6 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [FIRApp configure];
+  [[GADMobileAds sharedInstance] startWithCompletionHandler:nil];
   
   NSURL *jsCodeLocation;
 

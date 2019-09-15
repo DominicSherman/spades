@@ -9,5 +9,6 @@ target 'spades' do
   # Pods for spades
   pod 'Firebase/Core'
   pod 'GoogleIDFASupport', '~> 3.14.0'
+  pod 'Google-Mobile-Ads-SDK'
 
 end

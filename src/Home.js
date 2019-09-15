@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, View, StyleSheet} from 'react-native';
+import {AdMobBanner} from 'react-native-admob';
 
 import Header from './components/Header';
 import Players from './components/Players';
@@ -9,6 +10,7 @@ import ShowHistoryButton from './components/ShowHistoryButton';
 import HistoryModal from './modals/HistoryModal';
 import CurrentBids from './components/CurrentBids';
 import {getBackgroundColor, getHeaderFooterColor} from './services/style-service';
+import {ADMOB_KEY} from './constants/admob';
 
 export default class Home extends React.Component {
     componentDidUpdate(prevProps) {
@@ -89,6 +91,10 @@ export default class Home extends React.Component {
                     showInfoModal={showInfoModal}
                     showSettingsModal={showSettingsModal}
                     theme={theme}
+                />
+                <AdMobBanner
+                    adSize={'smartBannerLandscape'}
+                    adUnitID={ADMOB_KEY}
                 />
                 <HistoryModal {...this.props} />
             </SafeAreaView>
