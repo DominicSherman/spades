@@ -313,6 +313,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNCGeolocation;
 		};
+		F95E35CC232EB315008EE180 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F95E35C8232EB314008EE180 /* RNAdMobManager.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A96DA7741C146D7200FC639B;
+			remoteInfo = RNAdMobManager;
+		};
 		F99369D4225FE25500321EA6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 568C1C6E87334B219CC48750 /* RNFirebase.xcodeproj */;
@@ -406,6 +413,7 @@
 		F939335C217F63AC00BB81B3 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		F939335D217F63AC00BB81B3 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		F95E359A232EAE19008EE180 /* RNCGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCGeolocation.xcodeproj; path = "../node_modules/@react-native-community/geolocation/ios/RNCGeolocation.xcodeproj"; sourceTree = "<group>"; };
+		F95E35C8232EB314008EE180 /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNAdMobManager.xcodeproj; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; };
 		F9936947225FD3FE00321EA6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9D98D6D2300A413007E4CD3 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FC6FA0C60E5C4E2D932470DC /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
@@ -616,6 +624,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F95E35C8232EB314008EE180 /* RNAdMobManager.xcodeproj */,
 				F95E359A232EAE19008EE180 /* RNCGeolocation.xcodeproj */,
 				F939334C217F62A500BB81B3 /* RNVectorIcons.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -730,6 +739,14 @@
 			isa = PBXGroup;
 			children = (
 				F95E35C5232EAE19008EE180 /* libRNCGeolocation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F95E35C9232EB314008EE180 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F95E35CD232EB315008EE180 /* libRNAdMobManager.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -861,6 +878,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = F95E35C9232EB314008EE180 /* Products */;
+					ProjectRef = F95E35C8232EB314008EE180 /* RNAdMobManager.xcodeproj */;
 				},
 				{
 					ProductGroup = F95E359B232EAE19008EE180 /* Products */;
@@ -1134,6 +1155,13 @@
 			fileType = archive.ar;
 			path = libRNCGeolocation.a;
 			remoteRef = F95E35C4232EAE19008EE180 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F95E35CD232EB315008EE180 /* libRNAdMobManager.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNAdMobManager.a;
+			remoteRef = F95E35CC232EB315008EE180 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		F99369D5225FE25500321EA6 /* libRNFirebase.a */ = {
